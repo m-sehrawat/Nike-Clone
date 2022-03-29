@@ -1,10 +1,10 @@
-import { Heading } from '@chakra-ui/react';
 import './App.css';
+import { Router } from './routes/Router';
 
 function App() {
     return (
         <div>
-            <Heading>Testing</Heading>
+            <Router />
         </div>
     );
 }
