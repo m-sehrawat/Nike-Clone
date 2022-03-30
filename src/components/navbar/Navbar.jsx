@@ -1,6 +1,7 @@
 import { Box, Button, Center, color, Container, Flex, Heading, Icon, Image, Input, Spacer, Text } from "@chakra-ui/react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { RiHeartLine, RiShoppingBagLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 
@@ -40,13 +41,15 @@ export const Navbar = () => {
                     <NavIcon iconName={RiShoppingBagLine} />
                 </Center>
             </Flex>
+
+            <Box border={'1px solid red'} h={'60px'} ></Box>
         </>
     );
 };
 
 
 const Category = ({ text }) => {
-    return <Center h={'60px'} _hover={{ borderBottom: '2px solid black' }} cursor={'pointer'} paddingX={'15px'}>{text}</Center>;
+    return <Center h={'60px'} _hover={{ borderBottom: '2px solid black' }} cursor={'pointer'} paddingX={'15px'}><Link to={'/products'} >{text}</Link></Center>;
 };
 
 
