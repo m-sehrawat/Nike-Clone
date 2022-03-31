@@ -1,5 +1,5 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Center, Checkbox, Flex, Grid, Heading, Menu, MenuButton, MenuItem, MenuList, Spacer, Stack, Text, VStack } from "@chakra-ui/react";
-import { useState } from "react";
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Center, Checkbox, Flex, Grid, Heading, Image, Menu, MenuButton, MenuItem, MenuList, Spacer, Stack, Text, VStack } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { AiOutlineDown } from "react-icons/ai";
 import { IoOptionsOutline } from "react-icons/io5";
 
@@ -8,6 +8,18 @@ import { IoOptionsOutline } from "react-icons/io5";
 export const Products = () => {
 
     const [isFilter, setIsFilter] = useState(true);
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        getData('cloths');
+    }, []);
+
+    const getData = (type) => {
+        fetch(`http://localhost:3004/${type}`)
+            .then((res) => res.json())
+            .then((res) => setData(res))
+            .catch((err) => console.log(err))
+    }
 
 
 
@@ -34,9 +46,11 @@ export const Products = () => {
                 </Box>}
                 <Box border={'1px solid red'} minH={'400px'}>
                     <Grid templateColumns='repeat(3, 1fr)' gap={4} p={'20px'}>
-                        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((e, i) => (
-                            <Box key={i} border={'1px solid red'} h={isFilter ? '540px' : '640px'}>
-                                <Box border={'1px solid red'} h={'70%'}></Box>
+                        {data.map((e, i) => (
+                            <Box key={i} border={'1px solid red'} minH={isFilter ? '520px' : '660px'}>
+                                <Box border={'1px solid red'} h={'70%'} overflow={'hidden'}>
+                                    <Image src={e.img[0]} />
+                                </Box>
                             </Box>
                         ))}
                     </Grid>
@@ -56,6 +70,8 @@ const Filter = () => {
                 <MenuList>
                     <MenuItem>Price: Low-High</MenuItem>
                     <MenuItem>Price: High-Low</MenuItem>
+                    <MenuItem>Rating: Low-High</MenuItem>
+                    <MenuItem>Rating: High-Low</MenuItem>
                     <MenuItem>Name: A-Z</MenuItem>
                     <MenuItem>Name: Z-A</MenuItem>
                 </MenuList>
