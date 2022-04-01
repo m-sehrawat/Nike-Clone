@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Center, Checkbox, Flex, Grid, Heading, Image, Menu, MenuButton, MenuItem, MenuList, Spacer, Stack, Text, VStack } from "@chakra-ui/react";
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Center, Checkbox, Flex, FormLabel, Grid, Heading, HStack, Image, Input, Menu, MenuButton, MenuItem, MenuList, Spacer, Stack, Switch, Text, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AiOutlineDown } from "react-icons/ai";
 import { IoOptionsOutline } from "react-icons/io5";
@@ -11,7 +11,7 @@ export const Products = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        getData('cloths');
+        getData('shoes');
     }, []);
 
     const getData = (type) => {
@@ -21,6 +21,12 @@ export const Products = () => {
             .catch((err) => console.log(err))
     }
 
+    const handleChange = (e) => {
+        let isChecked = e.target.checked;
+        let value = e.target.value;
+        console.log('answer:', isChecked, value)
+
+    }
 
 
     return (
@@ -41,7 +47,9 @@ export const Products = () => {
             <Grid templateColumns={isFilter ? '18% 77.4%' : '97%'} gap={6} justifyContent={'center'}>
                 {isFilter && <Box border={'1px solid red'} h={'600px'} position={'sticky'} top={'70px'} overflowY={'scroll'} id='scroll'>
 
-                    <LeftSideFilter />
+
+
+                    <LeftSideFilter handleChange={handleChange} />
 
                 </Box>}
                 <Box border={'1px solid red'} minH={'400px'}>
@@ -81,15 +89,16 @@ const Filter = () => {
 };
 
 
-const LeftSideFilter = () => {
+const LeftSideFilter = ({ handleChange }) => {
 
     return (
         <>
-            <Accordion allowMultiple>
-                <FilterSection title={'Gender'} item={['Men', 'Women', 'Kids']} />
+            <Accordion defaultIndex={[1, 2]} allowMultiple>
+                <PriceFilter />
+                <FilterSection handleChange={handleChange} title={'Gender'} item={['Men', 'Women', 'Kids']} />
                 <FilterSection title={'Size'} item={['Small', 'Medium', 'Large', 'Extra Large']} />
-                <FilterSection title={'Colour'} item={['Black', 'White', 'Green', 'Red', 'Pink']} />
-                <FilterSection title={'Fit'} item={['Oversized', 'Loose', 'Slim', 'Standard']} />
+                <FilterSection title={'Colour'} item={['Black', 'White', 'Green', 'Red', 'Pink', 'Orange']} />
+                <FilterSection title={'Rating'} item={['3 stars', '4 stars', '5 stars']} />
                 <FilterSection title={'Brand'} item={['Nike Sportswear', 'Jordan', 'NikeLab', 'Nike Pro']} />
             </Accordion>
         </>
@@ -97,7 +106,7 @@ const LeftSideFilter = () => {
 };
 
 
-const FilterSection = ({ title, item }) => {
+const FilterSection = ({ title, item, handleChange }) => {
 
     return (
         <AccordionItem>
@@ -111,11 +120,37 @@ const FilterSection = ({ title, item }) => {
 
                 <Stack direction={'column'} gap={'5px'} >
                     {item.map((e, i) => (
-                        <Checkbox key={i}>{e}</Checkbox>
+                        <Checkbox onChange={(e) => { handleChange(e) }} value={e} key={i}>{e}</Checkbox>
                     ))}
                 </Stack>
 
             </AccordionPanel>
         </AccordionItem>
+    );
+};
+
+const PriceFilter = () => {
+
+    return (
+        <>
+
+            <AccordionItem>
+                <h2>
+                    <AccordionButton>
+                        <Box flex='1' textAlign='left' fontSize={'18px'}>Price Filter</Box>
+                        <AccordionIcon />
+                    </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+
+                    <Flex m={'2%'} direction={'column'} gap={2} >
+                        <Input type={'number'} placeholder="₹ min price" />
+                        <Input type={'number'} placeholder="₹ max price" />
+                        <Button >Apply</Button>
+                    </Flex>
+
+                </AccordionPanel>
+            </AccordionItem>
+        </>
     );
 };
