@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Center, Checkbox, Flex, Grid, Image, Input, Menu, MenuButton, MenuItem, MenuList, Spacer, Stack, Text, } from "@chakra-ui/react";
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Center, Checkbox, Flex, Grid, Image, Input, Spacer, Stack, Text, } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { IoOptionsOutline } from "react-icons/io5";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
@@ -20,13 +20,17 @@ export const Products = () => {
         dispatch(getRequest());
     }, []);
 
+    const resetFilter = () => {
+        dispatch(getRequest());
+    };
+
 
     const handleChange = (e) => {
         let isChecked = e.target.checked;
         let value = e.target.value;
         console.log('answer:', isChecked, value)
 
-    }
+    };
 
 
     return isLoading ? (
@@ -41,9 +45,10 @@ export const Products = () => {
                 </Center>
                 <Spacer />
                 <Center>
-                    <Button onClick={() => { setIsFilter(!isFilter) }} mr={'20px'} rightIcon={<IoOptionsOutline />} >
+                    <Button onClick={() => { setIsFilter(!isFilter) }} rightIcon={<IoOptionsOutline />} >
                         {isFilter ? 'Hide Filter' : 'Show Filter'}
                     </Button>
+                    <Button onClick={resetFilter} mx={'20px'}>Reset Filter</Button>
                     <SortFilters />
                 </Center>
             </Flex>
