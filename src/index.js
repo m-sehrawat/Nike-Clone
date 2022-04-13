@@ -1,18 +1,25 @@
 import { ChakraProvider } from '@chakra-ui/react';
+import axios from 'axios';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from "react-dom/client";
+import { Provider as ReduxProvider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { store } from './redux/store/store';
 import App from './App';
 
+axios.defaults.baseURL = "http://localhost:3004";
 
-ReactDOM.render(
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ChakraProvider>
-        <App />
-      </ChakraProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+    <ReduxProvider store={store}>
+      <BrowserRouter>
+        <ChakraProvider>
+          <App />
+        </ChakraProvider>
+      </BrowserRouter>
+    </ReduxProvider>
+  </React.StrictMode>);
 

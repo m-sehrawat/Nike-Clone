@@ -1,25 +1,25 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Center, Checkbox, Flex, FormLabel, Grid, Heading, HStack, Image, Input, Menu, MenuButton, MenuItem, MenuList, Spacer, Stack, Switch, Text, VStack } from "@chakra-ui/react";
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Center, Checkbox, Flex, Grid, Image, Input, Menu, MenuButton, MenuItem, MenuList, Spacer, Stack, Text, } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { AiOutlineDown } from "react-icons/ai";
 import { IoOptionsOutline } from "react-icons/io5";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { getRequest } from "../../redux/features/products/actions";
+import { SortFilters } from "./SortFilters";
+
 
 
 
 export const Products = () => {
 
     const [isFilter, setIsFilter] = useState(true);
-    const [data, setData] = useState([]);
+
+    const { isLoading, isError } = useSelector((state) => state.prodReducer, shallowEqual);
+    const { products } = useSelector((state) => state.prodReducer);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        getData('shoes');
+        dispatch(getRequest());
     }, []);
 
-    const getData = (type) => {
-        fetch(`http://localhost:3004/${type}`)
-            .then((res) => res.json())
-            .then((res) => setData(res))
-            .catch((err) => console.log(err))
-    }
 
     const handleChange = (e) => {
         let isChecked = e.target.checked;
@@ -29,7 +29,11 @@ export const Products = () => {
     }
 
 
-    return (
+    return isLoading ? (
+        <div>...Loading</div>
+    ) : isError ? (
+        <div>Something went wrong</div>
+    ) : (
         <>
             <Flex border={'1px solid red'} h={'60px'} position={'sticky'} top={'0px'} zIndex={1} bg={'white'} >
                 <Center>
@@ -40,7 +44,7 @@ export const Products = () => {
                     <Button onClick={() => { setIsFilter(!isFilter) }} mr={'20px'} rightIcon={<IoOptionsOutline />} >
                         {isFilter ? 'Hide Filter' : 'Show Filter'}
                     </Button>
-                    <Filter />
+                    <SortFilters />
                 </Center>
             </Flex>
 
@@ -54,10 +58,15 @@ export const Products = () => {
                 </Box>}
                 <Box border={'1px solid red'} minH={'400px'}>
                     <Grid templateColumns='repeat(3, 1fr)' gap={4} p={'20px'}>
-                        {data.map((e, i) => (
+                        {products.map((e, i) => (
                             <Box key={i} border={'1px solid red'} minH={isFilter ? '520px' : '660px'}>
                                 <Box border={'1px solid red'} h={'70%'} overflow={'hidden'}>
                                     <Image src={e.img[0]} />
+                                </Box>
+                                <Box>
+                                    <Text>{e.name}</Text>
+                                    <Text>Price: ₹ {e.price}</Text>
+                                    <Text>Rating: {e.rating}</Text>
                                 </Box>
                             </Box>
                         ))}
@@ -69,24 +78,6 @@ export const Products = () => {
 };
 
 
-const Filter = () => {
-
-    return (
-        <Box mr={'50px'}>
-            <Menu>
-                <MenuButton as={Button} rightIcon={<AiOutlineDown />}>Sort By</MenuButton>
-                <MenuList>
-                    <MenuItem>Price: Low-High</MenuItem>
-                    <MenuItem>Price: High-Low</MenuItem>
-                    <MenuItem>Rating: Low-High</MenuItem>
-                    <MenuItem>Rating: High-Low</MenuItem>
-                    <MenuItem>Name: A-Z</MenuItem>
-                    <MenuItem>Name: Z-A</MenuItem>
-                </MenuList>
-            </Menu>
-        </Box>
-    );
-};
 
 
 const LeftSideFilter = ({ handleChange }) => {

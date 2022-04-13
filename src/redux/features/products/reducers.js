@@ -1,4 +1,5 @@
-import { GET_DATA_ERROR, GET_DATA_LOADING, GET_DATA_SUCCESS } from "./actionTypes";
+
+import { GET_DATA_ERROR, GET_DATA_LOADING, GET_DATA_SUCCESS, NAME_A_TO_Z, NAME_Z_TO_A, RATING_HIGH_TO_LOW, RATING_LOW_TO_HIGH, SORT_HIGH_TO_LOW, SORT_LOW_TO_HIGH } from "./actionTypes";
 
 const init = { isLoading: false, products: [], isError: false };
 
@@ -10,6 +11,18 @@ export const productReducer = (state = init, { type, payload }) => {
             return { ...state, isLoading: false, products: payload };
         case GET_DATA_ERROR:
             return { ...state, isLoading: false, isError: true };
+        case SORT_LOW_TO_HIGH:
+            return { ...state, products: state.products.sort((a, b) => a.price - b.price) };
+        case SORT_HIGH_TO_LOW:
+            return { ...state, products: state.products.sort((a, b) => b.price - a.price) };
+        case RATING_LOW_TO_HIGH:
+            return { ...state, products: state.products.sort((a, b) => a.rating - b.rating) };
+        case RATING_HIGH_TO_LOW:
+            return { ...state, products: state.products.sort((a, b) => b.rating - a.rating) };
+        case NAME_A_TO_Z:
+            return { ...state, products: state.products.sort((a, b) => a.name.localeCompare(b.name)) };
+        case NAME_Z_TO_A:
+            return { ...state, products: state.products.sort((a, b) => b.name.localeCompare(a.name)) };
         default:
             return state;
     }
