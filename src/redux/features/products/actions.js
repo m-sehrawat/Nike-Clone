@@ -6,3 +6,5 @@ export const getDataSuccess = (payload) => ({ type: GET_DATA_SUCCESS, payload })
 
 export const getDataError = () => ({ type: GET_DATA_ERROR });
 
+
+
