@@ -1,5 +1,5 @@
 {
-    "cloths": [
+    "allProducts": [
         {
             "img": [
                 "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/420cc5514bed47f68e4cac43014baef3_9366/High-Support_Bra_Black_GL0589_21_model.jpg",
@@ -37,7 +37,7 @@
                 "Country of Origin",
                 "Vietnam"
             ],
-            "gender": "women",
+            "gender": "Women",
             "division": "clothing",
             "productType": "sportsWear",
             "brand": "performance",
@@ -80,7 +80,7 @@
                 "Country of Origin",
                 "Vietnam"
             ],
-            "gender": "women",
+            "gender": "Women",
             "division": "clothing",
             "productType": "sportsWear",
             "brand": "originals",
@@ -123,7 +123,7 @@
                 "Country of Origin",
                 "Vietnam"
             ],
-            "gender": "women",
+            "gender": "Women",
             "division": "clothing",
             "productType": "sportsWear",
             "brand": "performance",
@@ -166,7 +166,7 @@
                 "Country of Origin",
                 "Vietnam"
             ],
-            "gender": "women",
+            "gender": "Women",
             "division": "clothing",
             "productType": "sportsWear",
             "brand": "originals",
@@ -182,17 +182,11 @@
             ],
             "name": "AEROREADY DESIGNED TO MOVE SPORT TEE",
             "category": "Men Training",
-            "price": 599,
+            "price": 2805,
             "size": [
-                "Small",
-                "Medium",
-                "Large",
-                "Extra Large"
+                "Large"
             ],
-            "color": [
-                "Red",
-                "White"
-            ],
+            "color": "Black",
             "rating": 4.0,
             "specifications": [
                 "Drawcord on elastic waist",
@@ -210,7 +204,7 @@
                 "Country of Origin",
                 "Thailand"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "clothing",
             "productType": "Tshirts",
             "brand": "performance",
@@ -253,7 +247,7 @@
                 "Country of Origin",
                 "Vietnam"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "clothing",
             "productType": "Tshirts",
             "brand": "sportsWear",
@@ -284,7 +278,7 @@
             "rating": 4.5,
             "specifications": [
                 "Slim fit",
-                "Engineered for movement",
+                "Engineered for moveMent",
                 "Doubleknit",
                 "Color: Acid Yellow / Wild Pine / White"
             ],
@@ -298,7 +292,7 @@
                 "Country of Origin",
                 "Thailand"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "clothing",
             "productType": "Tshirts",
             "brand": "sportsWear",
@@ -327,7 +321,7 @@
             "rating": 3.8,
             "specifications": [
                 "Slim fit",
-                "Engineered for movement",
+                "Engineered for moveMent",
                 "Doubleknit",
                 "Color: Dash Grey"
             ],
@@ -341,15 +335,13 @@
                 "Country of Origin",
                 "Cambodia"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "clothing",
             "productType": "Tshirts",
             "brand": "performance",
             "collection": "adicolor",
             "sustainability": "vegan"
-        }
-    ],
-    "shoes": [
+        },
         {
             "img": [
                 "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/6161d010750f4a0b8e07ab4a00a10991_9366/Ultimashow_Shoes_Black_FX3636_01_standard.jpg",
@@ -388,7 +380,7 @@
                 "Country of Origin",
                 "Vietnam"
             ],
-            "gender": "women",
+            "gender": "Women",
             "division": "shoes",
             "productType": "sportsShoes",
             "brand": "sportsWear",
@@ -433,7 +425,7 @@
                 "Country of Origin",
                 "China"
             ],
-            "gender": "women",
+            "gender": "Women",
             "division": "shoes",
             "productType": "sportsShoes",
             "brand": "performance",
@@ -478,7 +470,7 @@
                 "Country of Origin",
                 "Cambodia"
             ],
-            "gender": "women",
+            "gender": "Women",
             "division": "shoes",
             "productType": "football",
             "brand": "sportsInspired",
@@ -523,7 +515,7 @@
                 "Country of Origin",
                 "Indonesia"
             ],
-            "gender": "women",
+            "gender": "Women",
             "division": "shoes",
             "productType": "football",
             "brand": "sportsInspired",
@@ -568,7 +560,7 @@
                 "Country of Origin",
                 "India"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "shoes",
             "productType": "sportsShoes",
             "brand": "sportsInspired",
@@ -613,7 +605,7 @@
                 "Country of Origin",
                 "Vietnam"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "shoes",
             "productType": "sneakers",
             "brand": "performance",
@@ -658,7 +650,7 @@
                 "Country of Origin",
                 "Indonesia"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "shoes",
             "productType": "sneakers",
             "brand": "sportsWear",
@@ -703,7 +695,7 @@
                 "Country of Origin",
                 "Myanmar"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "shoes",
             "productType": "sportsShoes",
             "brand": "sportsInspired",
@@ -748,7 +740,7 @@
                 "Country of Origin",
                 "Vietnam"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "shoes",
             "productType": "sneakers",
             "brand": "performance",
@@ -793,7 +785,7 @@
                 "Country of Origin",
                 "Vietnam"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "shoes",
             "productType": "football",
             "brand": "sportsWear",
@@ -837,7 +829,7 @@
                 "Country of Origin",
                 "India"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "shoes",
             "productType": "sneakers",
             "brand": "sportsInspired",
@@ -882,57 +874,12 @@
                 "Country of Origin",
                 "India"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "shoes",
             "productType": "football",
             "brand": "performance",
             "collection": "superNova",
             "sustainability": "colorWithCare"
-        }
-    ],
-    "pants": [
-        {
-            "img": [
-                "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/72527925b68c4b3e8c20ab6501016f98_9366/Marathon_20_Two-in-One_Shorts_Black_FS9845_21_model.jpg",
-                "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/76195043555849cf9084ab6501017d1e_9366/Marathon_20_Two-in-One_Shorts_Black_FS9845_22_model.jpg",
-                "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/23e1776fde2449feb9fcab6501018ad4_9366/Marathon_20_Two-in-One_Shorts_Black_FS9845_23_hover_model.jpg",
-                "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/c1e74e238b384d25a969ab6501019831_9366/Marathon_20_Two-in-One_Shorts_Black_FS9845_25_model.jpg"
-            ],
-            "name": "MARATHON 20 TWO-IN-ONE SHORTS",
-            "category": "Women Running",
-            "price": 1499,
-            "size": [
-                "Small",
-                "Medium",
-                "Large",
-                "Extra Large"
-            ],
-            "color": [
-                "Black"
-            ],
-            "rating": 4.0,
-            "specifications": [
-                "Drawcord on elastic waist",
-                "100% recycled polyester doubleknit",
-                "Stay-put running shorts",
-                "CColor: Black"
-            ],
-            "details": [
-                "Attribute",
-                "Value",
-                "Net Quantity",
-                "1 N",
-                "Gender",
-                "Women",
-                "Country of Origin",
-                "Vietnam"
-            ],
-            "gender": "women",
-            "division": "clothing",
-            "productType": "sportsWear",
-            "brand": "sportsWear",
-            "collection": "ultraBoost",
-            "sustainability": "sustainable"
         },
         {
             "img": [
@@ -970,7 +917,7 @@
                 "Country of Origin",
                 "Cambodia"
             ],
-            "gender": "women",
+            "gender": "Women",
             "division": "clothing",
             "productType": "sportsWear",
             "brand": "originals",
@@ -1013,7 +960,7 @@
                 "Country of Origin",
                 "Cambodia"
             ],
-            "gender": "women",
+            "gender": "Women",
             "division": "clothing",
             "productType": "sportsWear",
             "brand": "sportsInspired",
@@ -1058,7 +1005,7 @@
                 "Country of Origin",
                 "Thailand"
             ],
-            "gender": "women",
+            "gender": "Women",
             "division": "clothing",
             "productType": "sportsWear",
             "brand": "sportsWear",
@@ -1088,7 +1035,7 @@
             "rating": 4.2,
             "specifications": [
                 "Slim fit",
-                "Engineered for movement",
+                "Engineered for moveMent",
                 "Doubleknit",
                 "Color: Red / White"
             ],
@@ -1102,7 +1049,7 @@
                 "Country of Origin",
                 "Cambodia"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "clothing",
             "productType": "sportsWear",
             "brand": "originals",
@@ -1131,7 +1078,7 @@
             "rating": 4.6,
             "specifications": [
                 "Slim fit",
-                "Engineered for movement",
+                "Engineered for moveMent",
                 "Doubleknit",
                 "Color: Crew Navy"
             ],
@@ -1145,7 +1092,7 @@
                 "Country of Origin",
                 "Philippines"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "clothing",
             "productType": "sportsWear",
             "brand": "sportsInspired",
@@ -1174,7 +1121,7 @@
             "rating": 4.8,
             "specifications": [
                 "Regular fit",
-                "Engineered for movement",
+                "Engineered for moveMent",
                 "70% polyester, 30% recycled polyester plain weave",
                 "Color: Black"
             ],
@@ -1188,7 +1135,7 @@
                 "Country of Origin",
                 "Vietnam"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "clothing",
             "productType": "sportsWear",
             "brand": "sportsWear",
@@ -1231,15 +1178,13 @@
                 "Country of Origin",
                 "Vietnam"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "clothing",
             "productType": "sportsWear",
             "brand": "sportsInspired",
             "collection": "clima",
             "sustainability": "organicCotton"
-        }
-    ],
-    "accessories": [
+        },
         {
             "img": [
                 "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/30689ff7b9e542b6a46faafc00fd26bd_9366/Predator_20_Training_Gloves_Black_FH7294_01_standard.jpg",
@@ -1277,7 +1222,7 @@
                 "Country of Origin",
                 "Vietnam"
             ],
-            "gender": "kids",
+            "gender": "Kids",
             "division": "accessories",
             "productType": "football",
             "brand": "originals",
@@ -1321,7 +1266,7 @@
                 "Country of Origin",
                 "Tunisia"
             ],
-            "gender": "kids",
+            "gender": "Kids",
             "division": "accessories",
             "productType": "football",
             "brand": "originals",
@@ -1351,7 +1296,7 @@
             ],
             "rating": 3.9,
             "specifications": [
-                "Dimensions: 16 cm x 32 cm x 44 cm",
+                "DiMensions: 16 cm x 32 cm x 44 cm",
                 "Internal lined sleeve",
                 "Side compression straps",
                 "Color: Legend Ink / White / Active Gold"
@@ -1366,7 +1311,7 @@
                 "Country of Origin",
                 "India"
             ],
-            "gender": "kids",
+            "gender": "Kids",
             "division": "accessories",
             "productType": "sportsWear",
             "brand": "originals",
@@ -1394,7 +1339,7 @@
             ],
             "rating": 4.5,
             "specifications": [
-                "Dimensions: 15.25 cm x 17 cm",
+                "DiMensions: 15.25 cm x 17 cm",
                 "Washable for daily use",
                 "Color: Black",
                 "Tight fit for coverage"
@@ -1409,7 +1354,7 @@
                 "Country of Origin",
                 "Vietnam"
             ],
-            "gender": "men",
+            "gender": "Men",
             "division": "accessories",
             "productType": "sportsWear",
             "brand": "originals",

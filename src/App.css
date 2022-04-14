@@ -14,3 +14,11 @@ body{
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #b8b8b8;
 }
+
+/* .imgAnimation{
+	transition: all 1s ease-in-out;
+}
+
+.imgAnimation:hover{
+	transform: scale(1.2);
+} */
