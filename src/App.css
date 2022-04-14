@@ -1,24 +1,22 @@
-body{
-  margin: 0%;
+body {
+	margin: 0%;
 }
 
-#scroll::-webkit-scrollbar
-{
+#scroll::-webkit-scrollbar {
 	width: 7px;
 	background-color: #F5F5F5;
 }
 
-#scroll::-webkit-scrollbar-thumb
-{
+#scroll::-webkit-scrollbar-thumb {
 	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
 	background-color: #b8b8b8;
 }
 
-/* .imgAnimation{
+/* .imgAnimation {
 	transition: all 1s ease-in-out;
 }
 
-.imgAnimation:hover{
+.imgAnimation:hover {
 	transform: scale(1.2);
 } */

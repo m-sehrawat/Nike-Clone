@@ -11,8 +11,7 @@ import { SortFilters } from "./SortFilters";
 export const Products = () => {
 
     const [isFilter, setIsFilter] = useState(true);
-    const { products, filters } = useSelector((state) => state.prodReducer);
-    console.log('filters:', filters)
+    const { products } = useSelector((state) => state.prodReducer);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -40,7 +39,7 @@ export const Products = () => {
                 </Center>
             </Flex>
 
-            <Grid templateColumns={isFilter ? '18% 77.4%' : '97%'} gap={6} justifyContent={'center'}>
+            <Grid className="test" templateColumns={isFilter ? '18% 77.4%' : '97%'} gap={6} justifyContent={'center'}>
                 {isFilter && <Box border={'1px solid red'} h={'600px'} position={'sticky'} top={'70px'} overflowY={'scroll'} id='scroll'>
 
                     <LeftSideFilter />
