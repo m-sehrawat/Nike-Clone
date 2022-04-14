@@ -8,3 +8,5 @@ export const RATING_LOW_TO_HIGH = "RATING_LOW_TO_HIGH";
 export const RATING_HIGH_TO_LOW = "RATING_HIGH_TO_LOW";
 export const NAME_A_TO_Z = "NAME_A_TO_Z";
 export const NAME_Z_TO_A = "NAME_Z_TO_A";
+
+export const SET_GENDER = "SET_GENDER";

@@ -1,5 +1,5 @@
 
-import { GET_DATA_ERROR, GET_DATA_LOADING, GET_DATA_SUCCESS, NAME_A_TO_Z, NAME_Z_TO_A, RATING_HIGH_TO_LOW, RATING_LOW_TO_HIGH, SORT_HIGH_TO_LOW, SORT_LOW_TO_HIGH } from "./actionTypes";
+import { GET_DATA_ERROR, GET_DATA_LOADING, GET_DATA_SUCCESS, NAME_A_TO_Z, NAME_Z_TO_A, RATING_HIGH_TO_LOW, RATING_LOW_TO_HIGH, SET_GENDER, SORT_HIGH_TO_LOW, SORT_LOW_TO_HIGH } from "./actionTypes";
 
 const init = { isLoading: false, products: [], isError: false };
 
@@ -23,6 +23,8 @@ export const productReducer = (state = init, { type, payload }) => {
             return { ...state, products: state.products.sort((a, b) => a.name.localeCompare(b.name)) };
         case NAME_Z_TO_A:
             return { ...state, products: state.products.sort((a, b) => b.name.localeCompare(a.name)) };
+        case SET_GENDER:
+            return { ...state, products: state.products.filter((e) => e.gender === payload) };
         default:
             return state;
     }

@@ -2,7 +2,8 @@ import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPane
 import { useEffect, useState } from "react";
 import { IoOptionsOutline } from "react-icons/io5";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { getRequest } from "../../redux/features/products/actions";
+import { getRequest, setGender } from "../../redux/features/products/actions";
+import { LeftSideFilter } from "./LeftSideFilter";
 import { SortFilters } from "./SortFilters";
 
 
@@ -29,6 +30,7 @@ export const Products = () => {
         let isChecked = e.target.checked;
         let value = e.target.value;
         console.log('answer:', isChecked, value)
+        dispatch(setGender(value === "Men" ? "men" : "women"))
 
     };
 
@@ -61,6 +63,7 @@ export const Products = () => {
                     <LeftSideFilter handleChange={handleChange} />
 
                 </Box>}
+
                 <Box border={'1px solid red'} minH={'400px'}>
                     <Grid templateColumns='repeat(3, 1fr)' gap={4} p={'20px'}>
                         {products.map((e, i) => (
@@ -72,6 +75,7 @@ export const Products = () => {
                                     <Text>{e.name}</Text>
                                     <Text>Price: ₹ {e.price}</Text>
                                     <Text>Rating: {e.rating}</Text>
+                                    <Text>Gender: {e.gender}</Text>
                                 </Box>
                             </Box>
                         ))}
@@ -82,71 +86,3 @@ export const Products = () => {
     );
 };
 
-
-
-
-const LeftSideFilter = ({ handleChange }) => {
-
-    return (
-        <>
-            <Accordion defaultIndex={[1, 2]} allowMultiple>
-                <PriceFilter />
-                <FilterSection handleChange={handleChange} title={'Gender'} item={['Men', 'Women', 'Kids']} />
-                <FilterSection title={'Size'} item={['Small', 'Medium', 'Large', 'Extra Large']} />
-                <FilterSection title={'Colour'} item={['Black', 'White', 'Green', 'Red', 'Pink', 'Orange']} />
-                <FilterSection title={'Rating'} item={['3 stars', '4 stars', '5 stars']} />
-                <FilterSection title={'Brand'} item={['Nike Sportswear', 'Jordan', 'NikeLab', 'Nike Pro']} />
-            </Accordion>
-        </>
-    );
-};
-
-
-const FilterSection = ({ title, item, handleChange }) => {
-
-    return (
-        <AccordionItem>
-            <h2>
-                <AccordionButton>
-                    <Box flex='1' textAlign='left' fontSize={'18px'}>{title}</Box>
-                    <AccordionIcon />
-                </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
-
-                <Stack direction={'column'} gap={'5px'} >
-                    {item.map((e, i) => (
-                        <Checkbox onChange={(e) => { handleChange(e) }} value={e} key={i}>{e}</Checkbox>
-                    ))}
-                </Stack>
-
-            </AccordionPanel>
-        </AccordionItem>
-    );
-};
-
-const PriceFilter = () => {
-
-    return (
-        <>
-
-            <AccordionItem>
-                <h2>
-                    <AccordionButton>
-                        <Box flex='1' textAlign='left' fontSize={'18px'}>Price Filter</Box>
-                        <AccordionIcon />
-                    </AccordionButton>
-                </h2>
-                <AccordionPanel pb={4}>
-
-                    <Flex m={'2%'} direction={'column'} gap={2} >
-                        <Input type={'number'} placeholder="₹ min price" />
-                        <Input type={'number'} placeholder="₹ max price" />
-                        <Button >Apply</Button>
-                    </Flex>
-
-                </AccordionPanel>
-            </AccordionItem>
-        </>
-    );
-};
