@@ -17,6 +17,7 @@ export const Navbar = () => {
 
                 <Spacer />
 
+                <Category text={"All Products"} />
                 <Category text={"Men"} />
                 <Category text={"Women"} />
                 <Category text={"Kids"} />

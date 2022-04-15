@@ -9,6 +9,7 @@ export const LeftSideFilter = () => {
 
     const init = {
         Gender: { Men: false, Women: false, Kids: false },
+        Category: { Cloths: false, Shoes: false },
         Size: { Small: false, Medium: false, Large: false },
         Colour: { Black: false, White: false, Green: false, Red: false, Mix: false }
     }
@@ -44,8 +45,9 @@ export const LeftSideFilter = () => {
         <Accordion defaultIndex={[1, 2]} allowMultiple>
             <PriceFilter handleChange={handleChange} handleSubmit={handleSubmit} />
             <FilterSection change={handleFilterChange} apply={handleFilterApply} title={'Gender'} item={['Men', 'Women', 'Kids']} />
+            <FilterSection change={handleFilterChange} apply={handleFilterApply} title={'Category'} item={['Cloths', 'Shoes']} />
             <FilterSection change={handleFilterChange} apply={handleFilterApply} title={'Size'} item={['Small', 'Medium', 'Large']} />
-            <FilterSection change={handleFilterChange} apply={handleFilterApply} title={'Colour'} item={['Black', 'White', 'Green', 'Red', 'Mix']} />
+            <FilterSection change={handleFilterChange} apply={handleFilterApply} title={'Colour'} item={['Black', 'White', 'Green', 'Red', 'Blue']} />
         </Accordion>
     );
 };

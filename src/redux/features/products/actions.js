@@ -33,7 +33,7 @@ export const resetFilters = () => ({ type: RESET_FILTERS });
 export const getRequest = () => async (dispatch) => {
     try {
         dispatch(getDataLoading());
-        let res = await axios.get("/allProducts");
+        let res = await axios.get("/men");
         dispatch(getDataSuccess(res.data));
     } catch (err) {
         dispatch(getDataError());

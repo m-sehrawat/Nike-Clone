@@ -8,6 +8,7 @@ const init = {
     backupData: [],
     filters: {
         Gender: { Men: false, Women: false, Kids: false },
+        Category: { Cloths: false, Shoes: false },
         Size: { Small: false, Medium: false, Large: false },
         Colour: { Black: false, White: false, Green: false, Red: false, Mix: false }
     }
@@ -30,9 +31,9 @@ export const productReducer = (state = init, { type, payload }) => {
         case RATING_HIGH_TO_LOW:
             return { ...state, products: state.products.sort((a, b) => b.rating - a.rating) };
         case NAME_A_TO_Z:
-            return { ...state, products: state.products.sort((a, b) => a.name.localeCompare(b.name)) };
+            return { ...state, products: state.products.sort((a, b) => a.title.localeCompare(b.title)) };
         case NAME_Z_TO_A:
-            return { ...state, products: state.products.sort((a, b) => b.name.localeCompare(a.name)) };
+            return { ...state, products: state.products.sort((a, b) => b.title.localeCompare(a.title)) };
         case GET_PRICE_RANGE:
             return {
                 ...state,
@@ -44,19 +45,32 @@ export const productReducer = (state = init, { type, payload }) => {
                 products: state.backupData,
                 filters: {
                     Gender: { Men: false, Women: false, Kids: false },
+                    Category: { Cloths: false, Shoes: false },
                     Size: { Small: false, Medium: false, Large: false },
                     Colour: { Black: false, White: false, Green: false, Red: false, Mix: false }
                 }
             };
         case SET_ALL_FILTERS:
-            let { Gender, Colour, Size } = convertObject(payload);
+            let { Gender, Category, Colour, Size } = convertObject(payload);
             return {
                 ...state,
                 filters: payload,
                 products: state.backupData.filter((e) => {
 
-                    if (Gender.length > 0 && Colour.length > 0 && Size.length > 0) {
+                    if (Gender.length > 0 && Colour.length > 0 && Size.length > 0 && Category.length > 0) {
+                        return Gender.includes(e.gender) && Colour.includes(e.color) && Category.includes(e.category) && checkSize(Size, e.size);
+
+                    } else if (Gender.length > 0 && Colour.length > 0 && Size.length > 0) {
                         return Gender.includes(e.gender) && Colour.includes(e.color) && checkSize(Size, e.size);
+
+                    } else if (Gender.length > 0 && Colour.length > 0 && Category.length > 0) {
+                        return Gender.includes(e.gender) && Colour.includes(e.color) && Category.includes(e.category);
+
+                    } else if (Gender.length > 0 && Size.length > 0 && Category.length > 0) {
+                        return Gender.includes(e.gender) && Category.includes(e.category) && checkSize(Size, e.size);
+
+                    } else if (Colour.length > 0 && Size.length > 0 && Category.length > 0) {
+                        return Colour.includes(e.color) && Category.includes(e.category) && checkSize(Size, e.size);
 
                     } else if (Gender.length > 0 && Size.length > 0) {
                         return Gender.includes(e.gender) && checkSize(Size, e.size);
@@ -64,14 +78,26 @@ export const productReducer = (state = init, { type, payload }) => {
                     } else if (Gender.length > 0 && Colour.length > 0) {
                         return Gender.includes(e.gender) && Colour.includes(e.color);
 
+                    } else if (Gender.length > 0 && Category.length > 0) {
+                        return Gender.includes(e.gender) && Category.includes(e.category);
+
                     } else if (Colour.length > 0 && Size.length > 0) {
                         return Colour.includes(e.color) && checkSize(Size, e.size);
+
+                    } else if (Colour.length > 0 && Category.length > 0) {
+                        return Colour.includes(e.color) && Category.includes(e.category);
+
+                    } else if (Size.length > 0 && Category.length > 0) {
+                        return Category.includes(e.category) && checkSize(Size, e.size);
 
                     } else if (Gender.length > 0) {
                         return Gender.includes(e.gender);
 
                     } else if (Colour.length > 0) {
                         return Colour.includes(e.color);
+
+                    } else if (Category.length > 0) {
+                        return Category.includes(e.category);
 
                     } else if (Size.length > 0) {
                         return checkSize(Size, e.size);
@@ -85,8 +111,6 @@ export const productReducer = (state = init, { type, payload }) => {
             return state;
     }
 }
-
-
 
 
 
