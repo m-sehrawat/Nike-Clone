@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { setNavbarPath } from "../../redux/features/path/actions";
 import { setItem } from "../../utils/localstorage";
+import { Signup } from "../auth/Signup";
 
 export const Navbar = () => {
 
@@ -34,7 +35,10 @@ export const Navbar = () => {
     return (
         <>
             <Box h={'36px'} bg={'#f5f5f5'} >
-                <Center h={'36px'} justifyContent={'right'} mr={'60px'} fontSize={'13px'} cursor={'pointer'} >Sign In</Center>
+                <Center h={'36px'} justifyContent={'right'} mr={'60px'} fontSize={'13px'} cursor={'pointer'}>
+                    <Signup />
+                    Sign In
+                </Center>
             </Box>
 
             <Flex display={['none', 'flex']} h={'60px'} border={'1px solid red'} flexDirection={["column", "row"]} >

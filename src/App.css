@@ -20,3 +20,7 @@ body {
 .imgAnimation:hover {
 	transform: scale(1.2);
 } */
+
+.blurBackground {
+	filter: blur(3px);
+}
