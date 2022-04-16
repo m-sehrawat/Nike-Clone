@@ -26,14 +26,12 @@ export const setAllFilters = (payload) => ({ type: SET_ALL_FILTERS, payload });
 export const resetFilters = () => ({ type: RESET_FILTERS });
 
 
-// export const setSize = (payload) => ({type: SET_SIZE, payload})
-
 
 //Action Functions
-export const getRequest = () => async (dispatch) => {
+export const getRequest = (path) => async (dispatch) => {
     try {
         dispatch(getDataLoading());
-        let res = await axios.get("/men");
+        let res = await axios.get(path);
         dispatch(getDataSuccess(res.data));
     } catch (err) {
         dispatch(getDataError());

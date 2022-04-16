@@ -29,9 +29,9 @@ export const SortFilters = () => {
     }
 
     return (
-        <Box mr={'50px'}>
+        <Box>
             <Menu>
-                <MenuButton as={Button} rightIcon={<AiOutlineDown />}>Sort By</MenuButton>
+                <MenuButton fontSize={['13px', '16px']} as={Button} rightIcon={<AiOutlineDown />}>Sort By</MenuButton>
                 <MenuList>
                     <MenuItem onClick={handleChange}>Price: Low-High</MenuItem>
                     <MenuItem onClick={handleChange}>Price: High-Low</MenuItem>

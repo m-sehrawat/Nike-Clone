@@ -1,4 +1,4 @@
-export function checkSize(A, B) {
+export const checkSize = (A, B) => {
     for (let i = 0; i < A.length; i++) {
         for (let j = 0; j < B.length; j++) {
             if (A[i] === B[j]) {
@@ -10,7 +10,7 @@ export function checkSize(A, B) {
 }
 
 
-export function convertObject(obj) {
+export const convertObject = (obj) => {
     let ans = {};
     for (let k1 in obj) {
         ans[k1] = [];
@@ -22,7 +22,21 @@ export function convertObject(obj) {
 }
 
 
-export function numberWithCommas(x) {
+export const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+
+export const setToast = (toast, title, status, duration = 2000, description) => {
+    toast({
+        title,
+        description,
+        status,
+        duration,
+        isClosable: true,
+    });
+}
+
+export const getGender = (gender) => {
+    return !(gender === "men" || gender === "women" || gender === "kids");
+}

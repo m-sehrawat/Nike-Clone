@@ -1,12 +1,13 @@
-import { Box, Button, Center, Flex, Grid, Icon, Image, Spacer, Text, } from "@chakra-ui/react";
+import { Box, Button, Center, Flex, Grid, Image, Spacer, Text, useToast, } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { IoOptionsOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { getRequest, resetFilters } from "../../redux/features/products/actions";
-import { numberWithCommas } from "../../utils/extraFunctions";
+import { getRequest } from "../../redux/features/products/actions";
+import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { LeftSideFilter } from "./LeftSideFilter";
 import { SortFilters } from "./SortFilters";
 import { AiOutlineStar } from "react-icons/ai";
+import { getItem } from "../../utils/localstorage";
 
 
 
@@ -14,63 +15,71 @@ export const Products = () => {
 
     const [isFilter, setIsFilter] = useState(true);
     const { products } = useSelector((state) => state.prodReducer);
+    const path = getItem("path");
     const dispatch = useDispatch();
+    const toast = useToast();
 
     useEffect(() => {
-        dispatch(getRequest());
-    }, []);
+        dispatch(getRequest(path));
+    }, [path]);
 
     const resetFilter = () => {
-        // dispatch(resetFilters());
-        dispatch(getRequest());
+        dispatch(getRequest(path));
+        setToast(toast, "Filter Reset Successfully", "success");
     };
 
 
     return (
         <>
-            <Flex border={'1px solid red'} h={'60px'} position={'sticky'} top={'0px'} zIndex={1} bg={'white'} >
+            <Flex direction={["column", "row"]} border={'1px solid red'} h={['100px', '60px']} position={["static", 'sticky']} top={'0px'} bg={'white'} >
                 <Center>
-                    <Text ml={'50px'} fontSize={'25px'} fontWeight={500}  >Men's Clothing</Text>
+                    <Text ml={['0px', '50px']} fontSize={['18px', '25px']} fontWeight={500}>
+                        {path === "men" ? "Men's Products"
+                            : path === "women" ? "Women's Products"
+                                : path === "kids" ? "Kids's Products" : "All Products"}
+                    </Text>
                 </Center>
                 <Spacer />
                 <Center>
-                    <Button onClick={() => { setIsFilter(!isFilter) }} rightIcon={<IoOptionsOutline />} >
-                        {isFilter ? 'Hide Filter' : 'Show Filter'}
-                    </Button>
-                    <Button onClick={resetFilter} mx={'20px'}>Reset Filter</Button>
-                    <SortFilters />
+                    <Flex border={'1px solid black'} gap={['4px']} w={'100%'} my={['10px', '0px']} px={['8px', '35px']}>
+                        <Button onClick={() => { setIsFilter(!isFilter) }} fontSize={['13px', '16px']} rightIcon={<IoOptionsOutline />} >
+                            {isFilter ? 'Hide Filter' : 'Show Filter'}
+                        </Button>
+                        <Spacer />
+                        <Button onClick={resetFilter} fontSize={['13px', '16px']}>Reset Filter</Button>
+                        <Spacer />
+                        <SortFilters />
+                    </Flex>
                 </Center>
             </Flex>
 
-            <Grid className="test" templateColumns={isFilter ? '18% 77.4%' : '97%'} gap={6} justifyContent={'center'}>
-                {isFilter && <Box border={'1px solid red'} h={'600px'} position={'sticky'} top={'70px'} overflowY={'scroll'} id='scroll'>
+            <Grid className="test" templateColumns={['100%', isFilter ? '18% 77.4%' : '97%']} gap={6} justifyContent={'center'}>
+                {isFilter && <Box border={'1px solid red'} minH={['220px', '600px']} maxH={['900px', '600px']} position={['none', 'sticky']} top={['0px', '70px']} overflowY={'scroll'} id='scroll'>
 
                     <LeftSideFilter />
 
                 </Box>}
 
                 <Box border={'1px solid red'} minH={'400px'}>
-                    <Grid templateColumns='repeat(3, 1fr)' gap={4} p={'20px'}>
+                    <Grid templateColumns={["repeat(2, 1fr)", "repeat(3, 1fr)"]} gap={[2, 4]} p={['10px', '20px']}>
                         {products.map((e, i) => {
                             const { title, description, color, rating, price, size, gender } = e;
-                            return <Box key={i} border={'1px solid red'} minH={isFilter ? '520px' : '660px'}>
-                                <Box border={'1px solid red'} h={'70%'} overflow={'hidden'}>
-                                    <Image className="imgAnimation" src={e.img[0]} />
-                                </Box>
+                            return <Flex key={i} border={'1px solid red'} flexDirection={'column'}>
+                                <Image className="imgAnimation" src={e.img[0]} />
                                 <Box>
                                     <Flex justifyItems={'center'}>
-                                        <Text fontSize={'18px'} fontWeight={500} mt={'8px'}>{title}</Text>
+                                        <Text fontSize={['14px', '18px']} fontWeight={500} mt={'8px'}>{title}</Text>
                                         <Spacer />
-                                        <Box fontSize={'22px'} mt={'10px'} mr={'3px'}><AiOutlineStar /></Box>
-                                        <Text fontSize={'18px'} mt={'8px'} mr={'16px'}> {rating}</Text>
+                                        <Box fontSize={['15px', '22px']} mt={'10px'} mr={'3px'}><AiOutlineStar /></Box>
+                                        <Text fontSize={['12px', '18px']} mt={'8px'} mr={'16px'}> {rating}</Text>
                                     </Flex>
-                                    <Text fontSize={'17px'} color={'gray'} my={'2px'}>{description}</Text>
-                                    <Text my={'2px'} color={'gray'}>Size : {size.join(", ")}</Text>
-                                    <Text fontSize={'17px'} color={'gray'} my={'2px'}>Colour : {color}</Text>
-                                    <Text fontSize={'17px'} color={'gray'} my={'2px'}>Gender : {gender}</Text>
-                                    <Text fontSize={'20px'} fontWeight={500} mt={'8px'}>₹ {numberWithCommas(price)}</Text>
+                                    <Text fontSize={['12px', '17px']} color={'gray'} my={'2px'}>{description}</Text>
+                                    <Text display={['none', 'block']} my={'2px'} fontSize={['13px', '17px']} color={'gray'}>Size : {size.join(", ")}</Text>
+                                    <Text display={['none', 'block']} fontSize={['13px', '17px']} color={'gray'} my={'2px'}>Colour : {color}</Text>
+                                    <Text display={['none', 'block']} fontSize={['13px', '17px']} color={'gray'} my={'2px'}>Gender : {gender}</Text>
+                                    <Text fontSize={['15px', '20px']} fontWeight={500} my={'8px'}>₹ {numberWithCommas(price)}</Text>
                                 </Box>
-                            </Box>
+                            </Flex>
                         })}
                     </Grid>
                 </Box>
