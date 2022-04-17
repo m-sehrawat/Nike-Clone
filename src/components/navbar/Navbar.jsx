@@ -5,7 +5,8 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { setNavbarPath } from "../../redux/features/path/actions";
 import { setItem } from "../../utils/localstorage";
-import { Signup } from "../auth/Signup";
+import { Auth } from "../auth/Auth";
+
 
 export const Navbar = () => {
 
@@ -36,8 +37,7 @@ export const Navbar = () => {
         <>
             <Box h={'36px'} bg={'#f5f5f5'} >
                 <Center h={'36px'} justifyContent={'right'} mr={'60px'} fontSize={'13px'} cursor={'pointer'}>
-                    <Signup />
-                    Sign In
+                    <Auth />
                 </Center>
             </Box>
 
@@ -73,7 +73,7 @@ export const Navbar = () => {
                 </Center>
             </Flex>
 
-            <Box display={['none', 'block']} border={'1px solid red'} h={'60px'} ></Box>
+            {/* <Box display={['none', 'block']} border={'1px solid red'} h={'60px'} ></Box> */}
         </>
     );
 };

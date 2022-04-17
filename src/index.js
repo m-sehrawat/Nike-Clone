@@ -9,8 +9,9 @@ import App from './App';
 
 axios.defaults.baseURL = "http://localhost:3004";
 
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
+
+const container = document.getElementById('app');
+const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
@@ -21,5 +22,6 @@ root.render(
         </ChakraProvider>
       </BrowserRouter>
     </ReduxProvider>
-  </React.StrictMode>);
+  </React.StrictMode>
+);
 

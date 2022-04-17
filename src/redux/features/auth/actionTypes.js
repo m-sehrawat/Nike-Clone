@@ -1,0 +1,2 @@
+export const SHOW_LOGIN_PAGE = "SHOW_LOGIN_PAGE";
+export const SHOW_RESET_PAGE = "SHOW_RESET_PAGE";

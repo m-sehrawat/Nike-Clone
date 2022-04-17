@@ -41,7 +41,7 @@ export const Products = () => {
                 </Center>
                 <Spacer />
                 <Center>
-                    <Flex border={'1px solid black'} gap={['4px']} w={'100%'} my={['10px', '0px']} px={['8px', '35px']}>
+                    <Flex gap={['4px']} w={'100%'} my={['10px', '0px']} px={['8px', '35px']}>
                         <Button onClick={() => { setIsFilter(!isFilter) }} fontSize={['13px', '16px']} rightIcon={<IoOptionsOutline />} >
                             {isFilter ? 'Hide Filter' : 'Show Filter'}
                         </Button>
