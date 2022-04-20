@@ -73,7 +73,7 @@ export const Navbar = () => {
                 </Center>
             </Flex>
 
-            {/* <Box display={['none', 'block']} border={'1px solid red'} h={'60px'} ></Box> */}
+            <Box display={['none', 'block']} border={'1px solid red'} h={'60px'} ></Box>
         </>
     );
 };

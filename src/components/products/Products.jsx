@@ -7,7 +7,8 @@ import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { LeftSideFilter } from "./LeftSideFilter";
 import { SortFilters } from "./SortFilters";
 import { AiOutlineStar } from "react-icons/ai";
-import { getItem } from "../../utils/localstorage";
+import { getItem, setItem } from "../../utils/localstorage";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -18,6 +19,7 @@ export const Products = () => {
     const path = getItem("path");
     const dispatch = useDispatch();
     const toast = useToast();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(getRequest(path));
@@ -27,6 +29,11 @@ export const Products = () => {
         dispatch(getRequest(path));
         setToast(toast, "Filter Reset Successfully", "success");
     };
+
+    const handleSingleProduct = (data) => {
+        setItem("singleProduct", data);
+        navigate("/description");
+    }
 
 
     return (
@@ -64,7 +71,7 @@ export const Products = () => {
                     <Grid templateColumns={["repeat(2, 1fr)", "repeat(3, 1fr)"]} gap={[2, 4]} p={['10px', '20px']}>
                         {products.map((e, i) => {
                             const { title, description, color, rating, price, size, gender } = e;
-                            return <Flex key={i} border={'1px solid red'} flexDirection={'column'}>
+                            return <Flex onClick={() => { handleSingleProduct(e) }} key={i} border={'1px solid red'} flexDirection={'column'} cursor="pointer">
                                 <Image className="imgAnimation" src={e.img[0]} />
                                 <Box>
                                     <Flex justifyItems={'center'}>
