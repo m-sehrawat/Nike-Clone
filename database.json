@@ -6,7 +6,7 @@
          "description": "Men's T-Shirt",
          "category": "Cloths",
          "price": 3859,
-         "size": ["Large"],
+         "size": ["Small", "Medium", "Large"],
          "color": "Red",
          "rating": 3.9,
          "img": ["https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/29954374-a879-4f9a-a1f1-56262ed614a4/jordan-dri-fit-sport-t-shirt-n3lwwm.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/fafcdc31-4c67-4b9b-9b33-4fc2a81c6d54/jordan-dri-fit-sport-t-shirt-n3lwwm.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/ac05b482-3c89-49f8-8767-209973b195b0/jordan-dri-fit-sport-t-shirt-n3lwwm.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/d9ffb036-c53b-48b6-b32c-1d45ac16db85/jordan-dri-fit-sport-t-shirt-n3lwwm.png"]

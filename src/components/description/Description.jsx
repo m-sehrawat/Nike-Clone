@@ -1,5 +1,6 @@
-import { Box, Button, Grid, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Grid, Image, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
+import { numberWithCommas } from "../../utils/extraFunctions";
 import { getItem } from "../../utils/localstorage";
 import { SelectSize } from "./SelectSize";
 
@@ -27,17 +28,44 @@ export const Description = () => {
                ))}
             </Grid>
 
-            <Box border={"1px solid red"} h={"400px"}>
-               <Heading>{title}</Heading>
+            <Box border={"1px solid red"} pl={"60px"}>
+               <Text fontSize={"29px"}>{title}</Text>
                <Text>{description}</Text>
-               <Text>{price}</Text>
-               <Text>incl. of taxes and duties</Text>
+               <Text fontSize={"22px"} mt="20px">
+                  ₹ {numberWithCommas(price)}
+               </Text>
+               <Text color={"gray"}>incl. of taxes and duties</Text>
+               <Text fontSize={"18px"} mt={"30px"} mb={"10px"}>
+                  Select Size
+               </Text>
+               <Box mb={"30px"}>
+                  <SelectSize size={size} />
+               </Box>
 
-               <SelectSize size={size} />
+               <NewButton click={handleAddToCart} name={"Add to Bag"} bgColor={"black"} color={"white"} hoverBg={"grey"} />
+               <NewButton click={handleAddToCart} name={"Favourite"} bgColor={"white"} color={"black"} hoverBorder={"black"} />
 
-               <Button onClick={handleAddToCart}>Add to cart</Button>
+               <Text fontSize={"18px"} mt={"30px"} mb={"10px"} textDecoration={"underline"}>
+                  Product Deatils
+               </Text>
+               <UnorderedList>
+                  <ListItem>Gender: {gender}</ListItem>
+                  <ListItem>Category: {category}</ListItem>
+                  <ListItem>Colour: {color}</ListItem>
+                  <ListItem>Rating: {rating}</ListItem>
+               </UnorderedList>
             </Box>
          </Grid>
+      </>
+   );
+};
+
+const NewButton = ({ click, name, bgColor, color, hoverBg, hoverBorder }) => {
+   return (
+      <>
+         <Button onClick={click} h={"62px"} bg={bgColor} color={color} border={"1px solid #cecdce"} borderRadius={"50px"} w={"100%"} fontSize={"17px"} my={"10px"} _hover={{ bg: hoverBg, borderColor: hoverBorder }}>
+            {name}
+         </Button>
       </>
    );
 };
