@@ -1,11 +1,10 @@
 const express = require('express');
-const { getAll, post } = require('./crud.controller');
-
-const Men = require("../models/men.model")
 
 const router = express.Router();
 
-router.post("/", post(Men));
+const Men = require("../models/men.model")
+
+const { getAll } = require('./crud.controller');
 
 router.get("/", getAll(Men));
 
