@@ -1,4 +1,3 @@
-import { useDisclosure } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import './App.css';
 import { Router } from './routes/Router';

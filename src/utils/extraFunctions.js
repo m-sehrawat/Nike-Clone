@@ -34,6 +34,7 @@ export const setToast = (toast, title, status, duration = 2000, description) => 
         status,
         duration,
         isClosable: true,
+        position: 'top'
     });
 }
 

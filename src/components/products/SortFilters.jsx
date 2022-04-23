@@ -1,13 +1,17 @@
-import { Box, Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import { Box, Button, Menu, MenuButton, MenuItem, MenuList, useToast } from "@chakra-ui/react";
 import { AiOutlineDown } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { nameAtoZ, nameZtoA, ratingHighToLow, ratingLowToHigh, sortHighToLow, sortLowToHigh } from "../../redux/features/products/actions";
+import { setToast } from "../../utils/extraFunctions";
 
 export const SortFilters = () => {
 
     const dispatch = useDispatch();
+    const toast = useToast();
 
     const handleChange = ({ target: { textContent } }) => {
+
+        setToast(toast, `${textContent} applied successfully`, "success");
 
         switch (textContent) {
             case "Price: Low-High":
@@ -25,7 +29,6 @@ export const SortFilters = () => {
             default:
                 console.log("default");
         }
-
     }
 
     return (

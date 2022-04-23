@@ -1,34 +1,32 @@
-import { Box, Button, Grid, Image, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import { Box, Button, Grid, ListItem, Text, UnorderedList, useToast } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
-import { numberWithCommas } from "../../utils/extraFunctions";
+import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { getItem } from "../../utils/localstorage";
+import { ImageModal } from "./ImageModal";
 import { SelectSize } from "./SelectSize";
 
 export const Description = () => {
    const data = getItem("singleProduct");
    const { title, gender, description, category, price, size, color, rating, img } = data;
    const mySize = useSelector((state) => state.pathReducer.size);
+   const toast = useToast();
 
    const handleAddToCart = () => {
       if (mySize === false) {
-         alert("select Size First");
+         setToast(toast, "Please select a Size", "error");
       } else {
          console.log({ ...data, size: mySize });
       }
    };
 
+
    return (
       <>
-         <Grid templateColumns={["65% 34%"]} border={"1px solid red"} minH={"400px"} w={["100%", "90%"]} m={"40px auto"} gap={"1%"}>
-            <Grid templateColumns={["repeat(2, 1fr)"]} gap={"10px"}>
-               {img.map((e, i) => (
-                  <Box key={i}>
-                     <Image src={e} />
-                  </Box>
-               ))}
-            </Grid>
+         <Grid templateColumns={["100%", "62% 34%"]} border={"1px solid red"} minH={"400px"} w={["100%", "90%"]} m={"40px auto"} gap={"4%"}>
 
-            <Box border={"1px solid red"} pl={"60px"}>
+            <ImageModal img={img} />
+
+            <Box border={"1px solid red"} px={["20px", "40px"]}>
                <Text fontSize={"29px"}>{title}</Text>
                <Text>{description}</Text>
                <Text fontSize={"22px"} mt="20px">
