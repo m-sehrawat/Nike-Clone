@@ -1,7 +1,7 @@
 import { SET_MODAL_OPEN, SET_NAVBAR_PATH, SET_SIZE } from "./actionTypes";
 
 
-const init = { path: "men", modalOpen: false, size: false };
+const init = { path: "allProducts", modalOpen: false, size: false };
 
 export const pathReducer = (state = init, { type, payload }) => {
     switch (type) {

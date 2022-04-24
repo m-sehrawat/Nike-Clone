@@ -1,20 +1,24 @@
 import { Box, Center, Flex, Icon, Image, Spacer, Text } from "@chakra-ui/react";
+import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { RiHeartLine, RiShoppingBagLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { setNavbarPath } from "../../redux/features/path/actions";
-import { setItem } from "../../utils/localstorage";
+import { getItem, setItem } from "../../utils/localstorage";
 import { Auth } from "../auth/Auth";
 
 
 export const Navbar = () => {
 
     const dispatch = useDispatch();
+    const [path, setPath] = useState(getItem("path") || "/");
+
 
     const handlePath = ({ target: { name } }) => {
         dispatch(setNavbarPath(name));
         setItem("path", name);
+        setPath(name);
     }
 
     return (
@@ -33,10 +37,11 @@ export const Navbar = () => {
 
                 <Spacer />
 
-                <Category handlePath={handlePath} name={'allProducts'} text={"All Products"} link={'/allProducts'} />
-                <Category handlePath={handlePath} name={'men'} text={"Men"} link={'/men'} />
-                <Category handlePath={handlePath} name={'women'} text={"Women"} link={'women'} />
-                <Category handlePath={handlePath} name={'kids'} text={"Kids"} link={'/kids'} />
+                <Category handlePath={handlePath} path={path} name={'/'} text={"Home"} link={'/'} />
+                <Category handlePath={handlePath} path={path} name={'allProducts'} text={"All Products"} link={'/allProducts'} />
+                <Category handlePath={handlePath} path={path} name={'men'} text={"Men"} link={'/men'} />
+                <Category handlePath={handlePath} path={path} name={'women'} text={"Women"} link={'women'} />
+                <Category handlePath={handlePath} path={path} name={'kids'} text={"Kids"} link={'/kids'} />
 
                 <Spacer />
 
@@ -65,10 +70,11 @@ export const Navbar = () => {
 };
 
 
-const Category = ({ text, link, handlePath, name }) => {
+const Category = ({ text, link, handlePath, name, path }) => {
+
     return (
-        <Center onClick={handlePath} h={'60px'} _hover={{ borderBottom: '2px solid black' }} cursor={'pointer'} paddingX={'15px'}>
-            <Link to={link} name={name} >{text}</Link>
+        <Center borderBottom={path === name ? '2px solid black' : undefined} h={'60px'} _hover={{ borderBottom: '2px solid black' }} cursor={'pointer'} paddingX={'15px'}>
+            <Link onClick={handlePath} to={link} name={name} >{text}</Link>
         </Center>
     )
 };

@@ -11,19 +11,19 @@ export const ClothSection = ({ data, handleSection }) => {
 
             <Grid onClick={() => { handleSection(gender) }} gap={['10px', '15px']} templateColumns={["repeat(2, 1fr)", "repeat(4, 1fr)"]} >
 
-                <GridItem cursor={'pointer'} borderRadius={'15px'} overflow={'hidden'} border={'1px solid red'}>
+                <GridItem cursor={'pointer'} borderRadius={'15px'} overflow={'hidden'}>
                     <Image className="imgAnimation" src={img[0]} />
                 </GridItem>
 
-                <GridItem cursor={'pointer'} borderRadius={'15px'} overflow={'hidden'} border={'1px solid red'}>
+                <GridItem cursor={'pointer'} borderRadius={'15px'} overflow={'hidden'}>
                     <Image className="imgAnimation" src={img[1]} />
                 </GridItem>
 
-                <GridItem cursor={'pointer'} borderRadius={'15px'} overflow={'hidden'} border={'1px solid red'}>
+                <GridItem cursor={'pointer'} borderRadius={'15px'} overflow={'hidden'}>
                     <Image className="imgAnimation" src={img[2]} />
                 </GridItem>
 
-                <GridItem cursor={'pointer'} borderRadius={'15px'} overflow={'hidden'} border={'1px solid red'}>
+                <GridItem cursor={'pointer'} borderRadius={'15px'} overflow={'hidden'}>
                     <Image className="imgAnimation" src={img[3]} />
                 </GridItem>
             </Grid>
