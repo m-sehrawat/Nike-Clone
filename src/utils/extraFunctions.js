@@ -1,15 +1,3 @@
-export const checkSize = (A, B) => {
-    for (let i = 0; i < A.length; i++) {
-        for (let j = 0; j < B.length; j++) {
-            if (A[i] === B[j]) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-
 export const convertObject = (obj) => {
     let ans = {};
     for (let k1 in obj) {

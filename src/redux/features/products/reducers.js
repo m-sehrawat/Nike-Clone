@@ -1,4 +1,4 @@
-import { checkSize, convertObject } from "../../../utils/extraFunctions";
+import { convertObject } from "../../../utils/extraFunctions";
 import { GET_DATA_ERROR, GET_DATA_LOADING, GET_DATA_SUCCESS, GET_PRICE_RANGE, NAME_A_TO_Z, NAME_Z_TO_A, RATING_HIGH_TO_LOW, RATING_LOW_TO_HIGH, RESET_FILTERS, SET_ALL_FILTERS, SET_GENDER, SET_SIZE, SORT_HIGH_TO_LOW, SORT_LOW_TO_HIGH } from "./actionTypes";
 
 const init = {
@@ -52,64 +52,37 @@ export const productReducer = (state = init, { type, payload }) => {
             };
         case SET_ALL_FILTERS:
             let { Gender, Category, Colour, Size } = convertObject(payload);
+            let variableMapped = { Gender, Category, Colour, Size };
+            let functionMapped = {
+                "Gender": "Gender.includes(e.gender)",
+                "Category": "Category.includes(e.category)",
+                "Colour": "Colour.includes(e.color)",
+                "Size": "checkSize(Size, e.size)"
+            }
             return {
                 ...state,
                 filters: payload,
                 products: state.backupData.filter((e) => {
-
-                    if (Gender.length > 0 && Colour.length > 0 && Size.length > 0 && Category.length > 0) {
-                        return Gender.includes(e.gender) && Colour.includes(e.color) && Category.includes(e.category) && checkSize(Size, e.size);
-
-                    } else if (Gender.length > 0 && Colour.length > 0 && Size.length > 0) {
-                        return Gender.includes(e.gender) && Colour.includes(e.color) && checkSize(Size, e.size);
-
-                    } else if (Gender.length > 0 && Colour.length > 0 && Category.length > 0) {
-                        return Gender.includes(e.gender) && Colour.includes(e.color) && Category.includes(e.category);
-
-                    } else if (Gender.length > 0 && Size.length > 0 && Category.length > 0) {
-                        return Gender.includes(e.gender) && Category.includes(e.category) && checkSize(Size, e.size);
-
-                    } else if (Colour.length > 0 && Size.length > 0 && Category.length > 0) {
-                        return Colour.includes(e.color) && Category.includes(e.category) && checkSize(Size, e.size);
-
-                    } else if (Gender.length > 0 && Size.length > 0) {
-                        return Gender.includes(e.gender) && checkSize(Size, e.size);
-
-                    } else if (Gender.length > 0 && Colour.length > 0) {
-                        return Gender.includes(e.gender) && Colour.includes(e.color);
-
-                    } else if (Gender.length > 0 && Category.length > 0) {
-                        return Gender.includes(e.gender) && Category.includes(e.category);
-
-                    } else if (Colour.length > 0 && Size.length > 0) {
-                        return Colour.includes(e.color) && checkSize(Size, e.size);
-
-                    } else if (Colour.length > 0 && Category.length > 0) {
-                        return Colour.includes(e.color) && Category.includes(e.category);
-
-                    } else if (Size.length > 0 && Category.length > 0) {
-                        return Category.includes(e.category) && checkSize(Size, e.size);
-
-                    } else if (Gender.length > 0) {
-                        return Gender.includes(e.gender);
-
-                    } else if (Colour.length > 0) {
-                        return Colour.includes(e.color);
-
-                    } else if (Category.length > 0) {
-                        return Category.includes(e.category);
-
-                    } else if (Size.length > 0) {
-                        return checkSize(Size, e.size);
-
-                    } else {
-                        return e;
-                    }
+                    let equation = ["Gender", "Category", "Colour", "Size"].filter((e) => variableMapped[e].length > 0);
+                    equation = equation.map((e) => functionMapped[e]).join(" && ");
+                    return eval(equation);
                 })
             };
         default:
             return state;
     }
+}
+
+
+function checkSize(A, B) {
+    for (let i = 0; i < A.length; i++) {
+        for (let j = 0; j < B.length; j++) {
+            if (A[i] === B[j]) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 
