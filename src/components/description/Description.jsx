@@ -22,7 +22,7 @@ export const Description = () => {
 
    return (
       <>
-         <Grid templateColumns={["100%", "62% 34%"]} border={"1px solid red"} minH={"400px"} w={["100%", "90%"]} m={"40px auto"} gap={"4%"}>
+         <Grid templateColumns={["100%", "62% 34%"]} border={"1px solid red"} minH={"450px"} w={["100%", "90%"]} m={["40px auto 100px", "40px auto"]} gap={"4%"}>
 
             <ImageModal img={img} />
 

@@ -38,7 +38,7 @@ export const Products = () => {
 
     return (
         <>
-            <Flex direction={["column", "row"]} border={'1px solid red'} h={['100px', '60px']} position={["static", 'sticky']} top={'0px'} bg={'white'} >
+            <Flex direction={["column", "row"]} border={'1px solid red'} h={['100px', '60px']} position={["static", 'sticky']} top={'0px'} bg={'white'} zIndex={1} >
                 <Center>
                     <Text ml={['0px', '50px']} fontSize={['18px', '25px']} fontWeight={500}>
                         {path === "men" ? "Men's Products"
@@ -61,7 +61,7 @@ export const Products = () => {
             </Flex>
 
             <Grid className="test" templateColumns={['100%', isFilter ? '18% 77.4%' : '97%']} gap={6} justifyContent={'center'}>
-                {isFilter && <Box border={'1px solid red'} minH={['220px', '600px']} maxH={['900px', '600px']} position={['none', 'sticky']} top={['0px', '70px']} overflowY={'scroll'} className='scroll'>
+                {isFilter && <Box border={'1px solid red'} minH={['120px', '600px']} maxH={['900px', '600px']} position={['none', 'sticky']} top={['0px', '70px']} overflowY={'scroll'} className='scroll' >
 
                     <LeftSideFilter />
 

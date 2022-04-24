@@ -6,7 +6,7 @@ import { FcLike } from "react-icons/fc";
 export const Footer = () => {
 
     return (
-        <Box h={'300px'} bg={'black'} color={'white'}>
+        <Box h={'300px'} bg={'black'} color={'white'} mt={'40px'}>
             <Center h={'80px'}>
                 <Text className="typeWritertheme">Made with <Icon as={FcLike} /> by Mohit Sehrawat</Text>
             </Center>
