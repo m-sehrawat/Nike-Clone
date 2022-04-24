@@ -1,4 +1,4 @@
-import { Box, Button, Center, color, Container, Flex, Heading, Icon, Image, Input, Spacer, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Icon, Image, Spacer, Text } from "@chakra-ui/react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { RiHeartLine, RiShoppingBagLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
@@ -12,25 +12,9 @@ export const Navbar = () => {
 
     const dispatch = useDispatch();
 
-    const handlePath = ({ target: { textContent } }) => {
-        switch (textContent) {
-            case "Men":
-                dispatch(setNavbarPath("men"));
-                setItem("path", "men");
-                break;
-            case "Women":
-                dispatch(setNavbarPath("women"));
-                setItem("path", "women");
-                break;
-            case "Kids":
-                dispatch(setNavbarPath("kids"));
-                setItem("path", "kids");
-                break;
-            default:
-                dispatch(setNavbarPath("allProducts"));
-                setItem("path", "allProducts");
-                break;
-        }
+    const handlePath = ({ target: { name } }) => {
+        dispatch(setNavbarPath(name));
+        setItem("path", name);
     }
 
     return (
@@ -43,14 +27,16 @@ export const Navbar = () => {
 
             <Flex display={['none', 'flex']} h={'60px'} border={'1px solid red'} flexDirection={["column", "row"]} >
 
-                <Image ml={'30px'} src="https://www.waveguide.com/wp-content/uploads/2016/05/Nike-logo.png" />
+                <Box w={'80px'}>
+                    <Link to={'/'}><Image ml={'30px'} src="https://www.waveguide.com/wp-content/uploads/2016/05/Nike-logo.png" /></Link>
+                </Box>
 
                 <Spacer />
 
-                <Category handlePath={handlePath} text={"All Products"} link={'/allProducts'} />
-                <Category handlePath={handlePath} text={"Men"} link={'/men'} />
-                <Category handlePath={handlePath} text={"Women"} link={'women'} />
-                <Category handlePath={handlePath} text={"Kids"} link={'/kids'} />
+                <Category handlePath={handlePath} name={'allProducts'} text={"All Products"} link={'/allProducts'} />
+                <Category handlePath={handlePath} name={'men'} text={"Men"} link={'/men'} />
+                <Category handlePath={handlePath} name={'women'} text={"Women"} link={'women'} />
+                <Category handlePath={handlePath} name={'kids'} text={"Kids"} link={'/kids'} />
 
                 <Spacer />
 
@@ -79,8 +65,12 @@ export const Navbar = () => {
 };
 
 
-const Category = ({ text, link, handlePath }) => {
-    return <Center onClick={handlePath} h={'60px'} _hover={{ borderBottom: '2px solid black' }} cursor={'pointer'} paddingX={'15px'}><Link to={link} >{text}</Link></Center>;
+const Category = ({ text, link, handlePath, name }) => {
+    return (
+        <Center onClick={handlePath} h={'60px'} _hover={{ borderBottom: '2px solid black' }} cursor={'pointer'} paddingX={'15px'}>
+            <Link to={link} name={name} >{text}</Link>
+        </Center>
+    )
 };
 
 

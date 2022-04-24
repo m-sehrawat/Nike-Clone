@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const convertObject = (obj) => {
     let ans = {};
     for (let k1 in obj) {
@@ -29,3 +31,5 @@ export const setToast = (toast, title, status, duration = 2000, description) => 
 export const getGender = (gender) => {
     return !(gender === "men" || gender === "women" || gender === "kids");
 }
+
+
