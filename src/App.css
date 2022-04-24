@@ -26,3 +26,21 @@ body::-webkit-scrollbar-thumb {
 .blurBackground {
 	filter: blur(3px);
 }
+
+/* .typeWritertheme {
+	border-right: 3px solid white;
+	width: 0ch;
+	white-space: nowrap;
+	overflow: hidden;
+	animation: typewriter 10s infinite alternate;
+}
+
+@keyframes typewriter {
+	0% {
+		width: 0ch;
+	}
+
+	50% {
+		width: 28ch;
+	}
+} */
