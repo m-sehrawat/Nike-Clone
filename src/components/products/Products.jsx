@@ -43,7 +43,7 @@ export const Products = () => {
                     <Text ml={['0px', '50px']} fontSize={['18px', '25px']} fontWeight={500}>
                         {path === "men" ? "Men's Products"
                             : path === "women" ? "Women's Products"
-                                : path === "kids" ? "Kids's Products" : "All Products"}
+                                : path === "kids" ? "Kids's Products" : "All Products"} [{products.length}]
                     </Text>
                 </Center>
                 <Spacer />
