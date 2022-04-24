@@ -1,4 +1,4 @@
-import { Box, Button, Center, Flex, Grid, Image, Spacer, Text, useToast, } from "@chakra-ui/react";
+import { Box, Button, Center, Flex, Grid, Image, Spacer, Text, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { IoOptionsOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +9,6 @@ import { SortFilters } from "./SortFilters";
 import { AiOutlineStar } from "react-icons/ai";
 import { getItem, setItem } from "../../utils/localstorage";
 import { useNavigate } from "react-router-dom";
-
 
 
 export const Products = () => {
@@ -26,6 +25,7 @@ export const Products = () => {
     }, [path]);
 
     const resetFilter = () => {
+        setIsFilter(!isFilter);
         dispatch(getRequest(path));
         setToast(toast, "Filter Reset Successfully", "success");
     };
