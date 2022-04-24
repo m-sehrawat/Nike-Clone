@@ -1,24 +1,21 @@
 import { Box, Center, Flex, Icon, Image, Spacer, Text } from "@chakra-ui/react";
-import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { RiHeartLine, RiShoppingBagLine } from "react-icons/ri";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setNavbarPath } from "../../redux/features/path/actions";
-import { getItem, setItem } from "../../utils/localstorage";
+import { setItem } from "../../utils/localstorage";
 import { Auth } from "../auth/Auth";
 
 
 export const Navbar = () => {
 
     const dispatch = useDispatch();
-    const [path, setPath] = useState(getItem("path") || "/");
-
+    const path = useSelector((state) => state.pathReducer.path)
 
     const handlePath = ({ target: { name } }) => {
         dispatch(setNavbarPath(name));
         setItem("path", name);
-        setPath(name);
     }
 
     return (

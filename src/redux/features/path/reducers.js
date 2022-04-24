@@ -1,7 +1,12 @@
+import { getItem } from "../../../utils/localstorage";
 import { SET_MODAL_OPEN, SET_NAVBAR_PATH, SET_SIZE } from "./actionTypes";
 
 
-const init = { path: "allProducts", modalOpen: false, size: false };
+const init = {
+    path: getItem("path") || "allProducts",
+    modalOpen: false,
+    size: false
+};
 
 export const pathReducer = (state = init, { type, payload }) => {
     switch (type) {
