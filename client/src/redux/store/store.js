@@ -12,9 +12,8 @@ const rootReducer = combineReducers({
     homeReducer: homeReducer
 });
 
-const reduxDevTool = window.__REDUX_DEVTOOLS_EXTENSION__;
 
 export const store = createStore(
     rootReducer,
-    compose(applyMiddleware(thunk), reduxDevTool && reduxDevTool())
+    compose(applyMiddleware(thunk))
 );
