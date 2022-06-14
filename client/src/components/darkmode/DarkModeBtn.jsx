@@ -10,6 +10,7 @@ export const DarkModeBtn = () => {
         <Icon
             w={'18px'}
             h={'18px'}
+            ml={'10px'}
             onClick={toggleColorMode}
             as={colorMode === 'dark' ? FaSun : FaMoon}
         />
