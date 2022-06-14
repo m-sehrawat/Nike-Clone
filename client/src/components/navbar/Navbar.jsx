@@ -3,6 +3,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { RiHeartLine, RiShoppingBagLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { nikeLogo } from "../../constants/images";
 import { setNavbarPath } from "../../redux/features/path/actions";
 import { setItem } from "../../utils/localstorage";
 import { Auth } from "../auth/Auth";
@@ -31,7 +32,7 @@ export const Navbar = () => {
             <Flex display={['none', 'flex']} h={'60px'} border={'1px solid red'} flexDirection={["column", "row"]} >
 
                 <Box w={'80px'}>
-                    <Link to={'/'}><Image ml={'30px'} src="https://www.waveguide.com/wp-content/uploads/2016/05/Nike-logo.png" /></Link>
+                    <Link to={'/'}><Image ml={'30px'} src={nikeLogo} /></Link>
                 </Box>
 
                 <Spacer />
