@@ -1,4 +1,4 @@
-import { Box, Button, Center, Flex, Grid, Image, Spacer, Text, useToast } from "@chakra-ui/react";
+import { Box, Button, Center, Flex, Grid, Image, Spacer, Text, useColorMode, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { IoOptionsOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Products = () => {
 
+    const { colorMode } = useColorMode();
     const [isFilter, setIsFilter] = useState(true);
     const { products } = useSelector((state) => state.prodReducer);
     const path = getItem("path");
@@ -38,7 +39,7 @@ export const Products = () => {
 
     return (
         <>
-            <Flex direction={["column", "row"]} border={'1px solid red'} h={['100px', '60px']} position={["static", 'sticky']} top={'0px'} bg={'white'} zIndex={1} >
+            <Flex direction={["column", "row"]} border={'1px solid red'} h={['100px', '60px']} position={["static", 'sticky']} top={'0px'} bg={colorMode === 'light' ? 'white' : '#1a202c'} zIndex={1} >
                 <Center>
                     <Text ml={['0px', '50px']} fontSize={['18px', '25px']} fontWeight={500}>
                         {path === "men" ? "Men's Products"

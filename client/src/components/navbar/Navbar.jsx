@@ -82,7 +82,7 @@ const Category = ({ text, link, handlePath, name, path }) => {
 
 
 const NavIcon = ({ iconName }) => {
-    return <Icon as={iconName} w={'28px'} h={'28px'} mr={'10px'} color={'black'} />;
+    return <Icon as={iconName} w={'28px'} h={'28px'} mr={'10px'} />;
 };
 
 
