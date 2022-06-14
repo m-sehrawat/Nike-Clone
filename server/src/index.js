@@ -16,7 +16,10 @@ const womenController = require("./controllers/women.controller");
 const kidsController = require("./controllers/kids.controller");
 const allProductsController = require("./controllers/allProducts.controller");
 const clothDataController = require("./controllers/clothData.controller");
-const shoeDataController = require("./controllers/shoeData.controller")
+const shoeDataController = require("./controllers/shoeData.controller");
+const { signup } = require('./controllers/auth.controller');
+
+app.post("/signup", signup);
 
 app.use("/men", menController);
 app.use("/women", womenController);
