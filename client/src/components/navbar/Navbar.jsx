@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { setNavbarPath } from "../../redux/features/path/actions";
 import { setItem } from "../../utils/localstorage";
 import { Auth } from "../auth/Auth";
+import { DarkModeBtn } from "../darkmode/DarkModeBtn";
 
 
 export const Navbar = () => {
@@ -23,6 +24,7 @@ export const Navbar = () => {
             <Box h={'36px'} bg={'#f5f5f5'} >
                 <Center h={'36px'} justifyContent={'right'} mr={'60px'} fontSize={'13px'} cursor={'pointer'}>
                     <Auth />
+                    <DarkModeBtn />
                 </Center>
             </Box>
 

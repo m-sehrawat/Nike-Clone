@@ -31,7 +31,7 @@ export const Auth = () => {
 
     return (
         <>
-            <Button onClick={handleModalOpen} size={'sm'}>Sign up</Button>
+            <Button bg={'transparent'} onClick={handleModalOpen} size={'sm'}>Sign up</Button>
 
             <Modal isOpen={isOpen} onClose={handleModalClose} >
                 <ModalOverlay />
