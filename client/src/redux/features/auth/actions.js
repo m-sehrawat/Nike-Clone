@@ -21,7 +21,7 @@ export const getSignupSuccess = (data, toast) => async (dispatch) => {
         setToast(toast, 'Signup successfully', 'success');
     } catch (err) {
         console.log(err);
-        setToast(toast, 'Something went wrong', 'error');
+        setToast(toast, err.response.data.message, 'error');
     }
 };
 
@@ -35,6 +35,6 @@ export const getLoginSuccess = (data, toast) => async (dispatch) => {
         setToast(toast, 'Login Successfully', 'success');
     } catch (err) {
         console.log(err);
-        setToast(toast, 'Something went wrong', 'error');
+        setToast(toast, err.response.data.message, 'error');
     }
 };

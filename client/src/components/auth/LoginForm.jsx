@@ -1,9 +1,10 @@
 import { Input, Text, useToast, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { showResetPage } from "../../redux/features/auth/actions";
+import { getLoginSuccess, showResetPage } from "../../redux/features/auth/actions";
 import { setToast } from "../../utils/extraFunctions";
 import { isLoginFormEmpty } from "../../utils/formValidator";
+
 
 export const LoginForm = () => {
 
@@ -18,20 +19,17 @@ export const LoginForm = () => {
 
     const handleOnSubmit = (e)=>{
         e.preventDefault();
-
         const isEmpty = isLoginFormEmpty(form);
         if(!isEmpty.status){
             return setToast(toast, isEmpty.message, 'error');
         }
-
-        
-        console.log(form);
-
-    }
+        dispatch(getLoginSuccess(form, toast));
+    };
 
     const displayReset = () => {
         dispatch(showResetPage());
     };
+
 
     return (
         <>
