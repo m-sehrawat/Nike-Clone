@@ -1,11 +1,14 @@
-import { Input, Select, VStack } from "@chakra-ui/react";
+import { Input, Select, useToast, VStack } from "@chakra-ui/react";
 import { useState } from "react";
+import { setToast } from "../../utils/extraFunctions";
+import { isSignupFormEmpty, validateEmail, validatePassword } from "../../utils/formValidator";
 
 export const SignupForm = () => {
 
     const initState = { firstName: "", lastName: "", email: "", password: "", gender: "", dateOfBirth: "" };
 
     const [form, setForm] = useState(initState);
+    const toast = useToast();
 
     const handleInputChange = ({ target: { name, value } }) => {
         setForm({ ...form, [name]: value });
@@ -13,6 +16,22 @@ export const SignupForm = () => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
+
+        const isEmpty = isSignupFormEmpty(form);
+        if (!isEmpty.status) {
+            return setToast(toast, isEmpty.message, 'error');
+        }
+
+        const isEmail = validateEmail(form.email);
+        if (!isEmail.status) {
+            return setToast(toast, isEmail.message, 'error');
+        }
+
+        const isPassword = validatePassword(form.password);
+        if (!isPassword.status) {
+            return setToast(toast, 'Password must contain these things:', 'error', 3000, isPassword.message);
+        }
+
         console.log(form);
     }
 

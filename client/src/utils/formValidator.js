@@ -23,28 +23,28 @@ export const validateEmail = (email) => {
 export const validatePassword = (password) => {
 
     const errors = [];
-    
+
     if (password.length < 6) {
-        errors.push("Your password must be at least 6 characters");
+        errors.push("at least 6 characters");
     }
     if (password.length > 16) {
-        errors.push("Your password length should not be greater than 16 characters");
+        errors.push("not more than 16 characters");
     }
     if (password.search(/[a-z]/i) < 0) {
-        errors.push("Your password must contain at least one lower case");
+        errors.push("at least one lower case");
     }
     if (password.search(/[A-Z]/i) < 0) {
-        errors.push("Your password must contain at least one upper case");
+        errors.push("at least one upper case");
     }
     if (password.search(/[0-9]/) < 0) {
-        errors.push("Your password must contain at least one digit");
+        errors.push("at least one number");
     }
     if (password.search(/[!@#$%^&*]/) < 0) {
-        errors.push("Your password must contain at least one Special character");
+        errors.push("at least one special character(! @ # $ % ^ & *)");
     }
 
     if (errors.length > 0) {
-        return { status: false, message: errors.join("\n") };
+        return { status: false, message: errors.join(", ") };
     }
     return { status: true };
 };
