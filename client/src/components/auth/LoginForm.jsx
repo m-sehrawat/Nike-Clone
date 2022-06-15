@@ -18,11 +18,13 @@ export const LoginForm = () => {
 
     const handleOnSubmit = (e)=>{
         e.preventDefault();
-        
+
         const isEmpty = isLoginFormEmpty(form);
         if(!isEmpty.status){
             return setToast(toast, isEmpty.message, 'error');
         }
+
+        
         console.log(form);
 
     }

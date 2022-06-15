@@ -23,4 +23,18 @@ export const getSignupSuccess = (data, toast) => async (dispatch) => {
         console.log(err);
         setToast(toast, 'Something went wrong', 'error');
     }
-}
+};
+
+export const getLoginSuccess = (data, toast) => async (dispatch) => {
+    try {
+        let res = await axios.post(`/login`, data);
+        res = res.data;
+        dispatch(getToken(res));
+        setItem('token', res.token);
+        setItem('user', res.user);
+        setToast(toast, 'Login Successfully', 'success');
+    } catch (err) {
+        console.log(err);
+        setToast(toast, 'Something went wrong', 'error');
+    }
+};
