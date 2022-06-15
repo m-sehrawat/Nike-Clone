@@ -26,5 +26,9 @@ userSchema.pre('save', function (next) {
     });
 });
 
+userSchema.methods.checkPassword = async function (password) {
+    return bcrypt.compare(password, this.password).then((res) => res);
+}
+
 
 module.exports = model('user', userSchema);
