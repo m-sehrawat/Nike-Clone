@@ -7,5 +7,8 @@ export const isSignupFormEmpty = ({ firstName, lastName, email, password, dateOf
 };
 
 
-
+export const validateEmail = (email) => {
+    const regexForEmail = /\S+@\S+\.\S+/;
+    return regexForEmail.test(email);
+};
 
