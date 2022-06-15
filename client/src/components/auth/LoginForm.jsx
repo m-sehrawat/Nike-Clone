@@ -1,11 +1,14 @@
-import { Input, Text, VStack } from "@chakra-ui/react";
+import { Input, Text, useToast, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { showResetPage } from "../../redux/features/auth/actions";
+import { setToast } from "../../utils/extraFunctions";
+import { isLoginFormEmpty } from "../../utils/formValidator";
 
 export const LoginForm = () => {
 
     const dispatch = useDispatch();
+    const toast = useToast();
     const [form, setForm] = useState({ email: "", password: "" });
 
 
@@ -16,6 +19,10 @@ export const LoginForm = () => {
     const handleOnSubmit = (e)=>{
         e.preventDefault();
         
+        const isEmpty = isLoginFormEmpty(form);
+        if(!isEmpty.status){
+            return setToast(toast, isEmpty.message, 'error');
+        }
         console.log(form);
 
     }
