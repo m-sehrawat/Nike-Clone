@@ -1,5 +1,7 @@
 import { Input, Select, useToast, VStack } from "@chakra-ui/react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getSignupSuccess } from "../../redux/features/auth/actions";
 import { setToast } from "../../utils/extraFunctions";
 import { isSignupFormEmpty, validateEmail, validatePassword } from "../../utils/formValidator";
 
@@ -10,6 +12,7 @@ export const SignupForm = () => {
 
     const [form, setForm] = useState(initState);
     const toast = useToast();
+    const dispatch = useDispatch();
 
     const handleInputChange = ({ target: { name, value } }) => {
         setForm({ ...form, [name]: value });
@@ -33,8 +36,9 @@ export const SignupForm = () => {
             return setToast(toast, 'Password must contain these things:', 'error', 3000, isPassword.message);
         }
 
-        console.log(form);
-    }
+        dispatch(getSignupSuccess(form, toast));
+    };
+    
 
     return (
         <>
