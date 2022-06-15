@@ -1,12 +1,13 @@
 import { Box, Center, Flex, Icon, Image, Spacer, Text, useColorMode } from "@chakra-ui/react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { RiHeartLine, RiShoppingBagLine } from "react-icons/ri";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { nikeLogo } from "../../constants/images";
 import { setNavbarPath } from "../../redux/features/path/actions";
 import { setItem } from "../../utils/localstorage";
 import { Auth } from "../auth/Auth";
+import { Logout } from "../auth/Logout";
 import { DarkModeBtn } from "../darkmode/DarkModeBtn";
 
 
@@ -14,7 +15,8 @@ export const Navbar = () => {
 
     const dispatch = useDispatch();
     const path = useSelector((state) => state.pathReducer.path);
-    const {colorMode} = useColorMode();
+    const { user, token } = useSelector((state) => state.authReducer, shallowEqual);
+    const { colorMode } = useColorMode();
 
     const handlePath = ({ target: { name } }) => {
         dispatch(setNavbarPath(name));
@@ -24,8 +26,8 @@ export const Navbar = () => {
     return (
         <>
             <Box h={'36px'} bg={colorMode === 'light' && '#f5f5f5'} >
-                <Center h={'36px'} justifyContent={'right'} mr={'60px'} fontSize={'13px'} cursor={'pointer'}>
-                    <Auth />
+                <Center h={'36px'} justifyContent={'right'} mr={'60px'} fontSize={'16px'} cursor={'pointer'}>
+                    {!token ? <Auth /> : <Logout />}
                     <DarkModeBtn />
                 </Center>
             </Box>

@@ -8,6 +8,16 @@ export const isSignupFormEmpty = ({ firstName, lastName, email, password, dateOf
     }
 };
 
+export const isLoginFormEmpty = ({ email, password }) => {
+
+    if (!email || !password) {
+        return { status: false, message: "Please fill all the details" };
+
+    } else {
+        return { status: true };
+    }
+};
+
 
 export const validateEmail = (email) => {
 
