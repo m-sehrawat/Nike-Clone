@@ -3,6 +3,7 @@ import { useState } from "react";
 import { setToast } from "../../utils/extraFunctions";
 import { isSignupFormEmpty, validateEmail, validatePassword } from "../../utils/formValidator";
 
+
 export const SignupForm = () => {
 
     const initState = { firstName: "", lastName: "", email: "", password: "", gender: "", dateOfBirth: "" };
