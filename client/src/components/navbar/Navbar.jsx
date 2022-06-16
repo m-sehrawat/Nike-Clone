@@ -59,11 +59,15 @@ export const Navbar = () => {
                 </Center>
 
                 <Center ml={'20px'} mr={'10px'} >
-                    <NavIcon iconName={RiHeartLine} />
+                    <Link to={'/favourite'}>
+                        <NavIcon iconName={RiHeartLine} />
+                    </Link>
                 </Center>
 
                 <Center mr={'24px'}>
-                    <NavIcon iconName={RiShoppingBagLine} />
+                    <Link to={'/cart'}>
+                        <NavIcon iconName={RiShoppingBagLine} />
+                    </Link>
                 </Center>
             </Flex>
 
