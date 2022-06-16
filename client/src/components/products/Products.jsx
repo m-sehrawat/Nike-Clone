@@ -39,7 +39,7 @@ export const Products = () => {
 
     return (
         <>
-            <Flex direction={["column", "row"]} border={'1px solid red'} h={['100px', '60px']} position={["static", 'sticky']} top={'0px'} bg={colorMode === 'light' ? 'white' : '#1a202c'} zIndex={1} >
+            <Flex direction={["column", "row"]} border={'1px solid red'} h={['100px', '60px']} position={["static", 'sticky']} top={'0px'} bg={colorMode === 'light' ? 'white' : '#1a202c'} zIndex={0} >
                 <Center>
                     <Text ml={['0px', '50px']} fontSize={['18px', '25px']} fontWeight={500}>
                         {path === "men" ? "Men's Products"
