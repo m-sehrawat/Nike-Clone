@@ -6,7 +6,7 @@ function App() {
     const modalOpen = useSelector((state) => state.pathReducer.modalOpen);
 
     return (
-        <div className={modalOpen ? "blurBackground" : undefined} >
+        <div>
             <Router />
         </div>
     );
