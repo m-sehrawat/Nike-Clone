@@ -13,7 +13,7 @@ export const getToken = (payload) => ({ type: GET_TOKEN, payload });
 export const removeToken = () => ({ type: REMOVE_TOKEN });
 
 
-export const getSignupSuccess = (data, toast) => async (dispatch) => {
+export const getSignupSuccess = (data, toast, navigate) => async (dispatch) => {
     try {
         let res = await axios.post(`/signup`, data);
         res = res.data;
@@ -21,13 +21,14 @@ export const getSignupSuccess = (data, toast) => async (dispatch) => {
         setItem('token', res.token);
         setItem('user', res.user);
         setToast(toast, 'Signup successfully', 'success');
+        navigate(-1);
     } catch (err) {
         console.log(err);
         setToast(toast, err.response.data.message, 'error');
     }
 };
 
-export const getLoginSuccess = (data, toast) => async (dispatch) => {
+export const getLoginSuccess = (data, toast, navigate) => async (dispatch) => {
     try {
         let res = await axios.post(`/login`, data);
         res = res.data;
@@ -35,6 +36,7 @@ export const getLoginSuccess = (data, toast) => async (dispatch) => {
         setItem('token', res.token);
         setItem('user', res.user);
         setToast(toast, 'Login Successfully', 'success');
+        navigate(-1);
     } catch (err) {
         console.log(err);
         setToast(toast, err.response.data.message, 'error');

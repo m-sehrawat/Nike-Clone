@@ -1,6 +1,7 @@
 import { Input, Text, useToast, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getLoginSuccess, showResetPage } from "../../redux/features/auth/actions";
 import { setToast } from "../../utils/extraFunctions";
 import { isLoginFormEmpty } from "../../utils/formValidator";
@@ -10,6 +11,7 @@ export const LoginForm = () => {
 
     const dispatch = useDispatch();
     const toast = useToast();
+    const navigate = useNavigate();
     const [form, setForm] = useState({ email: "", password: "" });
 
 
@@ -23,7 +25,7 @@ export const LoginForm = () => {
         if(!isEmpty.status){
             return setToast(toast, isEmpty.message, 'error');
         }
-        dispatch(getLoginSuccess(form, toast));
+        dispatch(getLoginSuccess(form, toast, navigate));
     };
 
     const displayReset = () => {
