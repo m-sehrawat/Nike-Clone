@@ -9,3 +9,7 @@ export const getItem = (key) => {
     }
     return undefined;
 };
+
+export const removeItem = (key)=>{
+    return localStorage.removeItem(key);
+};

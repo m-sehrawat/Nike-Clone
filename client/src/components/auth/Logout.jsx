@@ -1,12 +1,22 @@
-import { Button, Divider, Flex, Icon, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import { Button, Divider, Flex, Menu, MenuButton, MenuItem, MenuList, useToast } from "@chakra-ui/react";
 import { FiLogOut } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa";
 import { BsCart2, BsFillCaretDownFill } from "react-icons/bs";
 import { RiLuggageCartLine, RiCoupon3Line } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { logoutFromAccount } from "../../redux/features/auth/actions";
 
 
 export const Logout = () => {
 
+    const dispatch = useDispatch();
+    const toast = useToast();
+
+    const handleLogoutBtn = ()=>{
+        dispatch(logoutFromAccount(toast));
+    };
+
+    
     return (
         <>
             <Menu>
@@ -26,7 +36,7 @@ export const Logout = () => {
                             Cart
                         </MenuItem>
                         <Divider />
-                        <MenuItem icon={<FiLogOut />}>
+                        <MenuItem onClick={handleLogoutBtn} icon={<FiLogOut />}>
                             Logout
                         </MenuItem>
                     </Flex>
