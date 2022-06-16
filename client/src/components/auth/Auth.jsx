@@ -1,7 +1,6 @@
 import { Box, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useDisclosure } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { showLoginPage } from "../../redux/features/auth/actions";
-import { setModalOpen } from "../../redux/features/path/actions";
 import { LoginForm } from "./LoginForm";
 import { ResetForm } from "./ResetForm";
 import { SignupForm } from "./SignupForm";
@@ -13,17 +12,6 @@ export const Auth = () => {
     const isLogin = useSelector((state) => state.authReducer.isLogin);
     const isReset = useSelector((state) => state.authReducer.isReset);
 
-
-    const handleModalOpen = () => {
-        dispatch(setModalOpen(true));
-        onOpen();
-    }
-
-    const handleModalClose = () => {
-        dispatch(setModalOpen(false));
-        onClose();
-    }
-
     const displayLogin = () => {
         dispatch(showLoginPage());
     }
@@ -31,9 +19,9 @@ export const Auth = () => {
 
     return (
         <>
-            <Button bg={'transparent'} onClick={handleModalOpen} size={'sm'}>Sign up</Button>
+            <Button onClick={onOpen} bg={'transparent'} size={'sm'}>Sign up</Button>
 
-            <Modal isOpen={isOpen} onClose={handleModalClose} >
+            <Modal isOpen={isOpen} onClose={onClose} >
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader fontWeight={'700'} fontSize={'23px'} mt={'40px'} mx={'10%'} textAlign={'center'}>

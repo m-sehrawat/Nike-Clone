@@ -1,5 +1,5 @@
 import { getItem } from "../../../utils/localstorage";
-import { GET_TOKEN, SHOW_LOGIN_PAGE, SHOW_RESET_PAGE } from "./actionTypes";
+import { GET_TOKEN, REMOVE_TOKEN, SHOW_LOGIN_PAGE, SHOW_RESET_PAGE } from "./actionTypes";
 
 const init = {
     isLogin: false,
@@ -16,6 +16,8 @@ export const authReducer = (state = init, { type, payload }) => {
             return { ...state, isReset: !state.isReset, isLogin: false };
         case GET_TOKEN:
             return { ...state, token: payload.token, user: payload.user };
+        case REMOVE_TOKEN:
+            return { ...state, token: false, user: {} };
         default:
             return state;
     }

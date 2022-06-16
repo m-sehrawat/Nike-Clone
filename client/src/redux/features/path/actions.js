@@ -1,8 +1,11 @@
-import { SET_MODAL_OPEN, SET_NAVBAR_PATH, SET_SIZE } from "./actionTypes";
+import { SET_NAVBAR_PATH, SET_SIZE } from "./actionTypes";
 
-export const setNavbarPath = (payload) => ({ type: SET_NAVBAR_PATH, payload });
 
-export const setModalOpen = (payload) => ({ type: SET_MODAL_OPEN, payload });
+export const setNavbarPath = (payload) => {
+    return { type: SET_NAVBAR_PATH, payload };
+};
 
-export const setSize = (payload) => ({ type: SET_SIZE, payload });
+export const setSize = (payload) => {
+    return { type: SET_SIZE, payload };
+};
 
