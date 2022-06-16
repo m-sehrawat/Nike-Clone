@@ -1,6 +1,7 @@
 import { Input, Select, useToast, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getSignupSuccess } from "../../redux/features/auth/actions";
 import { setToast } from "../../utils/extraFunctions";
 import { isSignupFormEmpty, validateEmail, validatePassword } from "../../utils/formValidator";
@@ -12,6 +13,7 @@ export const SignupForm = () => {
 
     const [form, setForm] = useState(initState);
     const toast = useToast();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleInputChange = ({ target: { name, value } }) => {
@@ -36,7 +38,7 @@ export const SignupForm = () => {
             return setToast(toast, 'Password must contain these things:', 'error', 3000, isPassword.message);
         }
 
-        dispatch(getSignupSuccess(form, toast));
+        dispatch(getSignupSuccess(form, toast, navigate));
     };
     
 
