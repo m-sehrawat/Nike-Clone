@@ -7,8 +7,9 @@ import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { LeftSideFilter } from "./LeftSideFilter";
 import { SortFilters } from "./SortFilters";
 import { AiOutlineStar } from "react-icons/ai";
-import { getItem, setItem } from "../../utils/localstorage";
+import { setItem } from "../../utils/localstorage";
 import { useNavigate } from "react-router-dom";
+import { getItemSession } from "../../utils/sessionStorage";
 
 
 export const Products = () => {
@@ -16,7 +17,7 @@ export const Products = () => {
     const { colorMode } = useColorMode();
     const [isFilter, setIsFilter] = useState(true);
     const { products } = useSelector((state) => state.prodReducer);
-    const path = getItem("path");
+    const path = getItemSession("path");
     const dispatch = useDispatch();
     const toast = useToast();
     const navigate = useNavigate();

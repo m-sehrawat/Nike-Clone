@@ -1,9 +1,9 @@
-import { getItem } from "../../../utils/localstorage";
+import { getItemSession } from "../../../utils/sessionStorage";
 import { SET_NAVBAR_PATH, SET_SIZE } from "./actionTypes";
 
 
 const init = {
-    path: getItem("path") || "allProducts",
+    path: getItemSession("path") || "/",
     size: false
 };
 
@@ -16,4 +16,4 @@ export const pathReducer = (state = init, { type, payload }) => {
         default:
             return state;
     }
-}
+};

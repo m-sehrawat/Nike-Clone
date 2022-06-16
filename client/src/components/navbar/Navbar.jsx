@@ -5,7 +5,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { nikeLogo } from "../../constants/images";
 import { setNavbarPath } from "../../redux/features/path/actions";
-import { setItem } from "../../utils/localstorage";
+import { setItemSession } from "../../utils/sessionStorage";
 import { Auth } from "../auth/Auth";
 import { Logout } from "../auth/Logout";
 import { DarkModeBtn } from "../darkmode/DarkModeBtn";
@@ -20,8 +20,8 @@ export const Navbar = () => {
 
     const handlePath = ({ target: { name } }) => {
         dispatch(setNavbarPath(name));
-        setItem("path", name);
-    }
+        setItemSession("path", name);
+    };
 
     return (
         <>
@@ -74,12 +74,11 @@ export const Navbar = () => {
 
 
 const Category = ({ text, link, handlePath, name, path }) => {
-
     return (
         <Center borderBottom={path === name ? '2px solid black' : undefined} h={'60px'} _hover={{ borderBottom: '2px solid black' }} cursor={'pointer'} paddingX={'15px'}>
             <Link onClick={handlePath} to={link} name={name} >{text}</Link>
         </Center>
-    )
+    );
 };
 
 
