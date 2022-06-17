@@ -3,11 +3,11 @@ import { AiOutlineStar } from "react-icons/ai";
 import { numberWithCommas } from "../../utils/extraFunctions";
 
 
-export const ProductDisplayBox = ({ title, description, color, rating, price, size, gender, img }) => {
+export const ProductDisplayBox = ({ title, description, color, rating, price, size, gender, img, onClick }) => {
 
     return (
         <>
-            <Flex onClick={() => { handleSingleProduct(e) }} border={'1px solid red'} flexDirection={'column'} cursor="pointer">
+            <Flex onClick={onClick} border={'1px solid red'} flexDirection={'column'} cursor="pointer">
                 <Image className="imgAnimation" src={img[0]} />
                 <Box>
                     <Flex justifyItems={'center'}>

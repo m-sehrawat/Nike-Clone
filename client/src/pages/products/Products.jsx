@@ -1,15 +1,13 @@
-import { Box, Button, Center, Flex, Grid, Image, Spacer, Text, useColorMode, useToast } from "@chakra-ui/react";
+import { Box, Button, Center, Flex, Grid, Spacer, Text, useColorMode, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { IoOptionsOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { getRequest } from "../../redux/features/products/actions";
-import { numberWithCommas, setToast } from "../../utils/extraFunctions";
+import { setToast } from "../../utils/extraFunctions";
 import { LeftSideFilter } from "../../components/products/LeftSideFilter";
 import { SortFilters } from "../../components/products/SortFilters";
-import { AiOutlineStar } from "react-icons/ai";
-import { setItem } from "../../utils/localstorage";
 import { useNavigate } from "react-router-dom";
-import { getItemSession } from "../../utils/sessionStorage";
+import { getItemSession, setItemSession } from "../../utils/sessionStorage";
 import { ProductDisplayBox } from "../../components/products/ProductDisplayBox";
 
 
@@ -34,14 +32,22 @@ export const Products = () => {
     };
 
     const handleSingleProduct = (data) => {
-        setItem("singleProduct", data);
+        setItemSession("singleProduct", data);
         navigate("/description");
-    }
+    };
 
 
     return (
         <>
-            <Flex direction={["column", "row"]} border={'1px solid red'} h={['100px', '60px']} position={["static", 'sticky']} top={'0px'} bg={colorMode === 'light' ? 'white' : '#1a202c'} zIndex={0} >
+            <Flex
+                direction={["column", "row"]}
+                border={'1px solid red'}
+                h={['100px', '60px']}
+                position={["static", 'sticky']}
+                top={'0px'}
+                bg={colorMode === 'light' ? 'white' : '#1a202c'}
+                zIndex={0}
+            >
                 <Center>
                     <Text ml={['0px', '50px']} fontSize={['18px', '25px']} fontWeight={500}>
                         {path === "men" ? "Men's Products"
@@ -63,11 +69,23 @@ export const Products = () => {
                 </Center>
             </Flex>
 
-            <Grid className="test" templateColumns={['100%', isFilter ? '18% 77.4%' : '97%']} gap={6} justifyContent={'center'}>
-                {isFilter && <Box border={'1px solid red'} minH={['120px', '600px']} maxH={['900px', '600px']} position={['none', 'sticky']} top={['0px', '70px']} overflowY={'scroll'} className='scroll' >
+            <Grid
+                className="test"
+                gap={6}
+                templateColumns={['100%', isFilter ? '18% 77.4%' : '97%']}
+                justifyContent={'center'}
+            >
 
+                {isFilter && <Box
+                    border={'1px solid red'}
+                    minH={['120px', '600px']}
+                    maxH={['900px', '600px']}
+                    position={['none', 'sticky']}
+                    top={['0px', '70px']}
+                    overflowY={'scroll'}
+                    className='scroll'
+                >
                     <LeftSideFilter />
-
                 </Box>}
 
                 <Box border={'1px solid red'} minH={'400px'}>
@@ -77,10 +95,15 @@ export const Products = () => {
                         p={['10px', '20px']}
                     >
                         {products.map((product, index) => (
-                            <ProductDisplayBox {...product} key={index} />
+                            <ProductDisplayBox
+                                {...product}
+                                key={index}
+                                onClick={() => { handleSingleProduct(product) }}
+                            />
                         ))}
                     </Grid>
                 </Box>
+
             </Grid>
         </>
     );

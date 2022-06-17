@@ -1,15 +1,15 @@
-import { Box, Button, Grid, ListItem, Text, UnorderedList, useToast } from "@chakra-ui/react";
+import { Box, Grid, ListItem, Text, UnorderedList, useToast } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { numberWithCommas, setToast } from "../../utils/extraFunctions";
-import { getItem } from "../../utils/localstorage";
 import { ImageModal } from "../../components/description/ImageModal";
 import { SelectSize } from "../../components/description/SelectSize";
 import { NewButton } from "../../components/description/NewButton";
+import { getItemSession } from "../../utils/sessionStorage";
 
 
 export const Description = () => {
-   
-   const data = getItem("singleProduct");
+
+   const data = getItemSession("singleProduct");
    const { title, gender, description, category, price, size, color, rating, img } = data;
    const mySize = useSelector((state) => state.pathReducer.size);
    const toast = useToast();
