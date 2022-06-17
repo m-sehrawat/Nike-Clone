@@ -4,7 +4,7 @@ import { Cart } from "../pages/cart/Cart";
 import { Description } from "../pages/description/Description";
 import { Favourite } from "../pages/favourite/Favourite";
 import { Footer } from "../pages/footer/Footer";
-import { Home } from "../components/home/Home";
+import { Home } from "../pages/home/Home";
 import { Navbar } from "../pages/navbar/Navbar";
 import { Products } from "../pages/products/Products";
 import { Private } from "./Private";
