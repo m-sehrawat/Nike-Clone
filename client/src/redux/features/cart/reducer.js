@@ -1,8 +1,13 @@
+import { getItem } from "../../../utils/localstorage";
 import { ADD_TO_CART_SUCCESS } from "./actionTypes";
 
 const initState = {
-    cartProducts: [],
-    orderSummary: {}
+    cartProducts: getItem('cartProducts') || [],
+    orderSummary: getItem('orderSummary') || {
+        subTotal: 0,
+        shipping: 0,
+        total: 0
+    }
 }
 
 export const cartReducer = (state = initState, { type, payload }) => {
@@ -10,8 +15,8 @@ export const cartReducer = (state = initState, { type, payload }) => {
         case ADD_TO_CART_SUCCESS:
             return {
                 ...state,
-                orderSummary: { ...state.orderSummary, payload },
-                cartProducts: [...state.cartProducts, payload]
+                orderSummary: payload.orderSummary,
+                cartProducts: payload.cartProducts
             };
         default:
             return state;

@@ -1,10 +1,13 @@
 import { Box, Grid, ListItem, Text, UnorderedList, useToast } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { ImageModal } from "../../components/description/ImageModal";
 import { SelectSize } from "../../components/description/SelectSize";
 import { NewButton } from "../../components/description/NewButton";
 import { getItemSession } from "../../utils/sessionStorage";
+import { addToCartRequest } from "../../redux/features/cart/actions";
+import { useState } from "react";
+import { getItem } from "../../utils/localstorage";
 
 
 export const Description = () => {
@@ -13,12 +16,15 @@ export const Description = () => {
    const { title, gender, description, category, price, size, color, rating, img } = data;
    const mySize = useSelector((state) => state.pathReducer.size);
    const toast = useToast();
+   const dispatch = useDispatch();
+
 
    const handleAddToCart = () => {
       if (mySize === false) {
          setToast(toast, "Please select a Size", "error");
       } else {
-         console.log({ ...data, size: mySize });
+         const payload = { ...data, size: mySize };
+         dispatch(addToCartRequest(payload, toast));
       }
    };
 
