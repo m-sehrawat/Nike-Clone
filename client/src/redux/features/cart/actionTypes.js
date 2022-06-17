@@ -1,0 +1,1 @@
+export const ADD_TO_CART_SUCCESS = 'ADD_TO_CART_SUCCESS';
