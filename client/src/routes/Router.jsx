@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import { AuthPage } from "../components/auth/AuthPage";
-import { Cart } from "../components/cart/Cart";
+import { AuthPage } from "../pages/auth/AuthPage";
+import { Cart } from "../pages/cart/Cart";
 import { Description } from "../components/description/Description";
-import { Favourite } from "../components/favourite/Favourite";
+import { Favourite } from "../pages/favourite/Favourite";
 import { Footer } from "../components/footer/Footer";
 import { Home } from "../components/home/Home";
 import { Navbar } from "../components/navbar/Navbar";
-import { Products } from "../components/products/Products";
+import { Products } from "../pages/products/Products";
 import { Private } from "./Private";
 import { Public } from "./Public";
 

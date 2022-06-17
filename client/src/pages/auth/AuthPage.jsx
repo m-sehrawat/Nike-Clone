@@ -1,9 +1,9 @@
 import { Box, Text } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { showLoginPage } from "../../redux/features/auth/actions";
-import { LoginForm } from "./LoginForm";
-import { ResetForm } from "./ResetForm";
-import { SignupForm } from "./SignupForm";
+import { LoginForm } from "../../components/auth/LoginForm";
+import { ResetForm } from "../../components/auth/ResetForm";
+import { SignupForm } from "../../components/auth/SignupForm";
 
 export const AuthPage = () => {
 
