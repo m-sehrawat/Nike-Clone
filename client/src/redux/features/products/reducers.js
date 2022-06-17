@@ -14,7 +14,7 @@ const init = {
     }
 };
 
-export const productReducer = (state = init, { type, payload }) => {
+export const prodReducer = (state = init, { type, payload }) => {
     switch (type) {
         case GET_DATA_LOADING:
             return { ...state, isLoading: true };
