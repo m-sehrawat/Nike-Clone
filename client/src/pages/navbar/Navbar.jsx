@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 import { nikeLogo } from "../../constants/images";
 import { setNavbarPath } from "../../redux/features/path/actions";
 import { setItemSession } from "../../utils/sessionStorage";
-import { Auth } from "../auth/Auth";
-import { Logout } from "../auth/Logout";
-import { DarkModeBtn } from "../darkmode/DarkModeBtn";
+import { Auth } from "../../components/auth/Auth";
+import { Logout } from "../../components/auth/Logout";
+import { DarkModeBtn } from "../../components/darkmode/DarkModeBtn";
+import { Category, NavIcon } from "../../components/navbar/CategoryAndIcon";
 
 
 export const Navbar = () => {
@@ -77,18 +78,6 @@ export const Navbar = () => {
 };
 
 
-const Category = ({ text, link, handlePath, name, path }) => {
-    return (
-        <Center borderBottom={path === name ? '2px solid black' : undefined} h={'60px'} _hover={{ borderBottom: '2px solid black' }} cursor={'pointer'} paddingX={'15px'}>
-            <Link onClick={handlePath} to={link} name={name} >{text}</Link>
-        </Center>
-    );
-};
-
-
-const NavIcon = ({ iconName }) => {
-    return <Icon as={iconName} w={'28px'} h={'28px'} mr={'10px'} />;
-};
 
 
 
