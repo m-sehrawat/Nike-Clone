@@ -10,6 +10,7 @@ import { AiOutlineStar } from "react-icons/ai";
 import { setItem } from "../../utils/localstorage";
 import { useNavigate } from "react-router-dom";
 import { getItemSession } from "../../utils/sessionStorage";
+import { ProductDisplayBox } from "../../components/products/ProductDisplayBox";
 
 
 export const Products = () => {
@@ -70,26 +71,14 @@ export const Products = () => {
                 </Box>}
 
                 <Box border={'1px solid red'} minH={'400px'}>
-                    <Grid templateColumns={["repeat(2, 1fr)", "repeat(3, 1fr)"]} gap={[2, 4]} p={['10px', '20px']}>
-                        {products.map((e, i) => {
-                            const { title, description, color, rating, price, size, gender } = e;
-                            return <Flex onClick={() => { handleSingleProduct(e) }} key={i} border={'1px solid red'} flexDirection={'column'} cursor="pointer">
-                                <Image className="imgAnimation" src={e.img[0]} />
-                                <Box>
-                                    <Flex justifyItems={'center'}>
-                                        <Text fontSize={['14px', '18px']} fontWeight={500} mt={'8px'}>{title}</Text>
-                                        <Spacer />
-                                        <Box fontSize={['15px', '22px']} mt={'10px'} mr={'3px'}><AiOutlineStar /></Box>
-                                        <Text fontSize={['12px', '18px']} mt={'8px'} mr={'16px'}> {rating}</Text>
-                                    </Flex>
-                                    <Text fontSize={['12px', '17px']} color={'gray'} my={'2px'}>{description}</Text>
-                                    <Text display={['none', 'block']} my={'2px'} fontSize={['13px', '17px']} color={'gray'}>Size : {size.join(", ")}</Text>
-                                    <Text display={['none', 'block']} fontSize={['13px', '17px']} color={'gray'} my={'2px'}>Colour : {color}</Text>
-                                    <Text display={['none', 'block']} fontSize={['13px', '17px']} color={'gray'} my={'2px'}>Gender : {gender}</Text>
-                                    <Text fontSize={['15px', '20px']} fontWeight={500} my={'8px'}>₹ {numberWithCommas(price)}</Text>
-                                </Box>
-                            </Flex>
-                        })}
+                    <Grid
+                        templateColumns={["repeat(2, 1fr)", "repeat(3, 1fr)"]}
+                        gap={[2, 4]}
+                        p={['10px', '20px']}
+                    >
+                        {products.map((product, index) => (
+                            <ProductDisplayBox {...product} key={index} />
+                        ))}
                     </Grid>
                 </Box>
             </Grid>

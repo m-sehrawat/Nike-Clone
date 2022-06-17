@@ -4,8 +4,11 @@ import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { getItem } from "../../utils/localstorage";
 import { ImageModal } from "../../components/description/ImageModal";
 import { SelectSize } from "../../components/description/SelectSize";
+import { NewButton } from "../../components/description/NewButton";
+
 
 export const Description = () => {
+   
    const data = getItem("singleProduct");
    const { title, gender, description, category, price, size, color, rating, img } = data;
    const mySize = useSelector((state) => state.pathReducer.size);
@@ -22,7 +25,14 @@ export const Description = () => {
 
    return (
       <>
-         <Grid templateColumns={["100%", "62% 34%"]} border={"1px solid red"} minH={"450px"} w={["100%", "90%"]} m={["40px auto 100px", "40px auto"]} gap={"4%"}>
+         <Grid
+            templateColumns={["100%", "62% 34%"]}
+            border={"1px solid red"}
+            minH={"450px"}
+            w={["100%", "90%"]}
+            m={["40px auto 100px", "40px auto"]}
+            gap={"4%"}
+         >
 
             <ImageModal img={img} />
 
@@ -40,8 +50,20 @@ export const Description = () => {
                   <SelectSize size={size} />
                </Box>
 
-               <NewButton click={handleAddToCart} name={"Add to Bag"} bgColor={"black"} color={"white"} hoverBg={"grey"} />
-               <NewButton click={handleAddToCart} name={"Favourite"} bgColor={"white"} color={"black"} hoverBorder={"black"} />
+               <NewButton
+                  click={handleAddToCart}
+                  name={"Add to Bag"}
+                  bgColor={"black"}
+                  color={"white"}
+                  hoverBg={"grey"}
+               />
+               <NewButton
+                  click={handleAddToCart}
+                  name={"Favourite"}
+                  bgColor={"white"}
+                  color={"black"}
+                  hoverBorder={"black"}
+               />
 
                <Text fontSize={"18px"} mt={"30px"} mb={"10px"} textDecoration={"underline"}>
                   Product Deatils
@@ -58,12 +80,4 @@ export const Description = () => {
    );
 };
 
-const NewButton = ({ click, name, bgColor, color, hoverBg, hoverBorder }) => {
-   return (
-      <>
-         <Button onClick={click} h={"62px"} bg={bgColor} color={color} border={"1px solid #cecdce"} borderRadius={"50px"} w={"100%"} fontSize={"17px"} my={"10px"} _hover={{ bg: hoverBg, borderColor: hoverBorder }}>
-            {name}
-         </Button>
-      </>
-   );
-};
+
