@@ -2,8 +2,8 @@ import { Box, Button, Grid, ListItem, Text, UnorderedList, useToast } from "@cha
 import { useSelector } from "react-redux";
 import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { getItem } from "../../utils/localstorage";
-import { ImageModal } from "./ImageModal";
-import { SelectSize } from "./SelectSize";
+import { ImageModal } from "../../components/description/ImageModal";
+import { SelectSize } from "../../components/description/SelectSize";
 
 export const Description = () => {
    const data = getItem("singleProduct");

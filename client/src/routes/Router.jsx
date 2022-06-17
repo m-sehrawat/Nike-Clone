@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { AuthPage } from "../pages/auth/AuthPage";
 import { Cart } from "../pages/cart/Cart";
-import { Description } from "../components/description/Description";
+import { Description } from "../pages/description/Description";
 import { Favourite } from "../pages/favourite/Favourite";
 import { Footer } from "../components/footer/Footer";
 import { Home } from "../components/home/Home";
