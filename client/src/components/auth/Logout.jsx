@@ -3,7 +3,7 @@ import { FiLogOut } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa";
 import { BsCart2, BsFillCaretDownFill } from "react-icons/bs";
 import { RiLuggageCartLine, RiCoupon3Line } from "react-icons/ri";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logoutFromAccount } from "../../redux/features/auth/actions";
 
 
@@ -11,6 +11,7 @@ export const Logout = () => {
 
     const dispatch = useDispatch();
     const toast = useToast();
+    const user = useSelector((state)=> state.authReducer.user.firstName);
 
     const handleLogoutBtn = ()=>{
         dispatch(logoutFromAccount(toast));
@@ -20,7 +21,7 @@ export const Logout = () => {
     return (
         <>
             <Menu>
-                <MenuButton as={Button} size='sm' bg={'transparent'} rightIcon={<BsFillCaretDownFill />}>Mohit</MenuButton>
+                <MenuButton as={Button} size='sm' bg={'transparent'} rightIcon={<BsFillCaretDownFill />}>{user}</MenuButton>
                 <MenuList >
                     <Flex flexDirection={'column'} gap={'5px'} fontSize={'17px'}>
                         <MenuItem icon={<FaRegHeart />} >
