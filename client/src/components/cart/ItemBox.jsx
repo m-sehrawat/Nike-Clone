@@ -1,19 +1,33 @@
-import { Box, Button, Divider, Image, Text, useToast } from "@chakra-ui/react";
-import { useDispatch } from "react-redux";
+import { Box, Divider, Image, Text, useToast } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
 import { removeFromCartRequest } from "../../redux/features/cart/actions";
-import { numberWithCommas } from "../../utils/extraFunctions";
+import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { BagItemBtn } from "./BagItemBtn";
+import { useNavigate } from 'react-router-dom';
+import { addToFavouriteRequest } from "../../redux/features/favourite/actions";
 
 
-export const ItemBox = ({ title, description, img, price, size, index }) => {
+export const ItemBox = ({ title, description, img, price, size, index, data }) => {
 
     const dispatch = useDispatch();
     const toast = useToast();
+    const navigate = useNavigate();
+    const token = useSelector((state) => state.authReducer.token);
 
     const handleRemoveItem = () => {
         dispatch(removeFromCartRequest(index, toast));
-    }
+    };
 
+    const handleAddToFavourite = () => {
+        if (!token) {
+            setToast(toast, 'Please login first', 'error');
+            navigate('/auth');
+        } else {
+            dispatch(addToFavouriteRequest(data, token, toast));
+        }
+    };
+
+    
     return (
         <>
             <Box
@@ -45,7 +59,7 @@ export const ItemBox = ({ title, description, img, price, size, index }) => {
 
                         <Box display={'flex'} gap={'10px'}>
 
-                            <BagItemBtn title={'Favourites'} onClick={handleRemoveItem} />
+                            <BagItemBtn title={'Favourites'} onClick={handleAddToFavourite} />
 
                             <BagItemBtn title={'Remove'} onClick={handleRemoveItem} />
                         </Box>

@@ -6,7 +6,7 @@ import { ItemBox } from "./ItemBox";
 export const BagItems = () => {
 
     const cartProducts = useSelector((state) => state.cartReducer.cartProducts);
-    console.log('cartProducts bagitem:', cartProducts)
+ 
 
     return (
         <>
@@ -15,7 +15,7 @@ export const BagItems = () => {
                 <Text mb={'20px'} fontSize={'20px'} fontWeight={500}>Bag</Text>
 
                 {cartProducts.map((item, index) => (
-                    <ItemBox key={index} {...item} index={index} />
+                    <ItemBox key={index} {...item} index={index} data={item} />
                 ))}
 
             </Box>

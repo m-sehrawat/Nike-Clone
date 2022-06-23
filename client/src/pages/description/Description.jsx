@@ -1,5 +1,5 @@
 import { Box, Grid, ListItem, Text, UnorderedList, useToast } from "@chakra-ui/react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { ImageModal } from "../../components/description/ImageModal";
 import { SelectSize } from "../../components/description/SelectSize";
@@ -7,6 +7,8 @@ import { NewButton } from "../../components/description/NewButton";
 import { getItemSession } from "../../utils/sessionStorage";
 import { addToCartRequest } from "../../redux/features/cart/actions";
 import { useState } from "react";
+import { addToFavouriteRequest } from "../../redux/features/favourite/actions";
+import { useNavigate } from "react-router-dom";
 
 
 export const Description = () => {
@@ -14,8 +16,9 @@ export const Description = () => {
     const data = getItemSession("singleProduct");
     const { title, gender, description, category, price, size, color, rating, img } = data;
     const [mySize, setMySize] = useState(false);
-
+    const token = useSelector((state)=> state.authReducer.token);
     const toast = useToast();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
 
@@ -25,6 +28,15 @@ export const Description = () => {
         } else {
             const payload = { ...data, size: mySize };
             dispatch(addToCartRequest(payload, toast));
+        }
+    };
+
+    const handleAddToFavourite = ()=>{
+        if (!token) {
+            setToast(toast, 'Please login first', 'error');
+            navigate('/auth');
+        } else {
+            dispatch(addToFavouriteRequest(data, token, toast));
         }
     };
 
@@ -65,7 +77,7 @@ export const Description = () => {
                         borderColor={'transparent'}
                     />
                     <NewButton
-                        click={handleAddToCart}
+                        click={handleAddToFavourite}
                         name={"Favourite"}
                         bgColor={"white"}
                         color={"black"}
