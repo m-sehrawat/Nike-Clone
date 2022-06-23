@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Flex, Text } from "@chakra-ui/react";
+import { Box, Divider, Flex, Text } from "@chakra-ui/react";
 import { useSelector } from 'react-redux';
 import { numberWithCommas } from "../../utils/extraFunctions";
 import { CheckoutBtn } from "./CheckoutBtn";

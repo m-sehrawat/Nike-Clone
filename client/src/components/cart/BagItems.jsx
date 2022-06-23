@@ -1,20 +1,24 @@
 import { Box, Text } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 import { ItemBox } from "./ItemBox";
 
 
 export const BagItems = () => {
 
+    const cartProducts = useSelector((state) => state.cartReducer.cartProducts);
+    console.log('cartProducts bagitem:', cartProducts)
+
     return (
         <>
-             <Box border={'1px solid red'}>
+            <Box border={'1px solid red'}>
 
                 <Text fontSize={'20px'} fontWeight={500}>Bag</Text>
 
-                {[1,2].map((item)=>(
-                    <ItemBox />
+                {cartProducts.map((item, index) => (
+                    <ItemBox key={index} {...item} index={index} />
                 ))}
-                 
-             </Box>
+
+            </Box>
         </>
     );
 };
