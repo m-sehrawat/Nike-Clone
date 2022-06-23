@@ -1,5 +1,5 @@
 import { Box, Grid, ListItem, Text, UnorderedList, useToast } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { ImageModal } from "../../components/description/ImageModal";
 import { SelectSize } from "../../components/description/SelectSize";
@@ -7,14 +7,14 @@ import { NewButton } from "../../components/description/NewButton";
 import { getItemSession } from "../../utils/sessionStorage";
 import { addToCartRequest } from "../../redux/features/cart/actions";
 import { useState } from "react";
-import { getItem } from "../../utils/localstorage";
 
 
 export const Description = () => {
 
    const data = getItemSession("singleProduct");
    const { title, gender, description, category, price, size, color, rating, img } = data;
-   const mySize = useSelector((state) => state.pathReducer.size);
+   const [mySize, setMySize] = useState(false);
+   console.log('mySize:', mySize)
    const toast = useToast();
    const dispatch = useDispatch();
 
@@ -53,7 +53,7 @@ export const Description = () => {
                   Select Size
                </Text>
                <Box mb={"30px"}>
-                  <SelectSize size={size} />
+                  <SelectSize size={size} setMySize={setMySize} />
                </Box>
 
                <NewButton
