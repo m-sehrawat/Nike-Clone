@@ -2,6 +2,7 @@ import { Box, Button, Image, Text, useToast } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { removeFromCartRequest } from "../../redux/features/cart/actions";
 import { numberWithCommas } from "../../utils/extraFunctions";
+import { BagItemBtn } from "./BagItemBtn";
 
 
 export const ItemBox = ({ title, description, img, price, size, index }) => {
@@ -41,7 +42,13 @@ export const ItemBox = ({ title, description, img, price, size, index }) => {
                         <Text fontWeight={500}>{title}</Text>
                         <Text color={'gray'}>{description}</Text>
                         <Text color={'gray'}>Size: {size}</Text>
-                        <Button onClick={handleRemoveItem}>Remove</Button>
+
+                        <Box display={'flex'} gap={'10px'}>
+
+                            <BagItemBtn title={'Favourites'} onClick={handleRemoveItem} />
+
+                            <BagItemBtn title={'Remove'} onClick={handleRemoveItem} />
+                        </Box>
                     </Box>
 
                     <Box border={'1px solid red'} minH={'150px'}>

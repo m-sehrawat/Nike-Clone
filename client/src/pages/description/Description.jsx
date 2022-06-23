@@ -14,7 +14,7 @@ export const Description = () => {
     const data = getItemSession("singleProduct");
     const { title, gender, description, category, price, size, color, rating, img } = data;
     const [mySize, setMySize] = useState(false);
-    console.log('mySize:', mySize)
+
     const toast = useToast();
     const dispatch = useDispatch();
 
