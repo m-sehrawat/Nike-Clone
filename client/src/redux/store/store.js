@@ -4,6 +4,7 @@ import { cartReducer } from "../features/cart/reducer";
 import { homeReducer } from "../features/home/reducer";
 import { pathReducer } from "../features/path/reducers";
 import { prodReducer } from "../features/products/reducers";
+import { favouriteReducer } from "../features/favourite/reducer";
 import thunk from "redux-thunk";
 
 
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     pathReducer,
     authReducer,
     homeReducer,
-    cartReducer
+    cartReducer,
+    favouriteReducer
 });
 
 
