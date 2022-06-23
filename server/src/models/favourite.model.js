@@ -15,6 +15,11 @@ const favouriteSchema = new Schema({
     color: reqString,
     rating: reqNumber,
     img: reqArray,
+    user : {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+        required: true
+    }
 }, {
     versionKey: false,
     timestamps: true
