@@ -8,6 +8,7 @@ import { getItemSession } from "../../utils/sessionStorage";
 import { addToCartRequest } from "../../redux/features/cart/actions";
 import { useState } from "react";
 import { addToFavouriteRequest } from "../../redux/features/favourite/actions";
+import { useNavigate } from "react-router-dom";
 
 
 export const Description = () => {
@@ -16,8 +17,8 @@ export const Description = () => {
     const { title, gender, description, category, price, size, color, rating, img } = data;
     const [mySize, setMySize] = useState(false);
     const token = useSelector((state)=> state.authReducer.token);
-
     const toast = useToast();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
 
@@ -31,8 +32,13 @@ export const Description = () => {
     };
 
     const handleAddToFavourite = ()=>{
-        dispatch(addToFavouriteRequest(data, token, toast));
-    }
+        if (!token) {
+            setToast(toast, 'Please login first', 'error');
+            navigate('/auth');
+        } else {
+            dispatch(addToFavouriteRequest(data, token, toast));
+        }
+    };
 
 
     return (

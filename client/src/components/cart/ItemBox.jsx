@@ -12,9 +12,7 @@ export const ItemBox = ({ title, description, img, price, size, index, data }) =
     const dispatch = useDispatch();
     const toast = useToast();
     const navigate = useNavigate();
-
     const token = useSelector((state) => state.authReducer.token);
-
 
     const handleRemoveItem = () => {
         dispatch(removeFromCartRequest(index, toast));
@@ -27,8 +25,9 @@ export const ItemBox = ({ title, description, img, price, size, index, data }) =
         } else {
             dispatch(addToFavouriteRequest(data, token, toast));
         }
-    }
+    };
 
+    
     return (
         <>
             <Box
