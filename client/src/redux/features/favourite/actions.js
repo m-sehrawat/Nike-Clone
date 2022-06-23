@@ -7,6 +7,7 @@ export const addToFavourite = (payload) => {
     return { type: ADD_TO_FAVOURITE, payload };
 };
 
+
 export const addToFavouriteRequest = (data, token, toast)=> async()=>{
     try {
         await axios.post('/favourite', data, {headers: {'Authorization': `Bearer ${token}`}});
@@ -14,9 +15,9 @@ export const addToFavouriteRequest = (data, token, toast)=> async()=>{
     } catch (err) {
         console.log(err.response.data);
         if (err.response.data.message === "Already present in the Favourite") {
-            notify(toast, err.response.data.message, "info");
+            setToast(toast, err.response.data.message, "info");
         } else {
-            notify(toast, "Something went wrong", "error");
+            setToast(toast, "Something went wrong", "error");
         }
     }
 };

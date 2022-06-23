@@ -31,7 +31,7 @@ export const Description = () => {
     };
 
     const handleAddToFavourite = ()=>{
-        dispatch(addToFavouriteRequest(data, token, toast))
+        dispatch(addToFavouriteRequest(data, token, toast));
     }
 
 

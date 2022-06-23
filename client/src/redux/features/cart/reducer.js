@@ -9,12 +9,11 @@ const initState = {
         shipping: 0,
         total: 0
     }
-}
+};
 
 export const cartReducer = (state = initState, { type, payload }) => {
     switch (type) {
         case ADD_TO_CART_SUCCESS:
-            console.log('payload:', payload);
             return {
                 ...state,
                 cartProducts: [...state.cartProducts, payload.data],
