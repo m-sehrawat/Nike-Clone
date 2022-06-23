@@ -1,5 +1,5 @@
 import { Box, Grid, ListItem, Text, UnorderedList, useToast } from "@chakra-ui/react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { ImageModal } from "../../components/description/ImageModal";
 import { SelectSize } from "../../components/description/SelectSize";
@@ -7,6 +7,7 @@ import { NewButton } from "../../components/description/NewButton";
 import { getItemSession } from "../../utils/sessionStorage";
 import { addToCartRequest } from "../../redux/features/cart/actions";
 import { useState } from "react";
+import { addToFavouriteRequest } from "../../redux/features/favourite/actions";
 
 
 export const Description = () => {
@@ -14,6 +15,7 @@ export const Description = () => {
     const data = getItemSession("singleProduct");
     const { title, gender, description, category, price, size, color, rating, img } = data;
     const [mySize, setMySize] = useState(false);
+    const token = useSelector((state)=> state.authReducer.token);
 
     const toast = useToast();
     const dispatch = useDispatch();
@@ -27,6 +29,10 @@ export const Description = () => {
             dispatch(addToCartRequest(payload, toast));
         }
     };
+
+    const handleAddToFavourite = ()=>{
+        dispatch(addToFavouriteRequest(data, token, toast))
+    }
 
 
     return (
@@ -65,7 +71,7 @@ export const Description = () => {
                         borderColor={'transparent'}
                     />
                     <NewButton
-                        click={handleAddToCart}
+                        click={handleAddToFavourite}
                         name={"Favourite"}
                         bgColor={"white"}
                         color={"black"}
