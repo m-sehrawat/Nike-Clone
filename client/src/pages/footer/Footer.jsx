@@ -30,7 +30,7 @@ export const Footer = () => {
                     </Flex>
                 </Center>
                 <Flex h={'39px'} fontSize={'14px'} gap={'15px'} flexDirection={'row-reverse'} justifyContent={['center', 'right']} color={'gray'} mr={['0px', '80px']} >
-                    <IconLink icon={MdOutlinePersonPin} link={"https://portfolio-m-sehrawat.vercel.app/"} />
+                    <IconLink icon={MdOutlinePersonPin} link={"https://mohit-portfolio.vercel.app/"} />
                     <IconLink icon={FaGithub} link={"https://github.com/m-sehrawat/"} />
                     <IconLink icon={FaLinkedin} link={"https://www.linkedin.com/in/m-sehrawat/"} />
                 </Flex>
