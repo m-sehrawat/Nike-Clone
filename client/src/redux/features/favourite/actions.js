@@ -1,16 +1,29 @@
 import axios from "axios";
 import { setToast } from "../../../utils/extraFunctions";
-import { ADD_TO_FAVOURITE } from "./actionTypes";
+import { setItemSession } from "../../../utils/sessionStorage";
+import { ADD_TO_FAVOURITE, GET_FAVOURITE_ERROR, GET_FAVOURITE_LOADING, GET_FAVOURITE_SUCCESS } from "./actionTypes";
 
 
 export const addToFavourite = (payload) => {
     return { type: ADD_TO_FAVOURITE, payload };
 };
 
+export const getFavouriteLoading = () => {
+    return { type: GET_FAVOURITE_LOADING };
+};
 
-export const addToFavouriteRequest = (data, token, toast)=> async()=>{
+export const getFavouriteSuccess = (payload) => {
+    return { type: GET_FAVOURITE_SUCCESS, payload };
+};
+
+export const getFavouriteError = () => {
+    return { type: GET_FAVOURITE_ERROR };
+};
+
+
+export const addToFavouriteRequest = (data, token, toast) => async () => {
     try {
-        await axios.post('/favourite', data, {headers: {'Authorization': `Bearer ${token}`}});
+        await axios.post('/favourite', data, { headers: { 'Authorization': `Bearer ${token}` } });
         setToast(toast, 'Item added to the favourites', 'success');
     } catch (err) {
         console.log(err.response.data);
@@ -21,3 +34,14 @@ export const addToFavouriteRequest = (data, token, toast)=> async()=>{
         }
     }
 };
+
+export const getFavouriteRequest = (token) => async (dispatch) => {
+    try {
+        dispatch(getFavouriteLoading());
+        let res = await axios.get('/favourite', { headers: { 'Authorization': `Bearer ${token}` } });
+        dispatch(getFavouriteSuccess(res.data));
+    } catch (err) {
+        console.log(err);
+        dispatch(getFavouriteError());
+    }
+}

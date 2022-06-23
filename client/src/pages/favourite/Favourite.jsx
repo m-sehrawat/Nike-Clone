@@ -1,6 +1,15 @@
 import { Box, Text } from "@chakra-ui/react";
+import { useEffect } from "react";
 
 export const Favourite = () => {
+
+    const handleGetRequest = () => {
+
+    }
+
+    useEffect(() => {
+
+    }, []);
 
     return (
         <>
