@@ -61,7 +61,8 @@ export const Description = () => {
                         name={"Add to Bag"}
                         bgColor={"black"}
                         color={"white"}
-                        hoverBg={"grey"}
+                        hoverBg={'#1e1e1e'}
+                        borderColor={'transparent'}
                     />
                     <NewButton
                         click={handleAddToCart}
@@ -69,6 +70,7 @@ export const Description = () => {
                         bgColor={"white"}
                         color={"black"}
                         hoverBorder={"black"}
+                        borderColor={'#cecdce'}
                     />
 
                     <Text fontSize={"18px"} mt={"30px"} mb={"10px"} textDecoration={"underline"}>
