@@ -12,7 +12,7 @@ export const BagItems = () => {
         <>
             <Box border={'1px solid red'}>
 
-                <Text fontSize={'20px'} fontWeight={500}>Bag</Text>
+                <Text mb={'20px'} fontSize={'20px'} fontWeight={500}>Bag</Text>
 
                 {cartProducts.map((item, index) => (
                     <ItemBox key={index} {...item} index={index} />

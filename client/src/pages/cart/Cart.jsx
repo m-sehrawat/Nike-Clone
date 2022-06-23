@@ -8,13 +8,13 @@ export const Cart = () => {
         <>
             <Box
                 display={'grid'}
-                gap={'2%'}
+                gap={['40px','40px','40px','5%','5%']}
                 my={'50px'}
                 maxW={'1200px'}
                 mx={'auto'}
                 p={'20px'}
                 border={'1px solid red'}
-                gridTemplateColumns={['100%', '100%', '100%', '66% 32%', '66% 32%']}
+                gridTemplateColumns={['100%', '100%', '100%', '65% 30%', '65% 30%']}
             >
 
                 <BagItems />

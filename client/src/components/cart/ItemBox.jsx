@@ -1,4 +1,4 @@
-import { Box, Button, Image, Text, useToast } from "@chakra-ui/react";
+import { Box, Button, Divider, Image, Text, useToast } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { removeFromCartRequest } from "../../redux/features/cart/actions";
 import { numberWithCommas } from "../../utils/extraFunctions";
@@ -57,6 +57,8 @@ export const ItemBox = ({ title, description, img, price, size, index }) => {
                 </Box>
 
             </Box>
+
+            <Divider />
         </>
     );
 };
