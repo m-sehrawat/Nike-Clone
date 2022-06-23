@@ -1,6 +1,6 @@
 import { Box, HStack, useRadio, useRadioGroup } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { setSize } from "../../redux/features/path/actions";
+
 
 const RadioCard = (props) => {
    const { getInputProps, getCheckboxProps } = useRadio(props);
@@ -17,8 +17,8 @@ const RadioCard = (props) => {
    );
 };
 
-export const SelectSize = ({ size }) => {
-   const dispatch = useDispatch();
+
+export const SelectSize = ({ size, setMySize }) => {
 
    const { getRootProps, getRadioProps } = useRadioGroup({ name: "SelectSize" });
    const group = getRootProps();
@@ -30,7 +30,7 @@ export const SelectSize = ({ size }) => {
             return (
                <RadioCard
                   onClick={() => {
-                     dispatch(setSize(value));
+                     setMySize(value);
                   }}
                   key={value}
                   {...radio}
