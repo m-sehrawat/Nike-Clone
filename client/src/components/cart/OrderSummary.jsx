@@ -1,6 +1,7 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, Text } from "@chakra-ui/react";
 import { useSelector } from 'react-redux';
 import { numberWithCommas } from "../../utils/extraFunctions";
+import { CheckoutBtn } from "./CheckoutBtn";
 
 
 export const OrderSummary = () => {
@@ -25,10 +26,16 @@ export const OrderSummary = () => {
                     </Flex>
                 </Box>
 
-                <Flex fontSize={'18px'} justifyContent={'space-between'}>
+                <Divider />
+
+                <Flex fontSize={'18px'} justifyContent={'space-between'} my={'20px'}>
                     <Text>Total</Text>
                     <Text fontWeight={500} >₹{numberWithCommas(total)}.00</Text>
                 </Flex>
+
+                <Divider />
+
+                <CheckoutBtn onClick={() => { console.log('hello'); }} />
                 
             </Box>
 
