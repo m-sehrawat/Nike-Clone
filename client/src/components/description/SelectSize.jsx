@@ -17,8 +17,8 @@ const RadioCard = (props) => {
    );
 };
 
+
 export const SelectSize = ({ size, setMySize }) => {
-   const dispatch = useDispatch();
 
    const { getRootProps, getRadioProps } = useRadioGroup({ name: "SelectSize" });
    const group = getRootProps();
