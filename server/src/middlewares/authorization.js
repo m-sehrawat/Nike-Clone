@@ -6,10 +6,10 @@ const verifyToken = (token) => {
 };
 
 
-const authorization = async (req, res, next) => {
+const authorization = (req, res, next) => {
 
     try {
-        const bearerToken = req?.header?.authorization;
+        const bearerToken = req?.headers?.authorization;
 
         if (!bearerToken || !bearerToken.startsWith('Bearer ')) {
             return res.status(400).json({ message: 'Please provide a valid token', status: 'Failed' });
