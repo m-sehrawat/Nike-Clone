@@ -1,4 +1,4 @@
-import { Center, Icon } from "@chakra-ui/react";
+import { Center, Icon, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 
@@ -18,6 +18,22 @@ export const Category = ({ text, link, handlePath, name }) => {
                 {text}
             </Link>
         </Center>
+    );
+};
+
+
+export const DrawerCategory = ({ text, link, handlePath, name }) => {
+    return (
+
+        <Text fontSize={'20px'} fontWeight={500}>
+            <Link
+                onClick={handlePath}
+                to={link}
+                name={name}
+            >
+                {text}
+            </Link>
+        </Text>
     );
 };
 
