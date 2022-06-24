@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text, useToast } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFavouriteRequest } from "../../redux/features/favourite/actions";
 import { numberWithCommas, shortString } from "../../utils/extraFunctions";
@@ -7,11 +7,13 @@ import { numberWithCommas, shortString } from "../../utils/extraFunctions";
 export const FavouriteItemBox = ({ _id, title, description, price, img }) => {
 
     const dispatch = useDispatch();
+    const toast = useToast();
     const token = useSelector((state) => state.authReducer.token);
 
     const handleDeleteRequest = () => {
-        dispatch(deleteFavouriteRequest(_id, token));
-    }
+        dispatch(deleteFavouriteRequest(_id, token, toast));
+    };
+
 
     return (
         <>

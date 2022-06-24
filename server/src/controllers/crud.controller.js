@@ -35,7 +35,7 @@ const getAll = (model) => async (req, res) => {
 
 const getFavourites = (model) => async (req, res) => {
     try {
-        const item = await model.find({user: req.user._id}).lean().exec();
+        const item = await model.find({ user: req.user._id }).lean().exec();
 
         return res.status(201).send(item);
 
@@ -44,10 +44,22 @@ const getFavourites = (model) => async (req, res) => {
     }
 };
 
+const deleteOne = (model) => async (req, res) => {
+    try {
+        const item = await model.findByIdAndDelete(req.params.id).lean().exec();
+
+        return res.status(201).json(item);
+
+    } catch (e) {
+        return res.status(500).json({ message: e.message, status: "Failed" });
+    }
+}
+
 
 module.exports = {
     post,
     getAll,
     postFavourite,
-    getFavourites
+    getFavourites,
+    deleteOne
 };
