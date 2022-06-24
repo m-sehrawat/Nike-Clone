@@ -27,19 +27,17 @@ export const ItemBox = ({ title, description, img, price, size, index, data }) =
         }
     };
 
-    
+
     return (
         <>
             <Box
-                border={'1px solid red'}
                 my={'15px'}
                 minH={'150px'}
                 display={'flex'}
-                gap={'20px'}
+                gap={['5px', '5px', '20px', '20px', '20px']}
             >
 
                 <Box
-                    border={'1px solid red'}
                     w={['80px', '80px', '150px', '150px', '150px']}
                     h={['80px', '80px', '150px', '150px', '150px']}
                 >
@@ -50,9 +48,9 @@ export const ItemBox = ({ title, description, img, price, size, index, data }) =
                     w={'100%'}
                     display={'grid'}
                     gap={'2%'}
-                    gridTemplateColumns={['67% 30%', '80% 18%', '80% 18%', '80% 18%', '80% 18%']}
+                    gridTemplateColumns={['67% 30%', '67% 30%', '80% 18%', '80% 18%', '80% 18%']}
                 >
-                    <Box border={'1px solid red'} minH={'150px'}>
+                    <Box minH={'150px'}>
                         <Text fontWeight={500}>{title}</Text>
                         <Text color={'gray'}>{description}</Text>
                         <Text color={'gray'}>Size: {size}</Text>
@@ -65,7 +63,7 @@ export const ItemBox = ({ title, description, img, price, size, index, data }) =
                         </Box>
                     </Box>
 
-                    <Box border={'1px solid red'} minH={'150px'}>
+                    <Box minH={'150px'}>
                         <Text fontSize={'18px'} textAlign={'end'}>₹{numberWithCommas(price)}</Text>
                     </Box>
                 </Box>
