@@ -16,7 +16,7 @@ export const Description = () => {
     const data = getItemSession("singleProduct");
     const { title, gender, description, category, price, size, color, rating, img } = data;
     const [mySize, setMySize] = useState(false);
-    const token = useSelector((state)=> state.authReducer.token);
+    const token = useSelector((state) => state.authReducer.token);
     const toast = useToast();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -31,7 +31,7 @@ export const Description = () => {
         }
     };
 
-    const handleAddToFavourite = ()=>{
+    const handleAddToFavourite = () => {
         if (!token) {
             setToast(toast, 'Please login first', 'error');
             navigate('/auth');
@@ -44,14 +44,13 @@ export const Description = () => {
     return (
         <>
             <Grid
-                templateColumns={["100%", "62% 34%"]}
+                p={'10px'}
                 border={"1px solid red"}
-                minH={"450px"}
-                w={["100%", "90%"]}
-                m={["40px auto 100px", "40px auto"]}
-                gap={"4%"}
+                gap={['40px','40px',"4%","4%","4%"]}
+                templateColumns={["100%", "100%", "62% 34%", "62% 34%", "62% 34%"]}
+                w={["100%", "100%", "100%", "100%", "90%"]}
+                m={["40px auto 100px","40px auto 100px","40px auto 60px","40px auto 60px", "40px auto 60px"]}
             >
-
                 <ImageModal img={img} />
 
                 <Box border={"1px solid red"} px={["20px", "40px"]}>
