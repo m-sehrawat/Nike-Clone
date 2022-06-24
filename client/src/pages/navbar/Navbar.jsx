@@ -10,6 +10,7 @@ import { Auth } from "../../components/auth/Auth";
 import { Logout } from "../../components/auth/Logout";
 import { DarkModeBtn } from "../../components/darkmode/DarkModeBtn";
 import { Category, NavIcon } from "../../components/navbar/CategoryAndIcon";
+import { SideDrawer } from "../../components/navbar/SideDrawer";
 
 
 export const Navbar = () => {
@@ -27,39 +28,48 @@ export const Navbar = () => {
     return (
         <>
             <Box h={'36px'} bg={colorMode === 'light' && '#f5f5f5'} >
-                <Center h={'36px'} justifyContent={'right'} mr={'60px'} fontSize={'16px'} cursor={'pointer'}>
+                <Center h={'36px'} justifyContent={'right'} mr={'40px'} fontSize={'16px'} cursor={'pointer'}>
                     {!token ? <Auth /> : <Logout />}
                     <DarkModeBtn />
                 </Center>
             </Box>
 
-            <Flex display={['none','none','flex','flex', 'flex']} h={'60px'} border={'1px solid red'} flexDirection={["column", "row"]} >
+            <Flex h={'60px'} border={'1px solid red'} flexDirection={"row"} px={'20px'} >
 
                 <Box w={'80px'}>
-                    <Link to={'/'}><Image ml={'30px'} src={nikeLogo} /></Link>
+                    <Link to={'/'}><Image src={nikeLogo} /></Link>
                 </Box>
 
                 <Spacer />
 
-                <Category handlePath={handlePath} name={'/'} text={"Home"} link={'/'} />
-                <Category handlePath={handlePath} name={'allProducts'} text={"All Products"} link={'/allProducts'} />
-                <Category handlePath={handlePath} name={'men'} text={"Men"} link={'/men'} />
-                <Category handlePath={handlePath} name={'women'} text={"Women"} link={'women'} />
-                <Category handlePath={handlePath} name={'kids'} text={"Kids"} link={'/kids'} />
+                <Box display={['none', 'none', 'flex', 'flex', 'flex']}>
+                    <Category handlePath={handlePath} name={'/'} text={"Home"} link={'/'} />
+                    <Category handlePath={handlePath} name={'allProducts'} text={"All Products"} link={'/allProducts'} />
+                    <Category handlePath={handlePath} name={'men'} text={"Men"} link={'/men'} />
+                    <Category handlePath={handlePath} name={'women'} text={"Women"} link={'women'} />
+                    <Category handlePath={handlePath} name={'kids'} text={"Kids"} link={'/kids'} />
+                </Box>
 
                 <Spacer />
 
-                <Center ml={'20px'} mr={'10px'} >
+                <Center mr={'10px'} >
                     <Link to={'/favourite'}>
                         <NavIcon iconName={RiHeartLine} />
                     </Link>
                 </Center>
 
-                <Center mr={'24px'}>
+                <Center mr={'10px'}>
                     <Link to={'/cart'}>
                         <NavIcon iconName={RiShoppingBagLine} />
                     </Link>
                 </Center>
+
+                <Box display={['flex', 'flex', 'none', 'none', 'none']}>
+                    <Center mr={'10px'}>
+                        <SideDrawer />
+                    </Center>
+                </Box>
+
             </Flex>
 
             <Box display={['none', 'block']} border={'1px solid red'} h={'60px'} ></Box>
