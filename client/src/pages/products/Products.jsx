@@ -56,7 +56,12 @@ export const Products = () => {
                 </Center>
                 <Spacer />
                 <Center>
-                    <Flex gap={['4px']} w={'100%'} my={['10px', '10px', '0px', '0px', '0px']} px={['8px', '35px']}>
+                    <Flex
+                        gap={['4px']}
+                        w={'100%'}
+                        my={['10px', '10px', '0px', '0px', '0px']}
+                        px={['8px', '8px', '20px', '20px', '20px']}
+                    >
                         <Button onClick={() => { setIsFilter(!isFilter) }} fontSize={['13px', '16px']} rightIcon={<IoOptionsOutline />} >
                             {isFilter ? 'Hide Filter' : 'Show Filter'}
                         </Button>
@@ -81,7 +86,7 @@ export const Products = () => {
                     overflowY={'scroll'}
                     className='scroll'
                     zIndex={0}
-                    mt={['10px','10px','20px','20px','20px']}
+                    mt={['10px', '10px', '20px', '20px', '20px']}
                 >
                     <LeftSideFilter />
                 </Box>}

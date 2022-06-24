@@ -9,13 +9,14 @@ import axios from 'axios';
 import { theme } from './theme';
 
 
+
 axios.defaults.baseURL = "http://localhost:5000";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ReduxProvider store={store}>
       <BrowserRouter>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <App />
       </ChakraProvider>
       </BrowserRouter>
