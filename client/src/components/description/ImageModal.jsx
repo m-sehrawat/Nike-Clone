@@ -1,6 +1,8 @@
 import { Box, Grid, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
 
+
 export const ImageModal = ({ img }) => {
+
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
