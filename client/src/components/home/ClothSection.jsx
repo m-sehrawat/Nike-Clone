@@ -1,31 +1,27 @@
-import { Box, Grid, GridItem, Image, Text } from "@chakra-ui/react";
+import { Box, Grid } from "@chakra-ui/react";
+import { ClothGridBox } from "./GridBox";
+import { HomeDescText, HomeText } from "./HomeText";
 
-export const ClothSection = ({ data, handleSection }) => {
 
-    const { heading, description, img, gender } = data;
+export const ClothSection = ({ heading, description, img, gender, handleSection }) => {
     return (
-        <Box mt={'80px'} w={['94%', '80%']} mx={'auto'} textAlign={'center'}>
+        <Box
+            m={'60px auto 60px'}
+            w={['94%', '94%', '94%', '94%', '80%']}
+            textAlign={'center'}
+        >
+            <HomeText>{heading}</HomeText>
+            <HomeDescText>{description}</HomeDescText>
 
-            <Text fontFamily={"'Anton', sans-serif"} fontWeight={600} letterSpacing={2} mt={['60px']} fontSize={['40px', '60px']}>{heading}</Text>
-            <Text mb={['30px']} px={['20px', '100px']} fontSize={['14px', '16px']}>{description}</Text>
-
-            <Grid onClick={() => { handleSection(gender) }} gap={['10px', '15px']} templateColumns={["repeat(2, 1fr)", "repeat(4, 1fr)"]} >
-
-                <GridItem cursor={'pointer'} borderRadius={'15px'} overflow={'hidden'}>
-                    <Image className="imgAnimation" src={img[0]} />
-                </GridItem>
-
-                <GridItem cursor={'pointer'} borderRadius={'15px'} overflow={'hidden'}>
-                    <Image className="imgAnimation" src={img[1]} />
-                </GridItem>
-
-                <GridItem cursor={'pointer'} borderRadius={'15px'} overflow={'hidden'}>
-                    <Image className="imgAnimation" src={img[2]} />
-                </GridItem>
-
-                <GridItem cursor={'pointer'} borderRadius={'15px'} overflow={'hidden'}>
-                    <Image className="imgAnimation" src={img[3]} />
-                </GridItem>
+            <Grid
+                onClick={() => { handleSection(gender) }}
+                gap={['10px', '10px', '10px', '10px', '20px']}
+                templateColumns={["repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(4, 1fr)", "repeat(4, 1fr)", "repeat(4, 1fr)"]}
+            >
+                <ClothGridBox source={img[0]} />
+                <ClothGridBox source={img[1]} />
+                <ClothGridBox source={img[2]} />
+                <ClothGridBox source={img[3]} />
             </Grid>
         </Box>
     );

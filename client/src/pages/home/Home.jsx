@@ -31,12 +31,12 @@ export const Home = () => {
 
     return (
         <>
-            {shoeData.map((e, i) => (
-                <ShoeSection handleSection={handleSection} key={i} data={e} />
+            {shoeData.map((data, index) => (
+                <ShoeSection handleSection={handleSection} key={index} {...data} />
             ))}
 
-            {clothData.map((e, i) => (
-                <ClothSection handleSection={handleSection} key={i} data={e} />
+            {clothData.map((data, index) => (
+                <ClothSection handleSection={handleSection} key={index} {...data} />
             ))}
         </>
     );
