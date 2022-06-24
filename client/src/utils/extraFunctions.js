@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export const convertObject = (obj) => {
     let ans = {};
     for (let k1 in obj) {
@@ -9,12 +7,12 @@ export const convertObject = (obj) => {
         }
     }
     return ans;
-}
+};
 
 
 export const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+};
 
 
 export const setToast = (toast, title, status, duration = 2000, description) => {
@@ -26,10 +24,15 @@ export const setToast = (toast, title, status, duration = 2000, description) => 
         isClosable: true,
         position: 'top'
     });
-}
+};
+
 
 export const getGender = (gender) => {
     return !(gender === "men" || gender === "women" || gender === "kids");
-}
+};
 
+
+export const shortString = (text, limit = 15) => {
+    return text.slice(0, limit) + (text.length > limit ? "..." : "");
+};
 

@@ -39,7 +39,6 @@ export const getFavouriteRequest = (token) => async (dispatch) => {
     try {
         dispatch(getFavouriteLoading());
         let res = await axios.get('/favourite', { headers: { 'Authorization': `Bearer ${token}` } });
-        console.log('res:', res.data)
         dispatch(getFavouriteSuccess(res.data));
     } catch (err) {
         console.log(err);
