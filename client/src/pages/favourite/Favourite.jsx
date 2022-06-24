@@ -29,14 +29,14 @@ export const Favourite = () => {
         <Error />
     ) : (
         <>
-            <Box border={'1px solid red'} maxW={'1450px'} mx={'auto'} my={'20px'}>
+            <Box border={'1px solid red'} maxW={'1450px'} mx={'auto'} my={'20px'} p={'15px'}>
                 <Text fontSize={'20px'} fontWeight={500}>Favourites</Text>
 
                 <Box
                     display={'grid'}
-                    gridTemplateColumns={['repeat(3, 1fr)']}
-                    gap={'40px'}
+                    gap={['20px', '20px', '20px', '40px', '40px']}
                     mt={'40px'}
+                    gridTemplateColumns={['repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)', 'repeat(3, 1fr)']}
                 >
                     {favourite.map((item) => (
                         <FavouriteItemBox key={item._id} {...item} />
