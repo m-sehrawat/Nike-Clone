@@ -32,3 +32,27 @@ export const NavIcon = ({ iconName }) => {
         />
     );
 };
+
+
+//Search box, will add it later
+export const SearchBox = () => {
+    return (
+        <Center>
+            <Box
+                borderRadius={50}
+                w={'180px'}
+                color={'#ced2d6'}
+                bg={'#f5f5f5'}
+                textAlign={'left'}
+                p={'7px'}
+                _hover={{ bg: '#ececec', color: 'black' }}
+                cursor={'text'}
+            >
+                <Center justifyContent={'left'} >
+                    <NavIcon iconName={AiOutlineSearch} />
+                    <Text fontSize={'17px'}>Search</Text>
+                </Center>
+            </Box>
+        </Center>
+    );
+};
