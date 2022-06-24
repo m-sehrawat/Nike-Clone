@@ -1,5 +1,4 @@
-import { Box, Center, Flex, Icon, Image, Spacer, Text, useColorMode } from "@chakra-ui/react";
-import { AiOutlineSearch } from "react-icons/ai";
+import { Box, Center, Flex, Image, Spacer, useColorMode } from "@chakra-ui/react";
 import { RiHeartLine, RiShoppingBagLine } from "react-icons/ri";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -16,8 +15,7 @@ import { SideDrawer } from "../../components/navbar/SideDrawer";
 export const Navbar = () => {
 
     const dispatch = useDispatch();
-    const path = useSelector((state) => state.pathReducer.path);
-    const { user, token } = useSelector((state) => state.authReducer, shallowEqual);
+    const { token } = useSelector((state) => state.authReducer, shallowEqual);
     const { colorMode } = useColorMode();
 
     const handlePath = ({ target: { name } }) => {
