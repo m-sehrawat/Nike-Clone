@@ -84,6 +84,7 @@ export const Products = () => {
                     top={['0px', '70px']}
                     overflowY={'scroll'}
                     className='scroll'
+                    zIndex={-1}
                 >
                     <LeftSideFilter />
                 </Box>}
