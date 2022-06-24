@@ -1,6 +1,5 @@
-import { Box, Flex, Image, Spacer, Text } from "@chakra-ui/react";
-import { AiOutlineStar } from "react-icons/ai";
-import { numberWithCommas } from "../../utils/extraFunctions";
+import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import { numberWithCommas, shortString } from "../../utils/extraFunctions";
 
 
 export const FavouriteItemBox = ({ title, description, price, img }) => {
@@ -14,7 +13,7 @@ export const FavouriteItemBox = ({ title, description, price, img }) => {
                         fontSize={['14px', '14px', '16px', '16px', '18px']}
                         justifyContent={'space-between'}
                     >
-                        <Text>{title}</Text>
+                        <Text>{shortString(title)}</Text>
                         <Text>₹{numberWithCommas(price)}.00</Text>
                     </Flex>
                     <Text
@@ -24,6 +23,12 @@ export const FavouriteItemBox = ({ title, description, price, img }) => {
                     >
                         {description}
                     </Text>
+                    <Button
+                        variant={'ghost'}
+                        borderRadius={'20px'}
+                        border={'1px solid #cecdce'}
+                        mt={'20px'}
+                    >Remove</Button>
                 </Box>
             </Flex>
         </>
