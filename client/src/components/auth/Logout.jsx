@@ -22,7 +22,7 @@ export const Logout = () => {
         <>
             <Menu>
                 <MenuButton as={Button} size='sm' bg={'transparent'} rightIcon={<BsFillCaretDownFill />}>{user}</MenuButton>
-                <MenuList >
+                <MenuList zIndex={2}>
                     <Flex flexDirection={'column'} gap={'5px'} fontSize={'17px'}>
                         <MenuItem icon={<FaRegHeart />} >
                             Wishlist

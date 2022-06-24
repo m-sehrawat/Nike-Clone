@@ -40,16 +40,15 @@ export const Products = () => {
     return (
         <>
             <Flex
-                direction={["column", "row"]}
-                border={'1px solid red'}
-                h={['100px', '60px']}
-                position={["static", 'sticky']}
+                direction={["column", "column", "row", "row", "row"]}
+                h={['100px', '100px', '60px', '60px', '60px']}
+                position={'sticky'}
                 top={'0px'}
                 bg={colorMode === 'light' ? 'white' : '#1a202c'}
-                zIndex={0}
+                zIndex={1}
             >
-                <Center>
-                    <Text ml={['0px', '50px']} fontSize={['18px', '25px']} fontWeight={500}>
+                <Center textAlign={'start'}>
+                    <Text w={'100%'} ml={['20px', '20px', '30px', '40px', '50px']} fontSize={['20px', '25px']} fontWeight={500}>
                         {path === "men" ? "Men's Products"
                             : path === "women" ? "Women's Products"
                                 : path === "kids" ? "Kids's Products" : "All Products"} [{products.length}]
@@ -57,7 +56,7 @@ export const Products = () => {
                 </Center>
                 <Spacer />
                 <Center>
-                    <Flex gap={['4px']} w={'100%'} my={['10px', '0px']} px={['8px', '35px']}>
+                    <Flex gap={['4px']} w={'100%'} my={['10px', '10px', '0px', '0px', '0px']} px={['8px', '35px']}>
                         <Button onClick={() => { setIsFilter(!isFilter) }} fontSize={['13px', '16px']} rightIcon={<IoOptionsOutline />} >
                             {isFilter ? 'Hide Filter' : 'Show Filter'}
                         </Button>
@@ -70,30 +69,28 @@ export const Products = () => {
             </Flex>
 
             <Grid
-                className="test"
-                gap={6}
-                templateColumns={['100%', isFilter ? '18% 77.4%' : '97%']}
+                gap={['20px', '20px', '2%', '2%', '2%']}
+                templateColumns={['100%', '100%', isFilter ? '32% 66%' : '100%', isFilter ? '28% 70%' : '100%', isFilter ? '20% 78%' : '100%']}
                 justifyContent={'center'}
             >
-
                 {isFilter && <Box
-                    border={'1px solid red'}
-                    minH={['120px', '600px']}
+                    minH={['120px', '120px', '600px', '600px', '600px']}
                     maxH={['900px', '600px']}
-                    position={['none', 'sticky']}
+                    position={['none', 'none', 'sticky', 'sticky', 'sticky']}
                     top={['0px', '70px']}
                     overflowY={'scroll'}
                     className='scroll'
-                    zIndex={-1}
+                    zIndex={0}
+                    mt={['10px','10px','20px','20px','20px']}
                 >
                     <LeftSideFilter />
                 </Box>}
 
-                <Box border={'1px solid red'} minH={'400px'}>
+                <Box minH={'400px'}>
                     <Grid
-                        templateColumns={["repeat(2, 1fr)", "repeat(3, 1fr)"]}
                         gap={[2, 4]}
-                        p={['10px', '20px']}
+                        p={['10px', '10px', '20px', '20px', '20px']}
+                        templateColumns={["repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
                     >
                         {products.map((product, index) => (
                             <ProductDisplayBox
