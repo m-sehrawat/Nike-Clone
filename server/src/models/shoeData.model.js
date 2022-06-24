@@ -1,10 +1,14 @@
 const { Schema, model } = require('mongoose');
 
+
+const reqString = { type: String, required: true };
+const reqArray = { type: Array, required: true };
+
 const shoeDataSchema = new Schema({
-    heading: { type: String, required: true },
-    description: { type: String, required: true },
-    gender: { type: String, required: true },
-    img: { type: Array, required: true },
+    heading: reqString,
+    description: reqString,
+    gender: reqString,
+    img: reqArray,
 }, {
     versionKey: false
 });

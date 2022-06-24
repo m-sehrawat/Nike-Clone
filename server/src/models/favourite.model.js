@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 
 const reqString = { type: String, required: true };
 const reqNumber = { type: Number, required: true };
-const reqArray = { type: Array, required: true }
+const reqArray = { type: Array, required: true };
 
 const favouriteSchema = new Schema({
     title: reqString,
