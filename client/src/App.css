@@ -23,9 +23,6 @@ body::-webkit-scrollbar-thumb {
 	transform: scale(1.2);
 } */
 
-.blurBackground {
-	filter: blur(3px);
-}
 
 /* .typeWritertheme {
 	border-right: 3px solid white;

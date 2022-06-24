@@ -34,7 +34,7 @@ export const Navbar = () => {
                 </Center>
             </Box>
 
-            <Flex h={'60px'} border={'1px solid red'} flexDirection={"row"} px={'20px'} >
+            <Flex h={'60px'} flexDirection={"row"} px={'20px'} >
 
                 <Box w={'80px'}>
                     <Link to={'/'}><Image src={nikeLogo} /></Link>
@@ -72,7 +72,7 @@ export const Navbar = () => {
 
             </Flex>
 
-            <Box display={['none', 'block']} border={'1px solid red'} h={'60px'} ></Box>
+            <Box display={['none', 'block']} h={'60px'} ></Box>
         </>
     );
 };

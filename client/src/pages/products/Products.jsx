@@ -46,7 +46,7 @@ export const Products = () => {
                 position={["static", 'sticky']}
                 top={'0px'}
                 bg={colorMode === 'light' ? 'white' : '#1a202c'}
-                zIndex={0}
+                zIndex={1}
             >
                 <Center>
                     <Text ml={['0px', '50px']} fontSize={['18px', '25px']} fontWeight={500}>
@@ -70,7 +70,7 @@ export const Products = () => {
             </Flex>
 
             <Grid
-                className="test"
+
                 gap={6}
                 templateColumns={['100%', isFilter ? '18% 77.4%' : '97%']}
                 justifyContent={'center'}
@@ -84,13 +84,14 @@ export const Products = () => {
                     top={['0px', '70px']}
                     overflowY={'scroll'}
                     className='scroll'
-                    zIndex={-1}
+                    zIndex={0}
                 >
                     <LeftSideFilter />
                 </Box>}
 
                 <Box border={'1px solid red'} minH={'400px'}>
                     <Grid
+                        
                         templateColumns={["repeat(2, 1fr)", "repeat(3, 1fr)"]}
                         gap={[2, 4]}
                         p={['10px', '20px']}
