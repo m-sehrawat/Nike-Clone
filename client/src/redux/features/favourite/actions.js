@@ -22,6 +22,7 @@ export const getFavouriteError = () => {
 
 export const addToFavouriteRequest = (data, token, toast) => async () => {
     try {
+        delete data._id;
         await axios.post('/favourite', data, { headers: { 'Authorization': `Bearer ${token}` } });
         setToast(toast, 'Item added to the favourites', 'success');
     } catch (err) {
