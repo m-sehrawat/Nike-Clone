@@ -2,7 +2,11 @@ import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import { numberWithCommas, shortString } from "../../utils/extraFunctions";
 
 
-export const FavouriteItemBox = ({ title, description, price, img }) => {
+export const FavouriteItemBox = ({ _id, title, description, price, img }) => {
+
+    const handleDeleteRequest = () => {
+
+    }
 
     return (
         <>
@@ -28,6 +32,7 @@ export const FavouriteItemBox = ({ title, description, price, img }) => {
                         borderRadius={'20px'}
                         border={'1px solid #cecdce'}
                         mt={'20px'}
+                        onClick={handleDeleteRequest}
                     >Remove</Button>
                 </Box>
             </Flex>

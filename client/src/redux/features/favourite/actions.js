@@ -1,7 +1,6 @@
-import axios from "axios";
-import { setToast } from "../../../utils/extraFunctions";
-import { setItemSession } from "../../../utils/sessionStorage";
 import { ADD_TO_FAVOURITE, GET_FAVOURITE_ERROR, GET_FAVOURITE_LOADING, GET_FAVOURITE_SUCCESS } from "./actionTypes";
+import { setToast } from "../../../utils/extraFunctions";
+import axios from "axios";
 
 
 export const addToFavourite = (payload) => {
@@ -44,4 +43,15 @@ export const getFavouriteRequest = (token) => async (dispatch) => {
         console.log(err);
         dispatch(getFavouriteError());
     }
-}
+};
+
+export const deleteFavouriteRequest = (id, token) => async (dispatch) => {
+    try {
+        dispatch(getFavouriteLoading());
+        await axios.delete('/favourite', id);
+        dispatch(getFavouriteRequest(token));
+    } catch (err) {
+        console.log(err);
+        dispatch(getFavouriteError());
+    }
+};
