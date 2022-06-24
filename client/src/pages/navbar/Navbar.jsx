@@ -41,11 +41,11 @@ export const Navbar = () => {
 
                 <Spacer />
 
-                <Category handlePath={handlePath} path={path} name={'/'} text={"Home"} link={'/'} />
-                <Category handlePath={handlePath} path={path} name={'allProducts'} text={"All Products"} link={'/allProducts'} />
-                <Category handlePath={handlePath} path={path} name={'men'} text={"Men"} link={'/men'} />
-                <Category handlePath={handlePath} path={path} name={'women'} text={"Women"} link={'women'} />
-                <Category handlePath={handlePath} path={path} name={'kids'} text={"Kids"} link={'/kids'} />
+                <Category handlePath={handlePath} name={'/'} text={"Home"} link={'/'} />
+                <Category handlePath={handlePath} name={'allProducts'} text={"All Products"} link={'/allProducts'} />
+                <Category handlePath={handlePath} name={'men'} text={"Men"} link={'/men'} />
+                <Category handlePath={handlePath} name={'women'} text={"Women"} link={'women'} />
+                <Category handlePath={handlePath} name={'kids'} text={"Kids"} link={'/kids'} />
 
                 <Spacer />
 
