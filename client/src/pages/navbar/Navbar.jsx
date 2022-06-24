@@ -41,23 +41,13 @@ export const Navbar = () => {
 
                 <Spacer />
 
-                <Category handlePath={handlePath} path={path} name={'/'} text={"Home"} link={'/'} />
-                <Category handlePath={handlePath} path={path} name={'allProducts'} text={"All Products"} link={'/allProducts'} />
-                <Category handlePath={handlePath} path={path} name={'men'} text={"Men"} link={'/men'} />
-                <Category handlePath={handlePath} path={path} name={'women'} text={"Women"} link={'women'} />
-                <Category handlePath={handlePath} path={path} name={'kids'} text={"Kids"} link={'/kids'} />
+                <Category handlePath={handlePath} name={'/'} text={"Home"} link={'/'} />
+                <Category handlePath={handlePath} name={'allProducts'} text={"All Products"} link={'/allProducts'} />
+                <Category handlePath={handlePath} name={'men'} text={"Men"} link={'/men'} />
+                <Category handlePath={handlePath} name={'women'} text={"Women"} link={'women'} />
+                <Category handlePath={handlePath} name={'kids'} text={"Kids"} link={'/kids'} />
 
                 <Spacer />
-
-                {/* <Center>
-                    <Box borderRadius={50} w={'180px'} color={'#ced2d6'} bg={'#f5f5f5'} textAlign={'left'} p={'7px'}
-                        _hover={{ bg: '#ececec', color: 'black' }} cursor={'text'} >
-                        <Center justifyContent={'left'} >
-                            <NavIcon iconName={AiOutlineSearch} />
-                            <Text fontSize={'17px'}>Search</Text>
-                        </Center>
-                    </Box>
-                </Center> */}
 
                 <Center ml={'20px'} mr={'10px'} >
                     <Link to={'/favourite'}>
