@@ -13,7 +13,6 @@ export const Cart = () => {
                 maxW={'1200px'}
                 mx={'auto'}
                 p={'20px'}
-                border={'1px solid red'}
                 gridTemplateColumns={['100%', '100%', '100%', '65% 30%', '65% 30%']}
             >
 

@@ -10,7 +10,7 @@ export const BagItems = () => {
 
     return (
         <>
-            <Box border={'1px solid red'}>
+            <Box>
 
                 <Text mb={'20px'} fontSize={'20px'} fontWeight={500}>Bag</Text>
 

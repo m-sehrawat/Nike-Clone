@@ -10,7 +10,7 @@ export const OrderSummary = () => {
 
     return (
         <>
-            <Box border={'1px solid red'}>
+            <Box>
 
                 <Text fontSize={'20px'} fontWeight={500}>Summary</Text>
 
