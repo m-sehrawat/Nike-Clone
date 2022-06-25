@@ -5,26 +5,28 @@ import { BsCart2, BsFillCaretDownFill } from "react-icons/bs";
 import { RiLuggageCartLine, RiCoupon3Line } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutFromAccount } from "../../redux/features/auth/actions";
+import { useNavigate } from "react-router-dom";
 
 
 export const Logout = () => {
 
     const dispatch = useDispatch();
     const toast = useToast();
-    const user = useSelector((state)=> state.authReducer.user.firstName);
+    const navigate = useNavigate();
+    const user = useSelector((state) => state.authReducer.user.firstName);
 
-    const handleLogoutBtn = ()=>{
+    const handleLogoutBtn = () => {
         dispatch(logoutFromAccount(toast));
     };
 
-    
+
     return (
         <>
             <Menu>
                 <MenuButton as={Button} size='sm' bg={'transparent'} rightIcon={<BsFillCaretDownFill />}>{user}</MenuButton>
                 <MenuList zIndex={2}>
                     <Flex flexDirection={'column'} gap={'5px'} fontSize={'17px'}>
-                        <MenuItem icon={<FaRegHeart />} >
+                        <MenuItem onClick={() => { navigate('/favourite') }} icon={<FaRegHeart />} >
                             Wishlist
                         </MenuItem>
                         <MenuItem icon={<RiLuggageCartLine />} >
@@ -33,7 +35,7 @@ export const Logout = () => {
                         <MenuItem icon={<RiCoupon3Line />} >
                             Coupons
                         </MenuItem>
-                        <MenuItem icon={<BsCart2 />} >
+                        <MenuItem onClick={() => { navigate('/cart') }} icon={<BsCart2 />} >
                             Cart
                         </MenuItem>
                         <Divider />
