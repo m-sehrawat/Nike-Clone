@@ -1,22 +1,22 @@
 import { Button } from "@chakra-ui/react";
 
 
-export const CheckoutBtn = ({ onClick}) => {
+export const CheckoutBtn = ({  onClick, name, bgColor, color, hoverBg, hoverBorder, borderColor}) => {
     return (
         <>
-            <Button
+             <Button
                 onClick={onClick}
-                h={"62px"}
-                bg={'black'}
-                color={'white'}
-                border={"1px solid black"}
+                h={"60px"}
+                bg={bgColor}
+                color={color}
+                border={`1px solid ${borderColor}`}
                 borderRadius={"50px"}
                 w={"100%"}
                 fontSize={"17px"}
-                mt={"30px"}
-                _hover={{ bg: '#1e1e1e'}}
+                mb={'20px'}
+                _hover={{ bg: hoverBg, borderColor: hoverBorder }}
             >
-                Member Checkout
+                {name}
             </Button>
         </>
     );
