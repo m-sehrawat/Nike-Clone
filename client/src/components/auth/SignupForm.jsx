@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getSignupSuccess } from "../../redux/features/auth/actions";
 import { setToast } from "../../utils/extraFunctions";
 import { isSignupFormEmpty, validateEmail, validatePassword } from "../../utils/formValidator";
+import { AuthBtn } from "./AuthBtn";
 
 
 export const SignupForm = () => {
@@ -40,23 +41,58 @@ export const SignupForm = () => {
 
         dispatch(getSignupSuccess(form, toast, navigate));
     };
-    
+
 
     return (
         <>
             <form onSubmit={handleOnSubmit}>
-                <VStack w={['95%', '85%']} mx={'auto'} gap={'7px'}>
-                    <Input name="email" onChange={handleInputChange} type={'email'} placeholder="Email address" />
-                    <Input name="password" onChange={handleInputChange} type={'password'} placeholder="Password" />
-                    <Input name="firstName" onChange={handleInputChange} type={'text'} placeholder="First Name" />
-                    <Input name="lastName" onChange={handleInputChange} type={'text'} placeholder="Last Name" />
+
+                <VStack
+                    w={['95%', '95%', '85%', '85%', '85%', '85%']}
+                    mx={'auto'}
+                    gap={'7px'}
+                >
+
+                    <Input
+                        name="email"
+                        onChange={handleInputChange}
+                        type={'email'}
+                        placeholder="Email address"
+                    />
+
+                    <Input
+                        name="password"
+                        onChange={handleInputChange}
+                        type={'password'}
+                        placeholder="Password"
+                    />
+
+                    <Input
+                        name="firstName"
+                        onChange={handleInputChange}
+                        type={'text'}
+                        placeholder="First Name"
+                    />
+
+                    <Input
+                        name="lastName"
+                        onChange={handleInputChange}
+                        type={'text'}
+                        placeholder="Last Name"
+                    />
+
                     <Select name="gender" onChange={handleInputChange} placeholder='Choose Gender'>
                         <option>Male</option>
                         <option>Female</option>
                     </Select>
-                    <Input name="dateOfBirth" onChange={handleInputChange} type={'date'} />
-                    <Input value={"JOIN US"} type={'submit'} backgroundColor={'black'}
-                        _hover={{ backgroundColor: "#656565" }} color={'white'} w={'100%'} />
+
+                    <Input
+                        name="dateOfBirth"
+                        onChange={handleInputChange}
+                        type={'date'}
+                    />
+
+                    <AuthBtn value={'JOIN US'} />
 
                 </VStack>
             </form>

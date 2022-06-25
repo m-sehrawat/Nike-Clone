@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getLoginSuccess, showResetPage } from "../../redux/features/auth/actions";
 import { setToast } from "../../utils/extraFunctions";
 import { isLoginFormEmpty } from "../../utils/formValidator";
+import { AuthBtn } from "./AuthBtn";
 
 
 export const LoginForm = () => {
@@ -16,13 +17,13 @@ export const LoginForm = () => {
 
 
     const handleInputChange = ({ target: { name, value } }) => {
-        setForm({...form, [name]: value});
+        setForm({ ...form, [name]: value });
     };
 
-    const handleOnSubmit = (e)=>{
+    const handleOnSubmit = (e) => {
         e.preventDefault();
         const isEmpty = isLoginFormEmpty(form);
-        if(!isEmpty.status){
+        if (!isEmpty.status) {
             return setToast(toast, isEmpty.message, 'error');
         }
         dispatch(getLoginSuccess(form, toast, navigate));
@@ -36,15 +37,41 @@ export const LoginForm = () => {
     return (
         <>
             <form onSubmit={handleOnSubmit}>
-                <VStack w={['95%', '85%']} mx={'auto'} gap={'8px'}>
-                    <Input onChange={handleInputChange} name="email" type={'email'} placeholder="Email address" />
-                    <Input onChange={handleInputChange} name="password" type={'password'} placeholder="Password" />
-                    <Text onClick={displayReset} _hover={{ textDecoration: "underline" }}
-                        w={'100%'} color={'#b0a8af'} textAlign={'right'} my={'10px'} cursor={'pointer'}>
+
+                <VStack
+                    w={['95%', '95%', '85%', '85%', '85%', '85%']}
+                    mx={'auto'}
+                    gap={'8px'}
+                >
+
+                    <Input
+                        onChange={handleInputChange}
+                        name="email"
+                        type={'email'}
+                        placeholder="Email address"
+                    />
+
+                    <Input
+                        onChange={handleInputChange}
+                        name="password"
+                        type={'password'}
+                        placeholder="Password"
+                    />
+
+                    <Text
+                        onClick={displayReset}
+                        _hover={{ textDecoration: "underline" }}
+                        w={'100%'}
+                        color={'#b0a8af'}
+                        textAlign={'right'}
+                        my={'10px'}
+                        cursor={'pointer'}
+                    >
                         Forgot your password?
                     </Text>
-                    <Input value={"LOGIN"} type={'submit'} backgroundColor={'black'}
-                        _hover={{ backgroundColor: "#656565" }} color={'white'} w={'100%'} />
+
+                    <AuthBtn value={'LOGIN'} />
+                    
                 </VStack>
             </form>
         </>

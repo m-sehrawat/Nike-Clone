@@ -46,7 +46,7 @@ export const Favourite = () => {
                         gridTemplateColumns={['repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)', 'repeat(3, 1fr)']}
                     >
                         {favourite.map((item) => (
-                            <FavouriteItemBox key={item._id} {...item} />
+                            <FavouriteItemBox key={item._id} {...item} data={item} />
                         ))}
 
                     </Box>
