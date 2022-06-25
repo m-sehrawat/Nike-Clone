@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Text } from "@chakra-ui/react";
+import { Box, Divider, Flex, Input, Text } from "@chakra-ui/react";
 import { useSelector } from 'react-redux';
 import { numberWithCommas } from "../../utils/extraFunctions";
 import { CheckoutBtn } from "./CheckoutBtn";
@@ -33,10 +33,28 @@ export const OrderSummary = () => {
                     <Text fontWeight={500} >₹{numberWithCommas(total)}.00</Text>
                 </Flex>
 
-                <Divider />
+                <Divider mb={'20px'} />
 
-                <CheckoutBtn onClick={() => { console.log('hello'); }} />
-                
+                <Input mb={'20px'} type={'text'} placeholder={'Coupon'} />
+
+                <CheckoutBtn
+                    onClick={() => { console.log('hello'); }}
+                    name={"Apply Coupon"}
+                    bgColor={"white"}
+                    color={"black"}
+                    hoverBorder={"black"}
+                    borderColor={'#cecdce'}
+                />
+
+                <CheckoutBtn
+                    onClick={() => { console.log('hello'); }}
+                    name={"Member Checkout"}
+                    bgColor={"black"}
+                    color={"white"}
+                    hoverBg={'#1e1e1e'}
+                    borderColor={'transparent'}
+                />
+
             </Box>
 
         </>
