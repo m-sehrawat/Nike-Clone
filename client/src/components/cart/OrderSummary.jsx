@@ -46,7 +46,7 @@ export const OrderSummary = () => {
         <>
             <Box>
 
-                <Text fontSize={'20px'} fontWeight={500}>Summary</Text>
+                <Text fontSize={'20px'} fontWeight={600}>Summary</Text>
 
                 <Box my={'20px'} fontSize={'18px'}>
                     <Flex justifyContent={'space-between'}>

@@ -9,7 +9,7 @@ export const Cart = () => {
             <Box
                 display={'grid'}
                 gap={['40px','40px','40px','5%','5%']}
-                my={'50px'}
+                my={'30px'}
                 maxW={'1200px'}
                 mx={'auto'}
                 p={'20px'}
