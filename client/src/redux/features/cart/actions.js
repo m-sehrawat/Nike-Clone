@@ -1,5 +1,6 @@
 import { setToast } from "../../../utils/extraFunctions";
 import { getCartTotal } from "../../../utils/getCartTotal";
+import { handleCartDuplicate } from "../../../utils/handleCartDuplicate";
 import { getItem, setItem } from "../../../utils/localstorage";
 import { ADD_TO_CART_SUCCESS, APPLY_COUPON_SUCCESS, REMOVE_COUPON_SUCCESS, REMOVE_FROM_CART } from "./actionTypes";
 
@@ -22,12 +23,12 @@ export const removeCouponSuccess = (payload) => {
 
 
 export const addToCartRequest = (data, toast) => (dispatch) => {
-    const cartData = getItem('cartProducts') || [];
-    cartData.push(data);
+    let cartData = getItem('cartProducts') || [];
+    cartData = handleCartDuplicate(cartData, data);
     setItem('cartProducts', cartData);
     const orderSummary = getCartTotal(cartData);
     setItem('orderSummary', orderSummary);
-    dispatch(addToCartSuccess({ data, orderSummary }));
+    dispatch(addToCartSuccess({ cartData, orderSummary }));
     setToast(toast, 'Item added to the cart', 'success');
 };
 

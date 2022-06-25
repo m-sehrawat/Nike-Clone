@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { addToFavouriteRequest } from "../../redux/features/favourite/actions";
 
 
-export const ItemBox = ({ title, description, img, price, size, index, data }) => {
+export const ItemBox = ({ title, description, img, price, size, quantity, index, data }) => {
 
     const dispatch = useDispatch();
     const toast = useToast();
@@ -54,6 +54,7 @@ export const ItemBox = ({ title, description, img, price, size, index, data }) =
                         <Text fontWeight={500}>{title}</Text>
                         <Text color={'gray'}>{description}</Text>
                         <Text color={'gray'}>Size: {size}</Text>
+                        <Text color={'gray'}>Quantity: {quantity}</Text>
 
                         <Box display={'flex'} gap={'10px'}>
 

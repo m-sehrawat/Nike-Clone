@@ -6,6 +6,7 @@ const initState = {
     cartProducts: getItem('cartProducts') || [],
     orderSummary: getItem('orderSummary') || {
         subTotal: 0,
+        quantity: 0,
         shipping: 0,
         discount: 0,
         total: 0
@@ -17,7 +18,7 @@ export const cartReducer = (state = initState, { type, payload }) => {
         case ADD_TO_CART_SUCCESS:
             return {
                 ...state,
-                cartProducts: [...state.cartProducts, payload.data],
+                cartProducts: [...payload.cartData],
                 orderSummary: { ...state.orderSummary, ...payload.orderSummary },
             };
         case REMOVE_FROM_CART:
