@@ -1,13 +1,23 @@
+const checkDuplicate = (arr, target) => {
+    for (let item of arr) {
+        if (item._id === target._id || item.title === target.title) {
+            return true;
+        }
+    }
+    return false;
+};
+
+
 export const handleCartDuplicate = (arr, target, operation) => {
 
-    const isPresent = arr.map((item) => item._id).includes(target._id);
+    const isPresent = checkDuplicate(arr, target);
 
     if (!isPresent) {
         arr.push(target);
 
     } else {
         arr = arr.map((item) => {
-            if (item._id === target._id) {
+            if (item._id === target._id || item.title === target.title) {
                 const singlePrice = item.price / item.quantity;
                 return {
                     ...item,
