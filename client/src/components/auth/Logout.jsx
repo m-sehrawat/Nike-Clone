@@ -6,6 +6,7 @@ import { RiLuggageCartLine, RiCoupon3Line } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutFromAccount } from "../../redux/features/auth/actions";
 import { useNavigate } from "react-router-dom";
+import { Coupon } from "../../pages/coupon/Coupon";
 
 
 export const Logout = () => {
@@ -32,9 +33,9 @@ export const Logout = () => {
                         <MenuItem icon={<RiLuggageCartLine />} >
                             Orders
                         </MenuItem>
-                        <MenuItem icon={<RiCoupon3Line />} >
-                            Coupons
-                        </MenuItem>
+
+                        <Coupon />
+
                         <MenuItem onClick={() => { navigate('/cart') }} icon={<BsCart2 />} >
                             Cart
                         </MenuItem>

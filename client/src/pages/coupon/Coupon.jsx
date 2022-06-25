@@ -1,4 +1,6 @@
-import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
+import { Button, MenuItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
+import { RiCoupon3Line } from "react-icons/ri";
+
 
 export const Coupon = () => {
 
@@ -6,19 +8,27 @@ export const Coupon = () => {
 
     return (
         <>
-            <Button onClick={onOpen}>Open Modal</Button>
+            <MenuItem onClick={onOpen} icon={<RiCoupon3Line />} >
+                Coupons
+            </MenuItem>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Modal Title</ModalHeader>
+                    <ModalHeader>Coupon Codes</ModalHeader>
                     <ModalCloseButton />
+
                     <ModalBody>
-                        
+
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='blue' mr={3} onClick={onClose}>
+                        <Button
+                            bg={'black'}
+                            color={'white'}
+                            _hover={{ bg: '#1e1e1e' }}
+                            onClick={onClose}
+                        >
                             Close
                         </Button>
                     </ModalFooter>
