@@ -2,6 +2,7 @@ import { setToast } from "../../../utils/extraFunctions";
 import { getCartTotal } from "../../../utils/getCartTotal";
 import { handleCartDuplicate } from "../../../utils/handleCartDuplicate";
 import { getItem, setItem } from "../../../utils/localstorage";
+import { getItemSession, removeItemSession, setItemSession } from "../../../utils/sessionStorage";
 import { ADD_TO_CART_SUCCESS, APPLY_COUPON_SUCCESS, REMOVE_COUPON_SUCCESS, REMOVE_FROM_CART } from "./actionTypes";
 
 
@@ -26,7 +27,8 @@ export const addToCartRequest = (data, toast, operation = 'add') => (dispatch) =
     let cartData = getItem('cartProducts') || [];
     cartData = handleCartDuplicate(cartData, data, operation);
     setItem('cartProducts', cartData);
-    const orderSummary = getCartTotal(cartData);
+    const discountPercent = getItemSession('discountPercent');
+    const orderSummary = getCartTotal(cartData, discountPercent);
     setItem('orderSummary', orderSummary);
     dispatch(addToCartSuccess({ cartData, orderSummary }));
 
@@ -41,7 +43,9 @@ export const removeFromCartRequest = (index, toast) => (dispatch) => {
     const cartData = getItem('cartProducts');
     cartData.splice(index, 1);
     setItem('cartProducts', cartData);
-    const orderSummary = getCartTotal(cartData);
+    const discountPercent = getItemSession('discountPercent');
+    const orderSummary = getCartTotal(cartData, discountPercent);
+    orderSummary.subTotal === 0 && removeItemSession('discountPercent');
     setItem('orderSummary', orderSummary);
     dispatch(removeFromCart({ index, orderSummary }));
     setToast(toast, 'Item removed from the cart', 'success');
@@ -49,6 +53,7 @@ export const removeFromCartRequest = (index, toast) => (dispatch) => {
 
 export const applyCouponRequest = (discountPercent, toast) => (dispatch) => {
     const cartData = getItem('cartProducts');
+    setItemSession('discountPercent', discountPercent)
     const orderSummary = getCartTotal(cartData, discountPercent);
     setItem('orderSummary', orderSummary);
     dispatch(applyCouponSuccess(orderSummary));
@@ -57,6 +62,7 @@ export const applyCouponRequest = (discountPercent, toast) => (dispatch) => {
 
 export const removeCouponRequest = (toast) => (dispatch) => {
     const cartData = getItem('cartProducts');
+    removeItemSession('discountPercent');
     const orderSummary = getCartTotal(cartData, 0);
     setItem('orderSummary', orderSummary);
     dispatch(removeCouponSuccess(orderSummary));
