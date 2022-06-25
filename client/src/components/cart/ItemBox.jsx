@@ -1,13 +1,13 @@
-import { Box, Divider, Image, Text, useToast } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, Image, Text, useToast } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCartRequest } from "../../redux/features/cart/actions";
+import { addToCartRequest, removeFromCartRequest } from "../../redux/features/cart/actions";
 import { numberWithCommas, setToast } from "../../utils/extraFunctions";
-import { BagItemBtn } from "./BagItemBtn";
+import { BagItemBtn, QuantityBtn } from "./BagItemBtn";
 import { useNavigate } from 'react-router-dom';
 import { addToFavouriteRequest } from "../../redux/features/favourite/actions";
 
 
-export const ItemBox = ({ title, description, img, price, size, index, data }) => {
+export const ItemBox = ({ title, description, img, price, quantity, index, data }) => {
 
     const dispatch = useDispatch();
     const toast = useToast();
@@ -27,6 +27,12 @@ export const ItemBox = ({ title, description, img, price, size, index, data }) =
         }
     };
 
+    const handleQuantityChange = ({ target: { name } }) => {
+        if (quantity === 1 && name === 'reduce') {
+            return dispatch(removeFromCartRequest(index, toast));
+        }
+        return dispatch(addToCartRequest(data, toast, name));
+    }
 
     return (
         <>
@@ -53,7 +59,23 @@ export const ItemBox = ({ title, description, img, price, size, index, data }) =
                     <Box minH={'150px'}>
                         <Text fontWeight={500}>{title}</Text>
                         <Text color={'gray'}>{description}</Text>
-                        <Text color={'gray'}>Size: {size}</Text>
+
+                        <Flex alignItems={'center'} gap={'10px'} my={'8px'}>
+                            <Text >Quantity:</Text>
+
+                            <QuantityBtn
+                                text={'-'}
+                                name={'reduce'}
+                                onClick={handleQuantityChange}
+                            />
+                            <Text fontWeight={600}>{quantity}</Text>
+
+                            <QuantityBtn
+                                text={'+'}
+                                name={'add'}
+                                onClick={handleQuantityChange}
+                            />
+                        </Flex>
 
                         <Box display={'flex'} gap={'10px'}>
 

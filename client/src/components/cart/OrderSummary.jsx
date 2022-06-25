@@ -9,7 +9,7 @@ import { CheckoutBtn } from "./CheckoutBtn";
 
 export const OrderSummary = () => {
 
-    const { subTotal, total, shipping, discount } = useSelector((state) => state.cartReducer.orderSummary);
+    const { subTotal, quantity, total, shipping, discount } = useSelector((state) => state.cartReducer.orderSummary);
 
     const [coupon, setCoupon] = useState("");
     const toast = useToast();
@@ -46,12 +46,17 @@ export const OrderSummary = () => {
         <>
             <Box>
 
-                <Text fontSize={'20px'} fontWeight={500}>Summary</Text>
+                <Text fontSize={'20px'} fontWeight={600}>Summary</Text>
 
                 <Box my={'20px'} fontSize={'18px'}>
                     <Flex justifyContent={'space-between'}>
                         <Text>Subtotal</Text>
                         <Text>₹{numberWithCommas(subTotal)}.00</Text>
+                    </Flex>
+
+                    <Flex mt={'5px'} justifyContent={'space-between'}>
+                        <Text>Quantity</Text>
+                        <Text>{quantity}</Text>
                     </Flex>
 
                     <Flex mt={'5px'} justifyContent={'space-between'}>
