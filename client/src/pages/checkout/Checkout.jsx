@@ -1,5 +1,7 @@
-import { Box, Flex, Input, Text } from "@chakra-ui/react";
+import { Box, Flex, Input, Text, useToast } from "@chakra-ui/react";
 import { useState } from "react";
+import { isCheckoutFormEmpty } from "../../utils/checkoutFormValidator";
+import { setToast } from "../../utils/extraFunctions";
 import { ContinueBtn } from "./ContinueBtn";
 
 
@@ -19,6 +21,7 @@ export const Checkout = () => {
     };
 
     const [form, setForm] = useState(initState);
+    const toast = useToast();
 
     const handleInputChange = ({ target: { name, value } }) => {
         setForm({ ...form, [name]: value });
@@ -26,8 +29,12 @@ export const Checkout = () => {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
+        const isEmpty = isCheckoutFormEmpty(form);
+        if (!isEmpty.status) {
+            return setToast(toast, isEmpty.message, 'error');
+        }
         console.log(form);
-    }
+    };
 
 
 
