@@ -50,8 +50,13 @@ export const OrderSummary = () => {
                     </Flex>
 
                     <Flex mt={'5px'} justifyContent={'space-between'}>
-                        <Text>Estimated Delivery</Text>
-                        <Text>₹{numberWithCommas(shipping)}.00</Text>
+                        <Text >Estimated Delivery</Text>
+                        <Text
+                            title={'Free delivery applies to orders of ₹14,000 or more'}
+                            cursor={'pointer'}
+                        >
+                            ₹{numberWithCommas(shipping)}.00
+                        </Text>
                     </Flex>
 
                     <Flex mt={'5px'} justifyContent={'space-between'}>
