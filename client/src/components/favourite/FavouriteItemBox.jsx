@@ -1,17 +1,25 @@
 import { Box, Button, Flex, Image, Text, useToast } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { deleteFavouriteRequest } from "../../redux/features/favourite/actions";
 import { numberWithCommas, shortString } from "../../utils/extraFunctions";
+import { setItemSession } from "../../utils/sessionStorage";
 
 
-export const FavouriteItemBox = ({ _id, title, description, price, img }) => {
+export const FavouriteItemBox = ({ _id, title, description, price, img, data }) => {
 
-    const dispatch = useDispatch();
     const toast = useToast();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const token = useSelector((state) => state.authReducer.token);
 
     const handleDeleteRequest = () => {
         dispatch(deleteFavouriteRequest(_id, token, toast));
+    };
+
+    const handleDisplayProduct = () => {
+        setItemSession("singleProduct", data);
+        navigate("/description");
     };
 
 
@@ -19,7 +27,12 @@ export const FavouriteItemBox = ({ _id, title, description, price, img }) => {
         <>
             <Flex flexDirection={'column'} mb={'30px'}>
                 <Box overflow={'hidden'}>
-                    <Image className="imgAnimation" src={img[0]} />
+                    <Image
+                        onClick={handleDisplayProduct}
+                        className="imgAnimation"
+                        cursor={'pointer'}
+                        src={img[0]}
+                    />
                 </Box>
                 <Box mt={'15px'}>
                     <Flex
@@ -42,7 +55,9 @@ export const FavouriteItemBox = ({ _id, title, description, price, img }) => {
                         border={'1px solid #cecdce'}
                         mt={'20px'}
                         onClick={handleDeleteRequest}
-                    >Remove</Button>
+                    >
+                        Remove
+                    </Button>
                 </Box>
             </Flex>
         </>
