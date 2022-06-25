@@ -4,7 +4,7 @@ import { ContinueBtn } from "./ContinueBtn";
 
 export const Checkout = () => {
 
-    
+
 
     return (
         <>

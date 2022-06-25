@@ -21,5 +21,16 @@ const styles = {
     },
 };
 
+const Input = {
+    defaultProps: {
+        focusBorderColor: 'black'
+    }
+};
 
-export const theme = extendTheme({ breakpoints, config, styles });
+
+export const theme = extendTheme({
+    breakpoints,
+    config,
+    styles,
+    components: { Input }
+});
