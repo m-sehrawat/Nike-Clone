@@ -9,7 +9,9 @@ export const ProductDisplayBox = ({ title, description, color, rating, price, si
     return (
         <>
             <Flex onClick={onClick} flexDirection={'column'} cursor="pointer" mb={'10px'}>
-                <Image className="imgAnimation" src={img[0]} />
+                <Box overflow={'hidden'}>
+                    <Image className="imgAnimation" src={img[0]} />
+                </Box>
                 <Box>
                     <Flex justifyItems={'center'} mt={'10px'}>
                         <Text

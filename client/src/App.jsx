@@ -1,12 +1,10 @@
-import { useSelector } from 'react-redux';
 import './App.css';
 import { Router } from './routes/Router';
 
-function App() {
-    const modalOpen = useSelector((state) => state.pathReducer.modalOpen);
 
+function App() {
     return (
-        <div>
+        <div className='scroll'>
             <Router />
         </div>
     );
