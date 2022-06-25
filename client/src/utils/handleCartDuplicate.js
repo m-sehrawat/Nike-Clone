@@ -1,4 +1,4 @@
-export const handleCartDuplicate = (arr, target) => {
+export const handleCartDuplicate = (arr, target, operation) => {
 
     const isPresent = arr.map((item) => item._id).includes(target._id);
 
@@ -11,8 +11,8 @@ export const handleCartDuplicate = (arr, target) => {
                 const singlePrice = item.price / item.quantity;
                 return {
                     ...item,
-                    price: item.price + singlePrice,
-                    quantity: item.quantity + 1
+                    price: operation === 'add' ? item.price + singlePrice : item.price - singlePrice,
+                    quantity: operation === 'add' ? item.quantity + 1 : item.quantity - 1
                 }
             }
             return item;

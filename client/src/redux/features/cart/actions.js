@@ -22,14 +22,19 @@ export const removeCouponSuccess = (payload) => {
 };
 
 
-export const addToCartRequest = (data, toast) => (dispatch) => {
+export const addToCartRequest = (data, toast, operation = 'add') => (dispatch) => {
     let cartData = getItem('cartProducts') || [];
-    cartData = handleCartDuplicate(cartData, data);
+    cartData = handleCartDuplicate(cartData, data, operation);
     setItem('cartProducts', cartData);
     const orderSummary = getCartTotal(cartData);
     setItem('orderSummary', orderSummary);
     dispatch(addToCartSuccess({ cartData, orderSummary }));
-    setToast(toast, 'Item added to the cart', 'success');
+
+    if (operation === 'add') {
+        setToast(toast, 'Item added to the cart', 'success');
+    } else if (operation === 'reduce') {
+        setToast(toast, 'Item quantity reduced', 'success');
+    }
 };
 
 export const removeFromCartRequest = (index, toast) => (dispatch) => {

@@ -18,10 +18,11 @@ export const BagItemBtn = ({ title, onClick }) => {
 };
 
 
-export const QuantityBtn = ({ text }) => {
+export const QuantityBtn = ({ text, name, onClick }) => {
     return (
         <>
             <Button
+                onClick={onClick}
                 variant={'ghost'}
                 _hover={{ border: '1px solid black' }}
                 border={'1px solid #cecdce'}
@@ -29,6 +30,7 @@ export const QuantityBtn = ({ text }) => {
                 p={'0px'}
                 fontWeight={600}
                 fontSize={'23px'}
+                name={name}
             >
                 {text}
             </Button>
