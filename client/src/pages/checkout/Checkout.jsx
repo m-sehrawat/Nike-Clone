@@ -1,7 +1,7 @@
 import { Box, Flex, Input, Text, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { setToast } from "../../utils/extraFunctions";
-import { isCheckoutFormEmpty, validateEmail } from "../../utils/formValidator";
+import { isCheckoutFormEmpty, validateEmail, validateMobile, validatePinCode } from "../../utils/formValidator";
 import { ContinueBtn } from "./ContinueBtn";
 
 
@@ -13,7 +13,7 @@ export const Checkout = () => {
         addressLine1: "",
         addressLine2: "",
         locality: "",
-        postalCode: "",
+        pinCode: "",
         state: "",
         country: "",
         email: "",
@@ -36,10 +36,19 @@ export const Checkout = () => {
         }
 
         const isEmail = validateEmail(form.email);
-        if(!isEmail.status){
+        if (!isEmail.status) {
             return setToast(toast, isEmail.message, 'error');
         }
 
+        const isPinCode = validatePinCode(form.pinCode);
+        if (!isPinCode.status) {
+            return setToast(toast, isPinCode.message, 'error');
+        }
+
+        const isMobile = validateMobile(form.mobile);
+        if (!isMobile.status) {
+            return setToast(toast, isMobile.message, 'error');
+        }
 
         console.log(form);
     };
@@ -68,7 +77,7 @@ export const Checkout = () => {
                         <Input onChange={handleInputChange} type={'text'} name={'addressLine2'} placeholder={'Address Line 2'} />
                         <Flex gap={'20px'}>
                             <Input onChange={handleInputChange} type={'text'} name={'locality'} placeholder={'City/Locality*'} />
-                            <Input onChange={handleInputChange} type={'number'} name={'postalCode'} placeholder={'Postal Code*'} />
+                            <Input onChange={handleInputChange} type={'number'} name={'pinCode'} placeholder={'Pin Code*'} />
                         </Flex>
                         <Flex gap={'20px'}>
                             <Input onChange={handleInputChange} type={'text'} name={'state'} placeholder={'State/Territory*'} />
