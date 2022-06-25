@@ -1,7 +1,7 @@
 import { Box, Divider, Flex, Input, Text, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { applyCouponRequest } from "../../redux/features/cart/actions";
+import { applyCouponRequest, removeCouponRequest } from "../../redux/features/cart/actions";
 import { couponValidator } from "../../utils/couponValidator";
 import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { CheckoutBtn } from "./CheckoutBtn";
@@ -16,7 +16,16 @@ export const OrderSummary = () => {
     const dispatch = useDispatch();
 
 
-    const handleApplyCoupon = () => {
+    const handleCouponCode = ({ target: { textContent } }) => {
+        switch (textContent) {
+            case 'Apply Coupon':
+                return applyCouponCode();
+            case 'Remove Coupon':
+                return dispatch(removeCouponRequest(toast));;
+        };
+    };
+
+    const applyCouponCode = () => {
         if (!coupon) {
             return setToast(toast, 'Please enter coupon code', 'error');
         }
@@ -26,6 +35,7 @@ export const OrderSummary = () => {
         }
         dispatch(applyCouponRequest(discountPercent, toast));
     };
+
 
     return (
         <>
@@ -68,7 +78,7 @@ export const OrderSummary = () => {
                 />
 
                 <CheckoutBtn
-                    onClick={handleApplyCoupon}
+                    onClick={handleCouponCode}
                     name={discount > 0 ? 'Remove Coupon' : 'Apply Coupon'}
                     bgColor={"white"}
                     color={"black"}

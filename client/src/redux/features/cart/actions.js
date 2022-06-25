@@ -1,7 +1,7 @@
 import { setToast } from "../../../utils/extraFunctions";
 import { getCartTotal } from "../../../utils/getCartTotal";
 import { getItem, setItem } from "../../../utils/localstorage";
-import { ADD_TO_CART_SUCCESS, APPLY_COUPON_SUCCESS, REMOVE_FROM_CART } from "./actionTypes";
+import { ADD_TO_CART_SUCCESS, APPLY_COUPON_SUCCESS, REMOVE_COUPON_SUCCESS, REMOVE_FROM_CART } from "./actionTypes";
 
 
 export const addToCartSuccess = (payload) => {
@@ -14,6 +14,10 @@ export const removeFromCart = (payload) => {
 
 export const applyCouponSuccess = (payload) => {
     return { type: APPLY_COUPON_SUCCESS, payload };
+};
+
+export const removeCouponSuccess = (payload) => {
+    return { type: REMOVE_COUPON_SUCCESS, payload };
 };
 
 
@@ -43,4 +47,12 @@ export const applyCouponRequest = (discountPercent, toast) => (dispatch) => {
     setItem('orderSummary', orderSummary);
     dispatch(applyCouponSuccess(orderSummary));
     setToast(toast, 'Coupon Applied Successfully', 'success', 2000, `You got ${discountPercent}% discount`);
+};
+
+export const removeCouponRequest = (toast) => (dispatch) => {
+    const cartData = getItem('cartProducts');
+    const orderSummary = getCartTotal(cartData, 0);
+    setItem('orderSummary', orderSummary);
+    dispatch(removeCouponSuccess(orderSummary));
+    setToast(toast, 'Coupon Removed Successfully', 'success');
 };
