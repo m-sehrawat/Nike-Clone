@@ -21,7 +21,7 @@ export const OrderSummary = () => {
             case 'Apply Coupon':
                 return applyCouponCode();
             case 'Remove Coupon':
-                return dispatch(removeCouponRequest(toast));;
+                return removeCouponCode();
         };
     };
 
@@ -35,6 +35,11 @@ export const OrderSummary = () => {
         }
         dispatch(applyCouponRequest(discountPercent, toast));
     };
+
+    const removeCouponCode = () => {
+        dispatch(removeCouponRequest(toast));
+        setCoupon('');
+    }
 
 
     return (
@@ -78,6 +83,7 @@ export const OrderSummary = () => {
                     onChange={(e) => { setCoupon(e.target.value) }}
                     placeholder={'Coupon'}
                     disabled={discount > 0}
+                    value={coupon}
                     type={'text'}
                     mb={'20px'}
                 />
