@@ -53,6 +53,7 @@ export const OrderSummary = () => {
             setToast(toast, 'Please login first', 'error');
             return navigate('/auth');
         }
+        navigate('/checkout');
     };
 
 
