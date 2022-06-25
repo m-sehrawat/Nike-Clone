@@ -21,7 +21,7 @@ export const OrderSummary = () => {
             case 'Apply Coupon':
                 return applyCouponCode();
             case 'Remove Coupon':
-                return dispatch(removeCouponRequest(toast));;
+                return removeCouponCode();
         };
     };
 
@@ -35,6 +35,11 @@ export const OrderSummary = () => {
         }
         dispatch(applyCouponRequest(discountPercent, toast));
     };
+
+    const removeCouponCode = () => {
+        dispatch(removeCouponRequest(toast));
+        setCoupon('');
+    }
 
 
     return (
@@ -50,8 +55,13 @@ export const OrderSummary = () => {
                     </Flex>
 
                     <Flex mt={'5px'} justifyContent={'space-between'}>
-                        <Text>Estimated Delivery</Text>
-                        <Text>₹{numberWithCommas(shipping)}.00</Text>
+                        <Text >Estimated Delivery</Text>
+                        <Text
+                            title={'Free delivery applies to orders of ₹14,000 or more'}
+                            cursor={'pointer'}
+                        >
+                            ₹{numberWithCommas(shipping)}.00
+                        </Text>
                     </Flex>
 
                     <Flex mt={'5px'} justifyContent={'space-between'}>
@@ -73,6 +83,7 @@ export const OrderSummary = () => {
                     onChange={(e) => { setCoupon(e.target.value) }}
                     placeholder={'Coupon'}
                     disabled={discount > 0}
+                    value={coupon}
                     type={'text'}
                     mb={'20px'}
                 />
