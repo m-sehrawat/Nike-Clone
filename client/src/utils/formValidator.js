@@ -9,13 +9,10 @@ export const isSignupFormEmpty = ({ firstName, lastName, email, password, dateOf
 };
 
 export const isLoginFormEmpty = ({ email, password }) => {
-
     if (!email || !password) {
         return { status: false, message: "Please fill all the details" };
-
-    } else {
-        return { status: true };
     }
+    return { status: true };
 };
 
 
@@ -55,6 +52,36 @@ export const validatePassword = (password) => {
 
     if (errors.length > 0) {
         return { status: false, message: errors.join(", ") };
+    }
+    return { status: true };
+};
+
+
+export const isCheckoutFormEmpty = (obj) => {
+
+    const { firstName, lastName, addressLine1, locality, pinCode, state, country, email, mobile } = obj;
+
+    if (!firstName || !lastName || !addressLine1 || !locality || !pinCode || !state || !country || !email || !mobile) {
+
+        return { status: false, message: 'Please fill the mandatory details' };
+    }
+    return { status: true };
+};
+
+
+export const validatePinCode = (num) => {
+
+    if (num.length !== 6) {
+        return { status: false, message: 'Please provide 6 digit valid pincode' };
+    }
+    return { status: true };
+};
+
+
+export const validateMobile = (num) => {
+
+    if (num.length !== 10) {
+        return { status: false, message: 'Please provide 10 digit valid mobile number' };
     }
     return { status: true };
 };

@@ -32,7 +32,7 @@ export const ItemBox = ({ title, description, img, price, quantity, index, data 
             return dispatch(removeFromCartRequest(index, toast));
         }
         return dispatch(addToCartRequest(data, toast, name));
-    }
+    };
 
     return (
         <>

@@ -5,15 +5,18 @@ import { applyCouponRequest, removeCouponRequest } from "../../redux/features/ca
 import { couponValidator } from "../../utils/couponValidator";
 import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { CheckoutBtn } from "./CheckoutBtn";
+import { useNavigate } from 'react-router-dom';
 
 
 export const OrderSummary = () => {
 
     const { subTotal, quantity, total, shipping, discount } = useSelector((state) => state.cartReducer.orderSummary);
+    const token = useSelector((state) => state.authReducer.token);
 
     const [coupon, setCoupon] = useState("");
     const toast = useToast();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
 
     const handleCouponCode = ({ target: { textContent } }) => {
@@ -26,6 +29,10 @@ export const OrderSummary = () => {
     };
 
     const applyCouponCode = () => {
+        if (!token) {
+            setToast(toast, 'Please login first', 'error');
+            return navigate('/auth');
+        }
         if (!coupon) {
             return setToast(toast, 'Please enter coupon code', 'error');
         }
@@ -39,7 +46,15 @@ export const OrderSummary = () => {
     const removeCouponCode = () => {
         dispatch(removeCouponRequest(toast));
         setCoupon('');
-    }
+    };
+
+    const handleMemberCheckout = () => {
+        if (!token) {
+            setToast(toast, 'Please login first', 'error');
+            return navigate('/auth');
+        }
+        navigate('/checkout');
+    };
 
 
     return (
@@ -103,7 +118,7 @@ export const OrderSummary = () => {
                 />
 
                 <CheckoutBtn
-                    onClick={() => { console.log('hello'); }}
+                    onClick={handleMemberCheckout}
                     name={"Member Checkout"}
                     bgColor={"black"}
                     color={"white"}

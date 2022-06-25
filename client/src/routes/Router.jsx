@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { AuthPage } from "../pages/auth/AuthPage";
 import { Cart } from "../pages/cart/Cart";
+import { Checkout } from "../pages/checkout/Checkout";
 import { Description } from "../pages/description/Description";
 import { Favourite } from "../pages/favourite/Favourite";
 import { Footer } from "../pages/footer/Footer";
@@ -26,6 +27,7 @@ export const Router = () => {
                 <Route path="/auth" element={<Public><AuthPage /></Public>} />
                 <Route path="/favourite" element={<Private><Favourite /></Private>} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<Private><Checkout /></Private>} />
             </Routes>
 
             <Footer />
