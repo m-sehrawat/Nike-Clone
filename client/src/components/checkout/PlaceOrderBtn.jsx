@@ -1,10 +1,11 @@
 import { Input } from "@chakra-ui/react";
 
 
-export const ContinueBtn = () => {
+export const PlaceOrderBtn = ({ onClick }) => {
     return (
         <>
             <Input
+                onClick={onClick}
                 as={'button'}
                 type={'submit'}
                 h={"60px"}
@@ -17,7 +18,7 @@ export const ContinueBtn = () => {
                 mt={'20px'}
                 _hover={{ borderColor: 'black' }}
             >
-                Continue
+                Place Order
             </Input>
         </>
     );
