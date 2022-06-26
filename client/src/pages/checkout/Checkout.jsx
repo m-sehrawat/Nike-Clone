@@ -36,27 +36,32 @@ export const Checkout = () => {
     const handleFormValidation = (form) => {
         const isEmpty = isCheckoutFormEmpty(form);
         if (!isEmpty.status) {
-            return setToast(toast, isEmpty.message, 'error');
+            setToast(toast, isEmpty.message, 'error');
+            return isEmpty.status;
         }
         const isEmail = validateEmail(form.email);
         if (!isEmail.status) {
-            return setToast(toast, isEmail.message, 'error');
+            setToast(toast, isEmail.message, 'error');
+            return isEmail.status;
         }
         const isPinCode = validatePinCode(form.pinCode);
         if (!isPinCode.status) {
-            return setToast(toast, isPinCode.message, 'error');
+            setToast(toast, isPinCode.message, 'error');
+            return isPinCode.status;
         }
         const isMobile = validateMobile(form.mobile);
         if (!isMobile.status) {
-            return setToast(toast, isMobile.message, 'error');
+            setToast(toast, isMobile.message, 'error');
+            return isMobile.status;
         }
+        return true;
     };
 
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        handleFormValidation(form);
+        if (!handleFormValidation(form)) return;
 
         displayRazorpay(form, orderSummary.total);
 
