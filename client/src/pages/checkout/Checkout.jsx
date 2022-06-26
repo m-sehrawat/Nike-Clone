@@ -78,7 +78,7 @@ export const Checkout = () => {
             >
                 <CheckoutForm onChange={handleInputChange} />
 
-                <CheckoutOrderSummary onClick={handleFormSubmit} {...orderSummary} />
+                <CheckoutOrderSummary onClick={handleFormSubmit} orderSummary={orderSummary} />
 
             </Box>
         </>
