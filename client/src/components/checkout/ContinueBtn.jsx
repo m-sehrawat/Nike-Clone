@@ -17,7 +17,7 @@ export const ContinueBtn = () => {
                 mt={'20px'}
                 _hover={{ borderColor: 'black' }}
             >
-                Continue
+                Place Order
             </Input>
         </>
     );

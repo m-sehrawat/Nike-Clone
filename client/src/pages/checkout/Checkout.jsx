@@ -2,10 +2,14 @@ import { Box, Flex, Input, Text, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { setToast } from "../../utils/extraFunctions";
 import { isCheckoutFormEmpty, validateEmail, validateMobile, validatePinCode } from "../../utils/formValidator";
-import { ContinueBtn } from "./ContinueBtn";
+import { ContinueBtn } from "../../components/checkout/ContinueBtn";
+import { shallowEqual, useSelector } from 'react-redux';
+import { displayRazorpay } from "../payment/razorpay";
 
 
 export const Checkout = () => {
+
+    const { orderSummary, cartProducts } = useSelector((state) => state.cartReducer, shallowEqual);
 
     const initState = {
         firstName: "",
@@ -30,26 +34,28 @@ export const Checkout = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        const isEmpty = isCheckoutFormEmpty(form);
-        if (!isEmpty.status) {
-            return setToast(toast, isEmpty.message, 'error');
-        }
+        // const isEmpty = isCheckoutFormEmpty(form);
+        // if (!isEmpty.status) {
+        //     return setToast(toast, isEmpty.message, 'error');
+        // }
 
-        const isEmail = validateEmail(form.email);
-        if (!isEmail.status) {
-            return setToast(toast, isEmail.message, 'error');
-        }
+        // const isEmail = validateEmail(form.email);
+        // if (!isEmail.status) {
+        //     return setToast(toast, isEmail.message, 'error');
+        // }
 
-        const isPinCode = validatePinCode(form.pinCode);
-        if (!isPinCode.status) {
-            return setToast(toast, isPinCode.message, 'error');
-        }
+        // const isPinCode = validatePinCode(form.pinCode);
+        // if (!isPinCode.status) {
+        //     return setToast(toast, isPinCode.message, 'error');
+        // }
 
-        const isMobile = validateMobile(form.mobile);
-        if (!isMobile.status) {
-            return setToast(toast, isMobile.message, 'error');
-        }
+        // const isMobile = validateMobile(form.mobile);
+        // if (!isMobile.status) {
+        //     return setToast(toast, isMobile.message, 'error');
+        // }
 
+        displayRazorpay(form, orderSummary.total);
+        
         console.log(form);
     };
 
