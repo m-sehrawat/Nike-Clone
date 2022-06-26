@@ -68,7 +68,12 @@ export const Checkout = () => {
         const { data } = await axios.post('/api/payment/order', { amount: orderSummary.total });
 
         //Passing order id to razorpay function
-        initPayment(form, data);
+        initPayment(form, data, orderSummary, cartProducts);
+        
+
+        
+
+        // let res = await axios.post('/order',)
 
         console.log(form);
     };

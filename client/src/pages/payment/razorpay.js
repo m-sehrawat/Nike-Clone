@@ -1,8 +1,11 @@
 import axios from "axios";
 import { nikeLogoPayment } from "../../constants/images";
+import { sendOrderRequest } from "./sendOrderRequest";
 
 
-export const initPayment = async ({ firstname, lastName, mobile, email }, data) => {
+export const initPayment = (form, data, orderSummary, cartProducts) => {
+
+    const { firstname, lastName, mobile, email } = form;
 
     const options = {
         key: 'rzp_test_xntxgn3ZFlbBcL',
@@ -20,14 +23,15 @@ export const initPayment = async ({ firstname, lastName, mobile, email }, data) 
         },
 
         handler: async function (response) {
-            console.log('response:', response)
             try {
                 const { data } = await axios.post('/api/payment/verify', response);
-                console.log('data:', data);
                 alert(data.message);
+
+                sendOrderRequest(form, data, response, orderSummary, cartProducts);
 
             } catch (error) {
                 console.log(error);
+                return { status: false };
             }
         },
 
@@ -40,8 +44,10 @@ export const initPayment = async ({ firstname, lastName, mobile, email }, data) 
     rzp.on('payment.failed', (response) => {
         console.log(response.error);
         alert('Payment failed, please try again');
+        return { status: false };
     });
 
     //Open razorpay window
     rzp.open();
 };
+

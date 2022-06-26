@@ -33,11 +33,24 @@ const orderSchema = new Schema({
         razorpayOrderId: reqString,
         razorpayPaymentId: reqString,
     },
+    shippingDetails: {
+        firstName: reqString,
+        lastName: reqString,
+        addressLine1: reqString,
+        addressLine2: { type: String, required: false },
+        locality: reqString,
+        pinCode: reqNumber,
+        state: reqString,
+        country: reqString,
+        email: reqString,
+        mobile: reqNumber
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'user',
         required: true
     }
+
 }, {
     versionKey: false,
     timestamps: true
