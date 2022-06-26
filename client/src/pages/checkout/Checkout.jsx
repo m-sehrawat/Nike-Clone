@@ -12,6 +12,7 @@ import axios from "axios";
 export const Checkout = () => {
 
     const { orderSummary, cartProducts } = useSelector((state) => state.cartReducer, shallowEqual);
+    const token = useSelector((state) => state.authReducer.token);
 
     const initState = {
         firstName: "",
@@ -68,14 +69,8 @@ export const Checkout = () => {
         const { data } = await axios.post('/api/payment/order', { amount: orderSummary.total });
 
         //Passing order id to razorpay function
-        initPayment(form, data, orderSummary, cartProducts);
-        
+        initPayment(form, data, orderSummary, cartProducts, token);
 
-        
-
-        // let res = await axios.post('/order',)
-
-        console.log(form);
     };
 
 

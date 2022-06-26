@@ -1,9 +1,11 @@
 const router = require('express').Router();
+const authorization = require('../middlewares/authorization');
 const Order = require('../models/order.model');
 
 
-router.post('/', async (req, res) => {
+router.post('/', authorization, async (req, res) => {
     try {
+        console.log(req.body);
         const order = await Order.create({ ...req.body, user: req.user._id });
 
         return res.status(201).json(order);

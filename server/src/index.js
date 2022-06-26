@@ -30,7 +30,7 @@ app.use("/allProducts", allProductsController);
 app.use("/clothData", clothDataController);
 app.use("/shoeData", shoeDataController);
 app.use("/favourite", favouriteController);
-app.use("/orders", orderController);
+app.use("/order", orderController);
 
 
 module.exports = app;

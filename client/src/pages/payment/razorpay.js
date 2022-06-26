@@ -3,15 +3,15 @@ import { nikeLogoPayment } from "../../constants/images";
 import { sendOrderRequest } from "./sendOrderRequest";
 
 
-export const initPayment = (form, data, orderSummary, cartProducts) => {
+export const initPayment = (form, orderDetails, orderSummary, cartProducts, token) => {
 
     const { firstname, lastName, mobile, email } = form;
 
     const options = {
         key: 'rzp_test_xntxgn3ZFlbBcL',
-        order_id: data.id,
-        amount: data.amount,
-        currency: data.currency,
+        order_id: orderDetails.id,
+        amount: orderDetails.amount,
+        currency: orderDetails.currency,
         image: nikeLogoPayment,
         name: 'Nike Clone',
         description: 'Thanks for purchasing',
@@ -27,7 +27,7 @@ export const initPayment = (form, data, orderSummary, cartProducts) => {
                 const { data } = await axios.post('/api/payment/verify', response);
                 alert(data.message);
 
-                sendOrderRequest(form, data, response, orderSummary, cartProducts);
+                sendOrderRequest(form, orderDetails.id, response, orderSummary, cartProducts, token);
 
             } catch (error) {
                 console.log(error);
