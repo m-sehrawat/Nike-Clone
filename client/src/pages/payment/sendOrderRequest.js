@@ -1,11 +1,13 @@
 import axios from "axios";
+import { setToast } from "../../utils/extraFunctions";
 
-export const sendOrderRequest = async (form, orderId, response, orderSummary, cartProducts, token) => {
+
+export const sendOrderRequest = async (shippingDetails, orderId, response, orderSummary, cartProducts, token, toast) => {
 
     const payload = {
         orderSummary,
         cartProducts,
-        shippingDetails: form,
+        shippingDetails,
         paymentDetails: {
             orderId,
             razorpayOrderId: response.razorpay_order_id,
@@ -13,15 +15,12 @@ export const sendOrderRequest = async (form, orderId, response, orderSummary, ca
         }
     };
 
-    console.log('payload:', payload);
-
     try {
-        let res = await axios.post('/order', payload, { headers: { 'Authorization': `Bearer ${token}` } })
-        console.log('res:', res.data)
-        alert('done');
+        const { data } = await axios.post('/order', payload, { headers: { 'Authorization': `Bearer ${token}` } });
+
+        setToast(toast, 'Order placed successfully', 'success');
+
     } catch (err) {
         console.log(err);
     }
-
-
-}
+};

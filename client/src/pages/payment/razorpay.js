@@ -1,9 +1,10 @@
 import axios from "axios";
 import { nikeLogoPayment } from "../../constants/images";
+import { setToast } from "../../utils/extraFunctions";
 import { sendOrderRequest } from "./sendOrderRequest";
 
 
-export const initPayment = (form, orderDetails, orderSummary, cartProducts, token) => {
+export const initPayment = (form, orderDetails, orderSummary, cartProducts, token, toast) => {
 
     const { firstname, lastName, mobile, email } = form;
 
@@ -25,9 +26,10 @@ export const initPayment = (form, orderDetails, orderSummary, cartProducts, toke
         handler: async function (response) {
             try {
                 const { data } = await axios.post('/api/payment/verify', response);
-                alert(data.message);
+                
+                setToast(toast, data.message, 'success');
 
-                sendOrderRequest(form, orderDetails.id, response, orderSummary, cartProducts, token);
+                sendOrderRequest(form, orderDetails.id, response, orderSummary, cartProducts, token, toast);
 
             } catch (error) {
                 console.log(error);
