@@ -33,6 +33,9 @@ export const OrderSummary = () => {
             setToast(toast, 'Please login first', 'error');
             return navigate('/auth');
         }
+        if (total === 0) {
+            return setToast(toast, 'Please add some products in the cart', 'error');
+        }
         if (!coupon) {
             return setToast(toast, 'Please enter coupon code', 'error');
         }
@@ -52,6 +55,9 @@ export const OrderSummary = () => {
         if (!token) {
             setToast(toast, 'Please login first', 'error');
             return navigate('/auth');
+        }
+        if (total === 0) {
+            return setToast(toast, 'Please add some products in the cart', 'error');
         }
         navigate('/checkout');
     };
