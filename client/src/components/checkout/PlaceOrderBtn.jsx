@@ -1,7 +1,7 @@
 import { Input } from "@chakra-ui/react";
 
 
-export const ContinueBtn = ({ onClick }) => {
+export const PlaceOrderBtn = ({ onClick }) => {
     return (
         <>
             <Input
