@@ -1,10 +1,11 @@
-import { Box, Flex, Input, Text, useToast } from "@chakra-ui/react";
+import { Box, Divider, Flex, Input, Text, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { setToast } from "../../utils/extraFunctions";
 import { isCheckoutFormEmpty, validateEmail, validateMobile, validatePinCode } from "../../utils/formValidator";
 import { ContinueBtn } from "../../components/checkout/ContinueBtn";
 import { shallowEqual, useSelector } from 'react-redux';
 import { displayRazorpay } from "../payment/razorpay";
+import { CheckoutForm } from "../../components/checkout/CheckoutForm";
 
 
 export const Checkout = () => {
@@ -25,6 +26,7 @@ export const Checkout = () => {
     };
 
     const [form, setForm] = useState(initState);
+    console.log('form:', form)
     const toast = useToast();
 
     const handleInputChange = ({ target: { name, value } }) => {
@@ -55,7 +57,7 @@ export const Checkout = () => {
         // }
 
         displayRazorpay(form, orderSummary.total);
-        
+
         console.log(form);
     };
 
@@ -64,38 +66,58 @@ export const Checkout = () => {
     return (
         <>
             <Box
-                maxW={'500px'}
-                m={'20px auto 80px'}
+                display={'grid'}
+                gap={['40px', '40px', '40px', '10%', '10%']}
+                my={'30px'}
+                maxW={'1200px'}
+                mx={'auto'}
+                p={'20px'}
+                gridTemplateColumns={['100%', '100%', '100%', '60% 30%', '60% 30%']}
             >
-                <Text
-                    fontSize={'20px'}
-                    fontWeight={600}
-                    mb={'20px'}
-                >
-                    Enter your name and address:
-                </Text>
+                <CheckoutForm onChange={handleInputChange} />
 
-                <form onSubmit={handleFormSubmit}>
-                    <Flex flexDirection={'column'} gap={'20px'}>
-                        <Input onChange={handleInputChange} type={'text'} name={'firstName'} placeholder={'First Name*'} />
-                        <Input onChange={handleInputChange} type={'text'} name={'lastName'} placeholder={'Last Name*'} />
-                        <Input onChange={handleInputChange} type={'text'} name={'addressLine1'} placeholder={'Address Line 1*'} />
-                        <Input onChange={handleInputChange} type={'text'} name={'addressLine2'} placeholder={'Address Line 2'} />
-                        <Flex gap={'20px'}>
-                            <Input onChange={handleInputChange} type={'text'} name={'locality'} placeholder={'City/Locality*'} />
-                            <Input onChange={handleInputChange} type={'number'} name={'pinCode'} placeholder={'Pin Code*'} />
-                        </Flex>
-                        <Flex gap={'20px'}>
-                            <Input onChange={handleInputChange} type={'text'} name={'state'} placeholder={'State/Territory*'} />
-                            <Input onChange={handleInputChange} type={'text'} name={'country'} placeholder={'Country*'} />
-                        </Flex>
-                        <Text fontSize={'20px'} fontWeight={600} mt={'30px'}>What's your contact information?</Text>
-                        <Input onChange={handleInputChange} type={'email'} name={'email'} placeholder={'Email*'} />
-                        <Input onChange={handleInputChange} type={'number'} name={'mobile'} placeholder={'Mobile*'} />
 
-                        <ContinueBtn />
+                <Box border={'1px solid red'}>
+                    <Text fontSize={'20px'} fontWeight={600}>Summary</Text>
+
+                    <Box my={'20px'} fontSize={'18px'}>
+                        <Flex justifyContent={'space-between'}>
+                            <Text>Subtotal</Text>
+                            {/* <Text>₹{numberWithCommas(subTotal)}.00</Text> */}
+                        </Flex>
+
+                        <Flex mt={'5px'} justifyContent={'space-between'}>
+                            <Text>Quantity</Text>
+                            {/* <Text>{quantity}</Text> */}
+                        </Flex>
+
+                        <Flex mt={'5px'} justifyContent={'space-between'}>
+                            <Text >Estimated Delivery</Text>
+                            <Text
+                                title={'Free delivery applies to orders of ₹14,000 or more'}
+                                cursor={'pointer'}
+                            >
+                                {/* ₹{numberWithCommas(shipping)}.00 */}
+                            </Text>
+                        </Flex>
+
+                        <Flex mt={'5px'} justifyContent={'space-between'}>
+                            <Text>Discount</Text>
+                            {/* <Text>₹{numberWithCommas(discount)}.00</Text> */}
+                        </Flex>
+                    </Box>
+
+                    <Divider />
+
+                    <Flex fontSize={'18px'} justifyContent={'space-between'} my={'20px'}>
+                        <Text>Total</Text>
+                        {/* <Text fontWeight={500} >₹{numberWithCommas(total)}.00</Text> */}
                     </Flex>
-                </form>
+
+                    <Divider mb={'20px'} />
+
+                    <ContinueBtn onClick={handleFormSubmit} />
+                </Box>
 
             </Box>
         </>

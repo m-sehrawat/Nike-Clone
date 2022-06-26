@@ -1,10 +1,11 @@
 import { Input } from "@chakra-ui/react";
 
 
-export const ContinueBtn = () => {
+export const ContinueBtn = ({ onClick }) => {
     return (
         <>
             <Input
+                onClick={onClick}
                 as={'button'}
                 type={'submit'}
                 h={"60px"}
