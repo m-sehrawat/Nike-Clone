@@ -1,13 +1,8 @@
 const express = require('express');
-
 const app = express();
-
 const cors = require('cors');
 
-app.use(cors({
-    origin: "http://localhost:3000"
-}));
-
+app.use(cors());
 app.use(express.json());
 
 
@@ -19,9 +14,13 @@ const clothDataController = require("./controllers/clothData.controller");
 const shoeDataController = require("./controllers/shoeData.controller");
 const favouriteController = require("./controllers/favourite.controller");
 const { signup, login } = require('./controllers/auth.controller');
+const paymentController = require('./controllers/payment.controller');
 
 app.post("/signup", signup);
 app.post("/login", login);
+
+//Razorpay payment
+app.use("/api/payment", paymentController);
 
 app.use("/men", menController);
 app.use("/women", womenController);

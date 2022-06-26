@@ -4,8 +4,9 @@ import { CheckoutForm } from "../../components/checkout/CheckoutForm";
 import { Box, useToast } from "@chakra-ui/react";
 import { setToast } from "../../utils/extraFunctions";
 import { shallowEqual, useSelector } from 'react-redux';
-import { displayRazorpay } from "../payment/razorpay";
+import { initPayment } from "../payment/razorpay";
 import { useState } from "react";
+import axios from "axios";
 
 
 export const Checkout = () => {
@@ -36,32 +37,43 @@ export const Checkout = () => {
     const handleFormValidation = (form) => {
         const isEmpty = isCheckoutFormEmpty(form);
         if (!isEmpty.status) {
-            return setToast(toast, isEmpty.message, 'error');
+            setToast(toast, isEmpty.message, 'error');
+            return isEmpty.status;
         }
         const isEmail = validateEmail(form.email);
         if (!isEmail.status) {
-            return setToast(toast, isEmail.message, 'error');
+            setToast(toast, isEmail.message, 'error');
+            return isEmail.status;
         }
         const isPinCode = validatePinCode(form.pinCode);
         if (!isPinCode.status) {
-            return setToast(toast, isPinCode.message, 'error');
+            setToast(toast, isPinCode.message, 'error');
+            return isPinCode.status;
         }
         const isMobile = validateMobile(form.mobile);
         if (!isMobile.status) {
-            return setToast(toast, isMobile.message, 'error');
+            setToast(toast, isMobile.message, 'error');
+            return isMobile.status;
         }
+        return true;
     };
 
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
 
-        handleFormValidation(form);
+        if (!handleFormValidation(form)) return;
 
-        displayRazorpay(form, orderSummary.total);
+        //To get order id
+        const { data } = await axios.post('/api/payment/order', { amount: 1 });
+
+        //Passing order id to razorpay function
+        initPayment(form, data);
 
         console.log(form);
     };
+
+
 
 
 
