@@ -32,6 +32,11 @@ const orderSchema = new Schema({
         orderId: reqString,
         razorpayOrderId: reqString,
         razorpayPaymentId: reqString,
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+        required: true
     }
 }, {
     versionKey: false,
