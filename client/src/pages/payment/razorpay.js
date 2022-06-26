@@ -1,41 +1,40 @@
-import { nikeLogo } from "../../constants/images";
+import axios from "axios";
+import { nikeLogoPayment } from "../../constants/images";
 
 
-export const displayRazorpay = ({ firstName, lastName, email, mobile }, total) => {
+export const initPayment = (data) => {
 
     const options = {
-        key: "rzp_test_xntxgn3ZFlbBcL",
-        amount: (total * 100),
-        currency: 'INR',
+        key: 'rzp_test_xntxgn3ZFlbBcL',
+        order_id: data.id,
+        amount: data.amount,
+        currency: data.currency,
+        image: nikeLogoPayment,
         name: 'Nike Clone',
-        description: 'Thank you for purchasing with Nike Clone',
-        image: nikeLogo,
-        order_id: "order_Jm1jub3lfIRn5e", // order_9A33XWu170gUtm This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        description: 'Thanks for purchasing',
 
-        handler: function (response) {
-            alert(response.razorpay_payment_id);
-            alert(response.razorpay_order_id);
-            alert(response.razorpay_signature)
+        handler: async (response) => {
+            try {
+                const { data } = await axios.post('/api/payment/verify', response);
+                console.log('data:', data);
+                alert(data.message);
+
+            } catch (error) {
+                console.log(error);
+            }
         },
-        prefill: {
-            name: `${firstName} ${lastName}`,
-            email: email,
-            contact: mobile
-        },
+
         theme: { color: "#3399cc" }
     };
 
     const rzp = new window.Razorpay(options);
 
-    rzp.on('payment.failed', function (response) {
-        alert(response.error.code);
-        alert(response.error.description);
-        alert(response.error.source);
-        alert(response.error.step);
-        alert(response.error.reason);
-        alert(response.error.metadata.order_id);
-        alert(response.error.metadata.payment_id);
+    //If payment failed 
+    rzp.on('payment.failed', (response) => {
+        console.log(response.error);
+        alert('Payment failed, please try again');
     });
-    
+
+    //Open razorpay window
     rzp.open();
 };

@@ -1,5 +1,5 @@
-import nikeLogo from '../assets/images/Nike-logo.png';
+import nikeLogo from '../assets/Nike-logo.png';
+import nikeLogoPayment from '../assets/nikeLogoPayment.png'
 
-export {
-    nikeLogo
-}
+
+export { nikeLogo, nikeLogoPayment };

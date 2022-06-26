@@ -4,8 +4,9 @@ import { CheckoutForm } from "../../components/checkout/CheckoutForm";
 import { Box, useToast } from "@chakra-ui/react";
 import { setToast } from "../../utils/extraFunctions";
 import { shallowEqual, useSelector } from 'react-redux';
-import { displayRazorpay } from "../payment/razorpay";
+import { initPayment } from "../payment/razorpay";
 import { useState } from "react";
+import axios from "axios";
 
 
 export const Checkout = () => {
@@ -58,15 +59,21 @@ export const Checkout = () => {
     };
 
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
 
         if (!handleFormValidation(form)) return;
 
-        displayRazorpay(form, orderSummary.total);
+        //To get order id
+        const { data } = await axios.post('/api/payment/order', { amount: orderSummary.total });
+
+        //Passing order id to razorpay function
+        initPayment(data);
 
         console.log(form);
     };
+
+
 
 
 
