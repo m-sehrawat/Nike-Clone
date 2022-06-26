@@ -3,6 +3,9 @@ const Razorpay = require('razorpay');
 const crypto = require('crypto');
 require('dotenv').config();
 
+//Saving the order id to use it for verification purpose
+let order_id;
+
 
 //To create order id
 router.post('/order', async (req, res) => {
@@ -24,6 +27,7 @@ router.post('/order', async (req, res) => {
                 console.log(error);
                 return res.status(500).json({ message: 'Something went wrong', status: 'Failed' });
             }
+            order_id = order.id;
             res.status(201).json(order);
         });
 
@@ -38,10 +42,17 @@ router.post('/order', async (req, res) => {
 router.post('/verify', async (req, res) => {
     try {
         const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body;
+        console.log(req.body);
 
-        const sign = razorpay_payment_id + '|' + razorpay_order_id;
+        const sign = order_id + '|' + razorpay_payment_id;
+        console.log('sign:', sign)
 
-        const expectedSign = crypto.createHmac('sha256', process.env.RAZORPAY_KEY_SECRET).update(sign.toString()).digest('hex');
+        const expectedSign = crypto
+            .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
+            .update(sign.toString())
+            .digest('hex');
+
+        console.log('expectedSign:', expectedSign)
 
         if (razorpay_signature === expectedSign) {
             return res.status(201).json({ message: 'Payment verified successfully' });

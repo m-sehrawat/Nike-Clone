@@ -65,10 +65,10 @@ export const Checkout = () => {
         if (!handleFormValidation(form)) return;
 
         //To get order id
-        const { data } = await axios.post('/api/payment/order', { amount: orderSummary.total });
+        const { data } = await axios.post('/api/payment/order', { amount: 1 });
 
         //Passing order id to razorpay function
-        initPayment(data);
+        initPayment(form, data);
 
         console.log(form);
     };

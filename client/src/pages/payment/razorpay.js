@@ -2,7 +2,7 @@ import axios from "axios";
 import { nikeLogoPayment } from "../../constants/images";
 
 
-export const initPayment = (data) => {
+export const initPayment = async ({ firstname, lastName, mobile, email }, data) => {
 
     const options = {
         key: 'rzp_test_xntxgn3ZFlbBcL',
@@ -13,7 +13,14 @@ export const initPayment = (data) => {
         name: 'Nike Clone',
         description: 'Thanks for purchasing',
 
-        handler: async (response) => {
+        prefill: {
+            name: `${firstname} ${lastName}`,
+            email: email,
+            contact: mobile
+        },
+
+        handler: async function (response) {
+            console.log('response:', response)
             try {
                 const { data } = await axios.post('/api/payment/verify', response);
                 console.log('data:', data);
