@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import axios from "axios";
 import { Summary } from "../../components/orders/Summary";
+import { OrderBox } from "../../components/orders/OrderBox";
 
 
 export const Order = () => {
@@ -60,9 +61,11 @@ export const Order = () => {
                                 <Box py={'15px'} px={'25px'} border={'1px solid red'}>
                                     <Text fontSize={'20px'} fontWeight={600}>Ordered Items</Text>
                                     <Divider />
-                                    {/* {item.cartProducts.map((e) => (
-                                        <OrderBox key={e._id} product={e} />
-                                    ))} */}
+
+                                    {item.cartProducts.map((product) => (
+                                        <OrderBox key={product._id} {...product} />
+                                    ))}
+
                                 </Box>
 
                                 <OrderAddress  {...item.shippingDetails} />
