@@ -1,5 +1,5 @@
 import { Box, Center, Grid, Image, Text } from "@chakra-ui/react";
-import { numberWithCommas, shortString } from "../../utils/extrafunctions";
+import { numberWithCommas, shortString } from '../../utils/extraFunctions';
 
 
 export const OrderBox = ({ img, title, price, quantity }) => {
