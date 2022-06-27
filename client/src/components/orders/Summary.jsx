@@ -4,7 +4,6 @@ import { numberWithCommas } from "../../utils/extrafunctions";
 import { OrderPageText } from "./OrderPageText";
 
 
-
 export const Summary = ({ subTotal, discount, quantity, total, shipping, createdAt, orderId, razorpayPaymentId }) => {
 
     const { date, time } = dateFormator(createdAt);
@@ -12,7 +11,9 @@ export const Summary = ({ subTotal, discount, quantity, total, shipping, created
     return (
         <>
             <Box py={'15px'} px={'25px'} border={'1px solid red'}>
+
                 <Text fontSize={'20px'} fontWeight={600}>Summary</Text>
+                
                 <Divider />
 
                 <Flex flexDirection={'column'} gap={'5px'} my={'20px'} fontSize={'18px'}>

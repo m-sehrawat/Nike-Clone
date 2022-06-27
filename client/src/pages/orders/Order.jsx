@@ -57,14 +57,13 @@ export const Order = () => {
                         <Box key={item._id}>
                             <Grid templateColumns={['100%', '48% 48%', '48% 48%', '31% 30% 31%']} gap={['30px', '4%', '4%', '4%']} >
 
-                                {/* <Box className="shadow">
-                                    <Text mt={'15px'} fontWeight={600} fontSize={'25px'} mb={'10px'} textAlign={'center'}>ORDERED ITEMS</Text>
+                                <Box py={'15px'} px={'25px'} border={'1px solid red'}>
+                                    <Text fontSize={'20px'} fontWeight={600}>Ordered Items</Text>
                                     <Divider />
-                                    {item.product.map((e) => (
+                                    {/* {item.cartProducts.map((e) => (
                                         <OrderBox key={e._id} product={e} />
-                                    ))}
-                                </Box> */}
-
+                                    ))} */}
+                                </Box>
 
                                 <OrderAddress  {...item.shippingDetails} />
 
@@ -73,7 +72,7 @@ export const Order = () => {
                                     {...item.paymentDetails}
                                     {...item.orderSummary}
                                 />
-                                
+
                             </Grid>
 
                             <Divider my={'30px'} />
