@@ -37,6 +37,17 @@ export const Order = () => {
     }, [token]);
 
 
+    if (data.length === 0) {
+        return (
+            <Box >
+                <Center h={'40vh'}>
+                    <Text fontSize={'20px'}>Your orders will be displayed here.</Text>
+                </Center>
+            </Box>
+        );
+    }
+
+
     return isLoading ? (
         <Loading />
     ) : isError ? (
