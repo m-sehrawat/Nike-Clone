@@ -13,16 +13,16 @@ body::-webkit-scrollbar-thumb {
 	background-color: #808080;
 }
 
-/* .imgAnimation {
+.imgAnimation {
 	transition: all 1s ease-in-out;
 }
 
 .imgAnimation:hover {
 	transform: scale(1.2);
-} */
+}
 
 
-/* .typeWritertheme {
+.typeWritertheme {
 	border-right: 3px solid white;
 	width: 0ch;
 	white-space: nowrap;
@@ -38,4 +38,4 @@ body::-webkit-scrollbar-thumb {
 	50% {
 		width: 28ch;
 	}
-} */
+}
