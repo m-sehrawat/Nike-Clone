@@ -10,7 +10,7 @@ import { theme } from './theme';
 
 
 
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://mohit-nike-clone.herokuapp.com/";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
