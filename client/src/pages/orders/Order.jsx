@@ -22,7 +22,8 @@ export const Order = () => {
     const handleOrdersGetRequest = async (token) => {
         try {
             setIsLoading(true);
-            const { data } = await axios.get('/order', { headers: { 'Authorization': `Bearer ${token}` } });
+            let { data } = await axios.get('/order', { headers: { 'Authorization': `Bearer ${token}` } });
+            data = data.reverse();
             setData(data);
             setIsLoading(false);
         } catch (error) {
