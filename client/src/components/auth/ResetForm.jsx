@@ -16,7 +16,7 @@ export const ResetForm = () => {
                         color={'gray'}
                         textAlign={'center'}
                     >
-                        Enter your email to receive instructions on how to reset your password.
+                        This feature is not available now, will be available in future, till then you can create a new account.
                     </Text>
 
                     <Input
