@@ -1,21 +1,14 @@
 import { Box, Center, Divider, Flex, Grid, Heading, Text } from "@chakra-ui/react";
-import { useEffect } from "react";
-import {  useSelector } from 'react-redux';
-
-
 import { OrderAddress } from "../../components/orders/OrderAddress";
-
-import { useState } from "react";
-import axios from "axios";
 import { Loading } from "../../components/loading/Loading";
 import { Error } from "../../components/loading/Error";
+import { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
+import axios from "axios";
 
 
 export const Order = () => {
 
-    // if (orderData.length === 0) {
-    //     return <EmptyList />;
-    // }
 
     const token = useSelector((state) => state.authReducer.token);
     const [isLoading, setIsLoading] = useState(false);
@@ -52,7 +45,7 @@ export const Order = () => {
         <>
             <Box px={'20px'}>
                 <Flex justify={'space-between'} maxW={1200} m={'90px auto 20px'}>
-                    <Center color={'#0863be'}>
+                    <Center>
                         <Heading fontSize={['25px', '35px']}>Orders &nbsp;</Heading>
                         <Text fontSize={['18px', '24px']}> ({data.length})</Text>
                     </Center>
