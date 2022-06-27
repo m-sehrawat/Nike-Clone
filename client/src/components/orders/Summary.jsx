@@ -1,7 +1,7 @@
 import { Box, Divider, Flex, Text } from "@chakra-ui/react";
 import { dateFormator } from "../../utils/dateFormator";
 import { numberWithCommas } from "../../utils/extrafunctions";
-import { OrderPageText } from "./AddressText";
+import { OrderPageText } from "./OrderPageText";
 
 
 
