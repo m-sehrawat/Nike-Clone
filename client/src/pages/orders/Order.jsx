@@ -68,7 +68,12 @@ export const Order = () => {
 
                                 <OrderAddress  {...item.shippingDetails} />
 
-                                <Summary createdAt={item.createdAt}  {...item.orderSummary} />
+                                <Summary
+                                    createdAt={item.createdAt}
+                                    {...item.paymentDetails}
+                                    {...item.orderSummary}
+                                />
+                                
                             </Grid>
 
                             <Divider my={'30px'} />

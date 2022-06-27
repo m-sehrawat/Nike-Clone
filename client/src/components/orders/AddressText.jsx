@@ -8,3 +8,15 @@ export const AddressText = ({ title, value, fs = '18px', fw }) => {
         </Flex>
     );
 };
+
+export const OrderPageText = ({ name, value }) => {
+
+    return (
+        <>
+            <Flex justifyContent={'space-between'}>
+                <Text>{name}</Text>
+                <Text>{value}</Text>
+            </Flex>
+        </>
+    );
+};

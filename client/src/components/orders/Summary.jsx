@@ -1,64 +1,51 @@
 import { Box, Divider, Flex, Text } from "@chakra-ui/react";
 import { dateFormator } from "../../utils/dateFormator";
 import { numberWithCommas } from "../../utils/extrafunctions";
+import { OrderPageText } from "./AddressText";
 
 
 
-export const Summary = ({ subTotal, discount, quantity, total, shipping, createdAt }) => {
+export const Summary = ({ subTotal, discount, quantity, total, shipping, createdAt, orderId, razorpayPaymentId }) => {
 
     const { date, time } = dateFormator(createdAt);
 
     return (
         <>
-            <Box py={'15px'} px={'25px'}>
+            <Box py={'15px'} px={'25px'} border={'1px solid red'}>
                 <Text fontSize={'20px'} fontWeight={600}>Summary</Text>
                 <Divider />
 
-                <Box my={'20px'} fontSize={'18px'}>
+                <Flex flexDirection={'column'} gap={'5px'} my={'20px'} fontSize={'18px'}>
 
-                    <Flex justifyContent={'space-between'}>
-                        <Text>Order Date</Text>
-                        <Text>{date}</Text>
-                    </Flex>
+                    <OrderPageText name={'Order Date'} value={date} />
 
-                    <Flex mt={'5px'} justifyContent={'space-between'}>
-                        <Text>Order Time</Text>
-                        <Text>{time}</Text>
-                    </Flex>
+                    <OrderPageText name={'Order Time'} value={time} />
 
                     <Divider my={'10px'} />
 
-                    <Flex mt={'5px'} justifyContent={'space-between'}>
-                        <Text>Subtotal</Text>
-                        <Text>₹{numberWithCommas(subTotal)}.00</Text>
-                    </Flex>
+                    <OrderPageText name={'Order ID'} value={orderId} />
 
-                    <Flex mt={'5px'} justifyContent={'space-between'}>
-                        <Text>Quantity</Text>
-                        <Text>{quantity}</Text>
-                    </Flex>
+                    <OrderPageText name={'Payment ID'} value={razorpayPaymentId} />
 
-                    <Flex mt={'5px'} justifyContent={'space-between'}>
+                    <Divider my={'10px'} />
+
+                    <OrderPageText name={'Subtotal'} value={`₹${numberWithCommas(subTotal)}.00`} />
+
+                    <OrderPageText name={'Quantity'} value={quantity} />
+
+                    <Flex justifyContent={'space-between'}>
                         <Text >Estimated Delivery</Text>
-                        <Text
-                            title={'Free delivery applies to orders of ₹14,000 or more'}
-                            cursor={'pointer'}
-                        >
+                        <Text title={'Free delivery applies to orders of ₹14,000 or more'} cursor={'pointer'}>
                             ₹{numberWithCommas(shipping)}.00
                         </Text>
                     </Flex>
 
-                    <Flex mt={'5px'} justifyContent={'space-between'}>
-                        <Text>Discount</Text>
-                        <Text>₹{numberWithCommas(discount)}.00</Text>
-                    </Flex>
-                </Box>
+                    <OrderPageText name={'Discount'} value={`₹${numberWithCommas(discount)}.00`} />
 
-                <Divider />
+                    <Divider my={'10px'} />
 
-                <Flex fontSize={'18px'} justifyContent={'space-between'} my={'20px'}>
-                    <Text>Total</Text>
-                    <Text fontWeight={500} >₹{numberWithCommas(total)}.00</Text>
+                    <OrderPageText name={'Total'} value={`₹${numberWithCommas(total)}.00`} />
+
                 </Flex>
             </Box>
         </>
