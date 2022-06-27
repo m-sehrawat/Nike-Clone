@@ -47,7 +47,7 @@ export const FavouriteItemBox = ({ _id, title, description, price, img, data }) 
                         color={'gray'}
                         my={'2px'}
                     >
-                        {description}
+                        {shortString(description, 20)}
                     </Text>
                     <Button
                         variant={'ghost'}

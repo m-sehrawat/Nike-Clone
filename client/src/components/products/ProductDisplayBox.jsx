@@ -31,7 +31,7 @@ export const ProductDisplayBox = ({ title, description, color, rating, price, si
                         <Text fontSize={['13px', '15px', '17px', '17px', '18px']}>{rating}</Text>
                     </Flex>
 
-                    <DescText>{description}</DescText>
+                    <DescText>{shortString(description, 20)}</DescText>
                     <DescText>{size.join(", ")}</DescText>
                     <DescText>{gender}, {color} Colour</DescText>
                     <PriceText>₹{numberWithCommas(price)}.00</PriceText>
