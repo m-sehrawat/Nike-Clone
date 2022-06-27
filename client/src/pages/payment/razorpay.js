@@ -4,7 +4,7 @@ import { setToast } from "../../utils/extraFunctions";
 import { sendOrderRequest } from "./sendOrderRequest";
 
 
-export const initPayment = (form, orderDetails, orderSummary, cartProducts, token, toast) => {
+export const initPayment = (form, orderDetails, orderSummary, cartProducts, token, toast, dispatch, navigate) => {
 
     const { firstname, lastName, mobile, email } = form;
 
@@ -29,7 +29,7 @@ export const initPayment = (form, orderDetails, orderSummary, cartProducts, toke
                 
                 setToast(toast, data.message, 'success');
 
-                sendOrderRequest(form, orderDetails.id, response, orderSummary, cartProducts, token, toast);
+                sendOrderRequest(form, orderDetails.id, response, orderSummary, cartProducts, token, toast, dispatch, navigate);
 
             } catch (error) {
                 console.log(error);

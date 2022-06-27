@@ -3,10 +3,12 @@ import { CheckoutOrderSummary } from "../../components/checkout/CheckoutOrderSum
 import { CheckoutForm } from "../../components/checkout/CheckoutForm";
 import { Box, useToast } from "@chakra-ui/react";
 import { setToast } from "../../utils/extraFunctions";
-import { shallowEqual, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { initPayment } from "../payment/razorpay";
 import { useState } from "react";
 import axios from "axios";
+import { updateCartDetails } from "../../redux/features/cart/actions";
+import { useNavigate } from "react-router-dom";
 
 
 export const Checkout = () => {
@@ -29,6 +31,8 @@ export const Checkout = () => {
 
     const [form, setForm] = useState(initState);
     const toast = useToast();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
 
     const handleInputChange = ({ target: { name, value } }) => {
@@ -69,7 +73,10 @@ export const Checkout = () => {
         const { data } = await axios.post('/api/payment/order', { amount: orderSummary.total });
 
         //Passing order id to razorpay function
-        initPayment(form, data, orderSummary, cartProducts, token, toast);
+        
+        initPayment(form, data, orderSummary, cartProducts, token, toast, dispatch, navigate);
+
+       
     };
 
 
