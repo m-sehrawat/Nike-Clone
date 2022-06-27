@@ -5,6 +5,7 @@ import { Error } from "../../components/loading/Error";
 import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import axios from "axios";
+import { Summary } from "../../components/orders/Summary";
 
 
 export const Order = () => {
@@ -64,10 +65,10 @@ export const Order = () => {
                                     ))}
                                 </Box> */}
 
-                                {/* <Summary createdAt={item.createdAt} amount={item.amount} /> */}
 
-                                <OrderAddress {...item.shippingDetails} />
+                                <OrderAddress  {...item.shippingDetails} />
 
+                                <Summary createdAt={item.createdAt}  {...item.orderSummary} />
                             </Grid>
 
                             <Divider my={'30px'} />
