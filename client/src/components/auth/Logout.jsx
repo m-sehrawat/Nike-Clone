@@ -30,7 +30,7 @@ export const Logout = () => {
                         <MenuItem onClick={() => { navigate('/favourite') }} icon={<FaRegHeart />} >
                             Wishlist
                         </MenuItem>
-                        <MenuItem icon={<RiLuggageCartLine />} >
+                        <MenuItem onClick={() => { navigate('/orders') }} icon={<RiLuggageCartLine />} >
                             Orders
                         </MenuItem>
 

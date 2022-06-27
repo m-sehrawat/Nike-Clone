@@ -10,7 +10,7 @@ export const Summary = ({ subTotal, discount, quantity, total, shipping, created
 
     return (
         <>
-            <Box py={'15px'} px={'25px'} border={'1px solid red'}>
+            <Box py={'15px'} px={'25px'}>
 
                 <Text fontSize={'20px'} fontWeight={600}>Summary</Text>
                 
