@@ -4,7 +4,7 @@ import { OrderPageText } from "./OrderPageText";
 
 export const OrderAddress = ({ firstName, lastName, email, mobile, addressLine1, addressLine2, locality, state, pinCode, country }) => {
     return (
-        <Box py={'15px'} px={'25px'} border={'1px solid red'}>
+        <Box py={'15px'} px={'25px'}>
 
             <Text fontSize={'20px'} fontWeight={600}>Shipping Address</Text>
 

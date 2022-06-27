@@ -1,23 +1,20 @@
-import { Box, Center, Divider, Flex, Grid, Heading, Text } from "@chakra-ui/react";
+import { Box, Center, Divider, Flex, Grid, Text } from "@chakra-ui/react";
 import { OrderAddress } from "../../components/orders/OrderAddress";
 import { Loading } from "../../components/loading/Loading";
 import { Error } from "../../components/loading/Error";
+import { Summary } from "../../components/orders/Summary";
+import { OrderBox } from "../../components/orders/OrderBox";
 import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import axios from "axios";
-import { Summary } from "../../components/orders/Summary";
-import { OrderBox } from "../../components/orders/OrderBox";
 
 
 export const Order = () => {
-
 
     const token = useSelector((state) => state.authReducer.token);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [data, setData] = useState([]);
-    console.log('data:', data)
-
 
 
     const handleOrdersGetRequest = async (token) => {
@@ -31,8 +28,7 @@ export const Order = () => {
             setIsLoading(false);
             setIsError(true);
         }
-    }
-
+    };
 
     useEffect(() => {
         handleOrdersGetRequest(token);
@@ -46,21 +42,26 @@ export const Order = () => {
     ) : (
         <>
             <Box px={'20px'}>
-                <Flex justify={'space-between'} maxW={1200} m={'90px auto 20px'}>
+                <Flex justify={'space-between'} maxW={1200} m={'20px auto'}>
                     <Center>
-                        <Heading fontSize={['25px', '35px']}>Orders &nbsp;</Heading>
-                        <Text fontSize={['18px', '24px']}> ({data.length})</Text>
+                        <Text fontWeight={600} fontSize={['20px', '25px']}>Orders &nbsp;</Text>
+                        <Text fontSize={['16px', '20px']}> ({data.length})</Text>
                     </Center>
                 </Flex>
 
                 <Box maxW={1200} m={'40px auto'}>
                     {data.map((item) => (
+                        
                         <Box key={item._id}>
-                            <Grid templateColumns={['100%', '48% 48%', '48% 48%', '31% 30% 31%']} gap={['30px', '4%', '4%', '4%']} >
 
-                                <Box py={'15px'} px={'25px'} border={'1px solid red'}>
+                            <Grid
+                                templateColumns={['100%', '100%', '48% 48%', '32% 31% 33%', '31% 30% 31%']}
+                                gap={['20px', '20px', '4%', '2%', '4%']}
+                            >
+
+                                <Box py={'15px'} px={'25px'}>
                                     <Text fontSize={'20px'} fontWeight={600}>Ordered Items</Text>
-                                    <Divider />
+                                    <Divider mb={'20px'} />
 
                                     {item.cartProducts.map((product) => (
                                         <OrderBox key={product._id} {...product} />
