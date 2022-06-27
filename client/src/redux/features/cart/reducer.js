@@ -1,5 +1,5 @@
 import { getItem } from "../../../utils/localstorage";
-import { ADD_TO_CART_SUCCESS, APPLY_COUPON_SUCCESS, REMOVE_COUPON_SUCCESS, REMOVE_FROM_CART } from "./actionTypes";
+import { ADD_TO_CART_SUCCESS, APPLY_COUPON_SUCCESS, REMOVE_COUPON_SUCCESS, REMOVE_FROM_CART, UPDATE_CART_DETAILS } from "./actionTypes";
 
 
 const initState = {
@@ -36,6 +36,18 @@ export const cartReducer = (state = initState, { type, payload }) => {
             return {
                 ...state,
                 orderSummary: { ...state.orderSummary, ...payload },
+            };
+        case UPDATE_CART_DETAILS:
+            return {
+                ...state,
+                cartProducts: getItem('cartProducts') || [],
+                orderSummary: getItem('orderSummary') || {
+                    subTotal: 0,
+                    quantity: 0,
+                    shipping: 0,
+                    discount: 0,
+                    total: 0
+                }
             };
         default:
             return state;
