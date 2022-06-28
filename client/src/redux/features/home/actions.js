@@ -9,6 +9,7 @@ export const getDataSuccessShoe = (payload) => ({ type: GET_DATA_SUCCESS_SHOE, p
 
 export const getDataErrorHome = () => ({ type: GET_DATA_ERROR_HOME });
 
+
 export const getClothData = () => async (dispatch) => {
     try {
         dispatch(getDataLoadingHome());
@@ -18,7 +19,7 @@ export const getClothData = () => async (dispatch) => {
         console.log(err);
         dispatch(getDataErrorHome());
     }
-}
+};
 
 export const getShoeData = () => async (dispatch) => {
     try {
@@ -29,4 +30,4 @@ export const getShoeData = () => async (dispatch) => {
         console.log(err);
         dispatch(getDataErrorHome());
     }
-}
+};

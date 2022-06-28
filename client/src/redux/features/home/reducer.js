@@ -1,6 +1,8 @@
 import { GET_DATA_ERROR_HOME, GET_DATA_LOADING_HOME, GET_DATA_SUCCESS_CLOTH, GET_DATA_SUCCESS_SHOE } from "./actionTypes";
 
+
 const initState = { loading: false, error: false, clothData: [], shoeData: [] };
+
 
 export const homeReducer = (state = initState, { type, payload }) => {
     switch (type) {
@@ -15,4 +17,4 @@ export const homeReducer = (state = initState, { type, payload }) => {
         default:
             return state;
     }
-}
+};
