@@ -9,22 +9,21 @@ import { SortFilters } from "../../components/products/SortFilters";
 import { useNavigate } from "react-router-dom";
 import { getItemSession, setItemSession } from "../../utils/sessionStorage";
 import { ProductDisplayBox } from "../../components/products/ProductDisplayBox";
+import { Loading } from "../../components/loading/Loading";
+import { Error } from "../../components/loading/Error";
 
 
 export const Products = () => {
 
     const { colorMode } = useColorMode();
     const [isFilter, setIsFilter] = useState(true);
-    const { products } = useSelector((state) => state.prodReducer);
+    const { products, isLoading, isError } = useSelector((state) => state.prodReducer);
     const path = getItemSession("path");
     const dispatch = useDispatch();
     const toast = useToast();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        dispatch(getRequest(path));
-    }, [path]);
-
+    
     const resetFilter = () => {
         setIsFilter(!isFilter);
         dispatch(getRequest(path));
@@ -35,6 +34,10 @@ export const Products = () => {
         setItemSession("singleProduct", data);
         navigate("/description");
     };
+
+    useEffect(() => {
+        dispatch(getRequest(path));
+    }, [path]);
 
 
     return (
@@ -92,19 +95,27 @@ export const Products = () => {
                 </Box>}
 
                 <Box minH={'400px'}>
-                    <Grid
-                        gap={[2, 4]}
-                        p={['10px', '10px', '20px', '20px', '20px']}
-                        templateColumns={["repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
-                    >
-                        {products.map((product, index) => (
-                            <ProductDisplayBox
-                                {...product}
-                                key={index}
-                                onClick={() => { handleSingleProduct(product) }}
-                            />
-                        ))}
-                    </Grid>
+
+                    {isLoading ? (
+                        <Loading />
+                    ) : isError ? (
+                        <Error />
+                    ) : (
+                        <Grid
+                            gap={[2, 4]}
+                            p={['10px', '10px', '20px', '20px', '20px']}
+                            templateColumns={["repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
+                        >
+                            {products.map((product, index) => (
+                                <ProductDisplayBox
+                                    {...product}
+                                    key={index}
+                                    onClick={() => { handleSingleProduct(product) }}
+                                />
+                            ))}
+                        </Grid>
+                    )}
+
                 </Box>
 
             </Grid>
