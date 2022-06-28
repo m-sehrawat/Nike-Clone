@@ -40,7 +40,7 @@
 <h4 align="center">Deployed On:</h4>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="vercel" />
+  <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="vercel" />
   <img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" alt="heroku" />
 </p>
 
@@ -53,7 +53,7 @@
   <a href="#Demo">View Demo</a> &#10023;
   <a href="https://github.com/m-sehrawat/Nike-Clone/issues">Report Bug</a> &#10023;
   <a href="#Getting-Started">Getting Started</a> &#10023; <a href="#Install">Installing</a> &#10023;
-  <a href="#Author">Author</a> &#10023;
+  <a href="#📬 Contact">Author</a> &#10023;
 </p>
 
 
@@ -270,7 +270,7 @@ To run this project, you will need to add the following environment variables to
 
 
 
-<h2>📬 Contact</h2>
+## 📬 Contact
 
 If you want to contact me, you can reach me through below handles.
 
