@@ -46,7 +46,7 @@
 
 
 
-<h3 align="center"><a href=""><strong>Want to see live preview »</strong></a></h3>
+<h3 align="center"><a href="https://mohit-nikeclone.netlify.app/"><strong>Want to see live preview »</strong></a></h3>
 
 <p align="center">
   <br />&#10023;
@@ -160,7 +160,7 @@ NIKE30 (for 30% Off)
 
 <h2>Demo</h2>
 
-
+[Click here to see the presentation video of this project](https://www.linkedin.com/posts/m-sehrawat_reactjs-nike-nikecareers-activity-6947552300534042624-me2_?utm_source=linkedin_share&utm_medium=member_desktop_web)
 
 
 <br />
