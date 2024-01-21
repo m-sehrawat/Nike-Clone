@@ -67,7 +67,7 @@ export const Footer = () => {
                     />
                     <IconLink
                         icon={FaLinkedin}
-                        link={"https://www.linkedin.com/in/m-sehrawat/"}
+                        link={"https://www.linkedin.com/in/mohitsehrawat/"}
                     />
                 </Flex>
 
