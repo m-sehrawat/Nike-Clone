@@ -12,7 +12,7 @@ import { theme } from './theme';
 
 // axios.defaults.baseURL = "http://localhost:8080";
 
-axios.defaults.baseURL = "https://mohit-nike-clone.herokuapp.com/";
+axios.defaults.baseURL = "https://nike-clone-backend-apcy.onrender.com";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
