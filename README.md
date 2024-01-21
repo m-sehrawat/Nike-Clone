@@ -40,20 +40,21 @@
 <h4 align="center">Deployed On:</h4>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="vercel" />
+  <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="vercel" />
   <img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" alt="heroku" />
 </p>
 
 
 
-<h3 align="center"><a href=""><strong>Want to see live preview »</strong></a></h3>
+<h3 align="center"><a href="https://mohit-nikeclone.netlify.app/"><strong>Want to see live preview »</strong></a></h3>
 
 <p align="center">
   <br />&#10023;
   <a href="#Demo">View Demo</a> &#10023;
   <a href="https://github.com/m-sehrawat/Nike-Clone/issues">Report Bug</a> &#10023;
-  <a href="#Getting-Started">Getting Started</a> &#10023; <a href="#Install">Installing</a> &#10023;
-  <a href="#Author">Author</a> &#10023;
+  <a href="#Getting-Started">Getting Started</a> &#10023; 
+  <a href="#Install">Installing</a> &#10023;
+  <a href="#Contact">Author</a> &#10023;
 </p>
 
 
@@ -159,7 +160,7 @@ NIKE30 (for 30% Off)
 
 <h2>Demo</h2>
 
-
+[Click here to see the presentation video of this project](https://www.linkedin.com/posts/m-sehrawat_reactjs-nike-nikecareers-activity-6947552300534042624-me2_?utm_source=linkedin_share&utm_medium=member_desktop_web)
 
 
 <br />
@@ -270,7 +271,7 @@ To run this project, you will need to add the following environment variables to
 
 
 
-<h2>📬 Contact</h2>
+## Contact
 
 If you want to contact me, you can reach me through below handles.
 
